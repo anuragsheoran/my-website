@@ -25,16 +25,21 @@
         <div id="content"></div>
     </section>
 
-    <section class="request-section">
-        <h2>Request a Movie or Show</h2>
-        <p>Didn’t find what you were looking for? Tell us and we’ll add it.</p>
+    <section class="request-box">
+  <h2>Request a Movie / Show</h2>
 
-        <input id="requestInput" type="text" placeholder="Enter movie/show name…">
-        <button onclick="sendRequest()">Send Request</button>
+  <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" id="requestForm">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
 
-        <p id="requestStatus" class="status"></p>
-    </section>
+    <input type="text" name="username" placeholder="Your Name" required>
+    <textarea name="request" placeholder="Movie or Show Name" required></textarea>
 
+    <button type="submit">Send Request</button>
+  </form>
+
+  <div id="sentMessage" class="hidden">Request Sent Successfully ✔</div>
+</section>
     <script src="script.js"></script>
 </body>
 </html>

@@ -113,3 +113,8 @@ function sendRequest() {
     status.textContent = "Request sent. We'll add it soon!";
     input.value = "";
 }
+document.getElementById("requestForm").addEventListener("submit", function () {
+  setTimeout(() => {
+    document.getElementById("sentMessage").classList.add("show");
+  }, 700);
+});

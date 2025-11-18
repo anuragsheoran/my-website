@@ -122,3 +122,56 @@ button {
     font-size: 14px;
     opacity: 0.8;
 }
+.request-box {
+  margin: 40px 20px;
+  background: #111;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+.request-box h2 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.request-box input,
+.request-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #222;
+  color: white;
+  font-size: 1rem;
+}
+
+.request-box button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.request-box button:hover {
+  opacity: 0.9;
+}
+
+#sentMessage {
+  color: #4caf50;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+#sentMessage.show {
+  opacity: 1;
+}
