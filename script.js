@@ -1,45 +1,46 @@
-// Your movie links here:
-const links = [
-    // Hollywood Movies
-    { title: "Inception", url: "https://example.com/inception", category: "hollywood" },
-    { title: "Avatar", url: "https://example.com/avatar", category: "hollywood" },
-    { title: "Interstellar", url: "https://example.com/interstellar", category: "hollywood" },
+const grid = document.getElementById("movieGrid");
+const search = document.getElementById("search");
+const categoryButtons = document.querySelectorAll(".cat-btn");
 
-    // Bollywood Movies
-    { title: "3 Idiots", url: "https://example.com/3idiots", category: "bollywood" },
-    { title: "KGF", url: "https://example.com/kgf", category: "bollywood" },
-    { title: "Dangal", url: "https://example.com/dangal", category: "bollywood" },
-];
+let activeCategory = "hollywood";
 
+function renderMovies() {
+    const query = search.value.toLowerCase();
+    grid.innerHTML = "";
 
-// Functions to draw categories:
-function renderLinks(searchText = "") {
-    const hollywoodDiv = document.getElementById("hollywood");
-    const bollywoodDiv = document.getElementById("bollywood");
-
-    hollywoodDiv.innerHTML = "";
-    bollywoodDiv.innerHTML = "";
-
-    links
-        .filter(link => link.title.toLowerCase().includes(searchText.toLowerCase()))
-        .forEach(link => {
+    movies
+        .filter(m => m.category === activeCategory)
+        .filter(m => m.title.toLowerCase().includes(query))
+        .forEach(movie => {
             const card = document.createElement("div");
-            card.className = "link-card";
+            card.className = "card";
 
             card.innerHTML = `
-                <h2 class="link-title">${link.title}</h2>
-                <a class="link-url" href="${link.url}" target="_blank">Download</a>
+                <img src="${movie.img}" alt="">
+                <div class="card-body">
+                    <h3 class="card-title">${movie.title}</h3>
+                    <p class="card-desc">${movie.desc}</p>
+                    <a href="${movie.link}" target="_blank" class="download-btn">Download</a>
+                </div>
             `;
 
-            if (link.category === "hollywood") hollywoodDiv.appendChild(card);
-            if (link.category === "bollywood") bollywoodDiv.appendChild(card);
+            grid.appendChild(card);
         });
 }
 
-// Search functionality
-document.getElementById("search").addEventListener("input", (e) => {
-    renderLinks(e.target.value);
+// Category switching
+categoryButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        categoryButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        activeCategory = btn.dataset.category;
+        renderMovies();
+    });
 });
 
-// Load default links
-renderLinks();
+// Live search
+search.addEventListener("input", renderMovies);
+
+// Initial render
+renderMovies();

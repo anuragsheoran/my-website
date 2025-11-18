@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies Hub</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
+    <title>Cinephile</title>
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <header>
-        <h1>Movies Hub</h1>
-        <p class="subtitle">Your Hollywood & Bollywood collection.</p>
+
+    <header class="hero">
+        <h1 class="logo">Cinephile</h1>
+        <p class="tagline">Your personal movie vault</p>
     </header>
 
-    <main>
-        <input type="text" id="search" placeholder="Search movies..." />
+    <nav class="categories">
+        <button class="cat-btn active" data-category="hollywood">Hollywood</button>
+        <button class="cat-btn" data-category="bollywood">Bollywood</button>
+        <button class="cat-btn" data-category="anime">Anime</button>
+        <button class="cat-btn" data-category="series">Series</button>
+    </nav>
 
-        <h2 class="category-title">Hollywood</h2>
-        <div id="hollywood"></div>
+    <main class="content">
+        <input type="text" id="search" placeholder="Search movies..." class="search">
 
-        <h2 class="category-title">Bollywood</h2>
-        <div id="bollywood"></div>
+        <div id="movieGrid" class="grid"></div>
     </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>
