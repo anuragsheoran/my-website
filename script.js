@@ -14,7 +14,7 @@ links.forEach(link => {
 
     card.innerHTML = `
         <h2 class="link-title">${link.title}</h2>
-        <a class="link-url" href="${link.url}" target="_blank">${link.url}</a>
+        <a class="link-url" href="${link.url}" target="_blank">Go To Download Page</a>
     `;
 
     container.appendChild(card);
