@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinephile</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinephile</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <h1>Cinephile</h1>
-        <p class="tagline">Your gateway to cinema without limits</p>
-    </header>
 
-    <section class="search-section">
-        <input type="text" id="searchInput" placeholder="Search movies or shows (not functional yet)">
-    </section>
+<header>
+  <h1>Cinephile</h1>
+  <p class="tagline">Where Entertainment Meets Perfection</p>
+</header>
 
-    <section class="categories">
-        <button class="category-btn" onclick="showCategory('hollywood')">Hollywood</button>
-        <button class="category-btn" onclick="showCategory('bollywood')">Bollywood</button>
-    </section>
+<!-- Premium Request Section -->
+<section class="request-panel">
+  <div class="request-container">
+    <h2>Request Anything</h2>
+    <p>Tell us the movie or show you want. We'll add it for you.</p>
 
-    <section>
-        <div id="content"></div>
-    </section>
+    <form action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST" id="requestForm">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
 
-    <section class="request-box">
-  <h2>Request a Movie / Show</h2>
+      <input type="text" name="username" placeholder="Your Name" required>
+      <textarea name="request" placeholder="Movie or Show Name" required></textarea>
 
-  <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" id="requestForm">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
+      <button type="submit">Send Request</button>
+    </form>
 
-    <input type="text" name="username" placeholder="Your Name" required>
-    <textarea name="request" placeholder="Movie or Show Name" required></textarea>
-
-    <button type="submit">Send Request</button>
-  </form>
-
-  <div id="sentMessage" class="hidden">Request Sent Successfully ✔</div>
+    <div id="sentMessage">Request Sent Successfully ✔</div>
+  </div>
 </section>
-    <script src="script.js"></script>
+
+<!-- Categories -->
+<div class="category-section">
+  <button class="category-btn" onclick="showCategory('hollywood')">Hollywood</button>
+  <button class="category-btn" onclick="showCategory('bollywood')">Bollywood</button>
+</div>
+
+<!-- Subcategories -->
+<div class="subcategory-section">
+  <button class="subcategory-btn" onclick="showSub('movies')">Movies</button>
+  <button class="subcategory-btn" onclick="showSub('shows')">TV Shows</button>
+</div>
+
+<!-- Content -->
+<div id="contentArea" class="content-box"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
