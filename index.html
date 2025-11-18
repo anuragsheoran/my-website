@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Links</title>
+    <title>Movies Hub</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
     <header>
-        <h1>My Links</h1>
-        <p class="subtitle">A clean place to keep everything important.</p>
+        <h1>Movies Hub</h1>
+        <p class="subtitle">Your Hollywood & Bollywood collection.</p>
     </header>
 
     <main>
-        <div id="links-container"></div>
+        <input type="text" id="search" placeholder="Search movies..." />
+
+        <h2 class="category-title">Hollywood</h2>
+        <div id="hollywood"></div>
+
+        <h2 class="category-title">Bollywood</h2>
+        <div id="bollywood"></div>
     </main>
 </body>
 </html>

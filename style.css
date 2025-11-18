@@ -25,21 +25,38 @@ h1 {
 
 main {
     padding: 30px;
-    max-width: 600px;
+    max-width: 650px;
     margin: auto;
+}
+
+#search {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.category-title {
+    margin: 20px 0 10px;
+    font-size: 22px;
+    color: #1f2937;
 }
 
 .link-card {
     background: white;
     padding: 18px 20px;
     margin-bottom: 16px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: transform 0.1s ease;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .link-card:hover {
-    transform: scale(1.02);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .link-title {
