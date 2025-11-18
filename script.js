@@ -1,91 +1,85 @@
-const data = {
-  hollywood: {
-    movies: [
-      {
-        title: "Inception",
-        p720: "720p_link_here",
-        size720: "850MB",
-        p1080: "1080p_link_here",
-        size1080: "1.6GB"
-      },
-      {
-        title: "Interstellar",
-        p720: "720p_link_here",
-        size720: "900MB",
-        p1080: "1080p_link_here",
-        size1080: "2GB"
-      }
-    ],
-    shows: [
-      {
-        title: "Breaking Bad S01",
-        p720: "720p_link",
-        size720: "2.5GB",
-        p1080: "1080p_link",
-        size1080: "4GB"
-      }
-    ]
-  },
+// ----- Dropdown subcategories -----
+const categories = document.querySelectorAll('nav .category');
 
-  bollywood: {
-    movies: [
-      {
-        title: "Dangal",
-        p720: "720p_link",
-        size720: "1GB",
-        p1080: "1080p_link",
-        size1080: "2GB"
-      }
-    ],
-    shows: [
-      {
-        title: "Sacred Games S01",
-        p720: "720p_link",
-        size720: "2GB",
-        p1080: "1080p_link",
-        size1080: "3.5GB"
-      }
-    ]
-  }
-};
+categories.forEach(cat => {
+    cat.addEventListener('mouseenter', () => {
+        const sub = cat.querySelector('.subcategory');
+        sub.style.display = 'block';
+        sub.style.opacity = '0';
+        setTimeout(() => {
+            sub.style.opacity = '1';
+            sub.style.transition = 'opacity 0.3s ease';
+        }, 10);
+    });
+    cat.addEventListener('mouseleave', () => {
+        const sub = cat.querySelector('.subcategory');
+        sub.style.opacity = '0';
+        setTimeout(() => sub.style.display = 'none', 300);
+    });
+});
 
-let currentCategory = "hollywood";
-let currentSub = "movies";
+// ----- Download link animation -----
+const downloadLinks = document.querySelectorAll('.download');
 
-function showCategory(cat) {
-  currentCategory = cat;
-  render();
-}
+downloadLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        link.style.transform = 'scale(1.05)';
+    });
+    link.addEventListener('mouseleave', () => {
+        link.style.transform = 'scale(1)';
+    });
+    link.addEventListener('click', () => {
+        link.innerText = 'Downloading...';
+        setTimeout(() => {
+            link.innerText = link.dataset.resolution; // 720p or 1080p
+        }, 1000);
+    });
+});
 
-function showSub(sub) {
-  currentSub = sub;
-  render();
-}
+// ----- Request form animation -----
+const form = document.querySelector('.request form');
+const submitBtn = document.getElementById('submitBtn');
 
-function render() {
-  const area = document.getElementById("contentArea");
-  area.innerHTML = "";
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // stop default submit for animation
+    // create overlay popup
+    const overlay = document.createElement('div');
+    overlay.classList.add('request-overlay');
+    overlay.innerHTML = "<p>Your request has been sent! Check your email to activate the form.</p>";
+    document.body.appendChild(overlay);
+    // animate popup
+    overlay.style.opacity = 0;
+    setTimeout(() => overlay.style.opacity = 1, 10);
+    // remove after 3 seconds
+    setTimeout(() => {
+        overlay.style.opacity = 0;
+        setTimeout(() => overlay.remove(), 300);
+    }, 3000);
 
-  const list = data[currentCategory][currentSub];
+    // actually submit form after animation
+    setTimeout(() => form.submit(), 500);
+});
 
-  list.forEach(item => {
-    area.innerHTML += `
-      <div class="movie-item">
-        <div class="movie-title">${item.title}</div>
-        <div class="download-links">
-          <a href="${item.p720}" target="_blank">720p • ${item.size720}</a>
-          <a href="${item.p1080}" target="_blank">1080p • ${item.size1080}</a>
-        </div>
-      </div>
-    `;
-  });
-}
+// ----- Optional Search Filter -----
+const searchInput = document.createElement('input');
+searchInput.placeholder = 'Search movies/shows...';
+searchInput.style.marginBottom = '20px';
+searchInput.style.padding = '10px';
+searchInput.style.width = '100%';
+searchInput.style.borderRadius = '8px';
+searchInput.style.border = '1px solid #ccc';
+const contentSection = document.querySelector('.content');
+contentSection.parentNode.insertBefore(searchInput, contentSection);
 
-render();
-
-/* Request Sent Animation */
-document.getElementById("requestForm").addEventListener("submit", function () {
-  setTimeout(() => {
-    document.getElementById("sentMessage").classList.add("show");
-  }, 700);
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('.movie-card');
+    cards.forEach(card => {
+        const title = card.querySelector('h2').innerText.toLowerCase();
+        if (title.includes(query)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 });

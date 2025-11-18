@@ -1,54 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinephile</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinephile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <header>
+        <div class="logo">Cinephile</div>
+        <nav>
+            <ul>
+                <li class="category">Hollywood
+                    <ul class="subcategory">
+                        <li>Movies</li>
+                        <li>TV Shows</li>
+                    </ul>
+                </li>
+                <li class="category">Bollywood
+                    <ul class="subcategory">
+                        <li>Movies</li>
+                        <li>TV Shows</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-  <h1>Cinephile</h1>
-  <p class="tagline">Where Entertainment Meets Perfection</p>
-</header>
+    <main>
+        <section class="intro">
+            <h1>Welcome to Cinephile</h1>
+            <p>Your ultimate hub for movies and TV shows, curated and sleek.</p>
+        </section>
 
-<!-- Premium Request Section -->
-<section class="request-panel">
-  <div class="request-container">
-    <h2>Request Anything</h2>
-    <p>Tell us the movie or show you want. We'll add it for you.</p>
+        <section class="content">
+            <div class="movie-card">
+                <h2>Sample Movie 1</h2>
+                <p>Genre: Action</p>
+                <div class="links">
+                    <a href="#" class="download" data-resolution="Download 720p (1.2GB)">Download 720p (1.2GB)</a>
+                    <a href="#" class="download" data-resolution="Download 1080p (2.5GB)">Download 1080p (2.5GB)</a>
+                </div>
+            </div>
 
-    <form action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST" id="requestForm">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
+            <div class="movie-card">
+                <h2>Sample TV Show 1</h2>
+                <p>Genre: Drama</p>
+                <div class="links">
+                    <a href="#" class="download" data-resolution="Download 720p (700MB)">Download 720p (700MB)</a>
+                    <a href="#" class="download" data-resolution="Download 1080p (1.4GB)">Download 1080p (1.4GB)</a>
+                </div>
+            </div>
 
-      <input type="text" name="username" placeholder="Your Name" required>
-      <textarea name="request" placeholder="Movie or Show Name" required></textarea>
+            <!-- Add more movie/show cards here as needed -->
+        </section>
 
-      <button type="submit">Send Request</button>
-    </form>
+        <section class="request">
+            <h2>Request a Movie or Show</h2>
+            <form action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST" target="_blank">
+                <input type="hidden" name="_captcha" value="false">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-    <div id="sentMessage">Request Sent Successfully ✔</div>
-  </div>
-</section>
+                <label for="movie">Movie/Show Name</label>
+                <input type="text" id="movie" name="movie" placeholder="Movie or Show you want" required>
 
-<!-- Categories -->
-<div class="category-section">
-  <button class="category-btn" onclick="showCategory('hollywood')">Hollywood</button>
-  <button class="category-btn" onclick="showCategory('bollywood')">Bollywood</button>
-</div>
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
 
-<!-- Subcategories -->
-<div class="subcategory-section">
-  <button class="subcategory-btn" onclick="showSub('movies')">Movies</button>
-  <button class="subcategory-btn" onclick="showSub('shows')">TV Shows</button>
-</div>
+                <button type="submit" id="submitBtn">Send Request</button>
+            </form>
+        </section>
+    </main>
 
-<!-- Content -->
-<div id="contentArea" class="content-box"></div>
+    <footer>
+        <p>&copy; 2025 Cinephile. All rights reserved.</p>
+    </footer>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
