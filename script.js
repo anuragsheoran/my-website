@@ -29,9 +29,10 @@ downloadLinks.forEach(link => {
         link.style.transform = 'scale(1)';
     });
     link.addEventListener('click', () => {
+        const originalText = link.dataset.resolution;
         link.innerText = 'Downloading...';
         setTimeout(() => {
-            link.innerText = link.dataset.resolution; // 720p or 1080p
+            link.innerText = originalText;
         }, 1000);
     });
 });
