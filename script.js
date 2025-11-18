@@ -1,26 +1,31 @@
-// Editable content
 const data = {
     hollywood: {
         movies: [
             {
                 title: "Inception",
                 year: "2010",
-                dl720: { url: "#", size: "1.1 GB" },
-                dl1080: { url: "#", size: "2.4 GB" }
+                links: {
+                    "720p": "your_720p_link_here",
+                    "1080p": "your_1080p_link_here"
+                }
             },
             {
                 title: "Interstellar",
                 year: "2014",
-                dl720: { url: "#", size: "1.3 GB" },
-                dl1080: { url: "#", size: "2.9 GB" }
+                links: {
+                    "720p": "your_720p_link_here",
+                    "1080p": "your_1080p_link_here"
+                }
             }
         ],
-        tv: [
+        shows: [
             {
                 title: "Breaking Bad",
-                year: "5 Seasons",
-                dl720: { url: "#", size: "8 GB" },
-                dl1080: { url: "#", size: "14 GB" }
+                year: "2008",
+                links: {
+                    "720p": "your_720p_link_here",
+                    "1080p": "your_1080p_link_here"
+                }
             }
         ]
     },
@@ -30,64 +35,81 @@ const data = {
             {
                 title: "3 Idiots",
                 year: "2009",
-                dl720: { url: "#", size: "950 MB" },
-                dl1080: { url: "#", size: "1.8 GB" }
+                links: {
+                    "720p": "your_720p_link_here",
+                    "1080p": "your_1080p_link_here"
+                }
             }
         ],
-        tv: [
+        shows: [
             {
-                title: "Scam 1992",
-                year: "2020",
-                dl720: { url: "#", size: "4 GB" },
-                dl1080: { url: "#", size: "7 GB" }
+                title: "Sacred Games",
+                year: "2018",
+                links: {
+                    "720p": "your_720p_link_here",
+                    "1080p": "your_1080p_link_here"
+                }
             }
         ]
     }
 };
 
-let currentCat = "hollywood";
-let currentSub = "movies";
+function showCategory(category) {
+    const content = document.getElementById("content");
+    content.innerHTML = "";
 
-function renderContent() {
-    const container = document.getElementById("content");
-    container.innerHTML = "";
+    const section = data[category];
 
-    const list = data[currentCat][currentSub];
+    renderSection("Movies", section.movies);
+    renderSection("TV Shows", section.shows);
 
-    list.forEach(item => {
-        container.innerHTML += `
-            <div class="card">
-                <div class="title">${item.title}</div>
-                <div class="meta">${item.year}</div>
+    function renderSection(title, list) {
+        const titleBlock = document.createElement("h2");
+        titleBlock.textContent = title;
+        titleBlock.style.textAlign = "center";
+        titleBlock.style.marginTop = "20px";
+        content.appendChild(titleBlock);
 
-                <div class="downloads">
-                    <a class="dl-btn" href="${item.dl720.url}" target="_blank">720p (${item.dl720.size})</a>
-                    <a class="dl-btn" href="${item.dl1080.url}" target="_blank">1080p (${item.dl1080.size})</a>
+        list.forEach(item => {
+            const block = document.createElement("div");
+            block.className = "movie-block";
+
+            block.innerHTML = `
+                <h3>${item.title}</h3>
+                <p class="small">${item.year}</p>
+
+                <div class="download-links">
+                    <a href="${item.links["720p"]}" target="_blank">720p</a>
+                    <a href="${item.links["1080p"]}" target="_blank">1080p</a>
                 </div>
-            </div>
-        `;
+            `;
+
+            content.appendChild(block);
+        });
+    }
+}
+
+// ---------- Request System (Google Sheets backend) ----------
+
+function sendRequest() {
+    const input = document.getElementById("requestInput");
+    const name = input.value.trim();
+    const status = document.getElementById("requestStatus");
+
+    if (name.length === 0) {
+        status.textContent = "Please enter a name first.";
+        return;
+    }
+
+    // Replace this with your Google Apps Script link
+    const url = "https://script.google.com/macros/s/AKfycbzL3-O77ukcrxqdpakgETIsedojJX2CQrq5An0kSFmo3qn8dJrcOuxAuIo5YRc1Um1Q/exec";
+
+    fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({ request: name })
     });
-}
 
-renderContent();
-
-function switchCategory(cat) {
-    currentCat = cat;
-    renderContent();
-}
-
-function switchSub(sub) {
-    currentSub = sub;
-    renderContent();
-}
-
-function searchContent() {
-    const query = document.getElementById("searchBar").value.toLowerCase();
-    const cards = document.querySelectorAll(".card");
-    const titles = document.querySelectorAll(".title");
-
-    titles.forEach((t, i) => {
-        let match = t.innerText.toLowerCase().includes(query);
-        cards[i].style.display = match ? "block" : "none";
-    });
+    status.textContent = "Request sent. We'll add it soon!";
+    input.value = "";
 }

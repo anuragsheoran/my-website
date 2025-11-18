@@ -7,27 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <h1>Cinephile</h1>
-        <p class="tagline">Your gateway to world cinema.</p>
-
-        <input type="text" id="searchBar" placeholder="Search movies, shows…" onkeyup="searchContent()">
+        <p class="tagline">Your gateway to cinema without limits</p>
     </header>
 
-    <div class="categories">
-        <button class="category-btn" onclick="switchCategory('hollywood')">Hollywood</button>
-        <button class="category-btn" onclick="switchCategory('bollywood')">Bollywood</button>
-    </div>
+    <section class="search-section">
+        <input type="text" id="searchInput" placeholder="Search movies or shows (not functional yet)">
+    </section>
 
-    <div class="subcategories">
-        <button class="sub-btn" onclick="switchSub('movies')">Movies</button>
-        <button class="sub-btn" onclick="switchSub('tv')">TV Shows</button>
-    </div>
+    <section class="categories">
+        <button class="category-btn" onclick="showCategory('hollywood')">Hollywood</button>
+        <button class="category-btn" onclick="showCategory('bollywood')">Bollywood</button>
+    </section>
 
-    <div id="content"></div>
+    <section>
+        <div id="content"></div>
+    </section>
+
+    <section class="request-section">
+        <h2>Request a Movie or Show</h2>
+        <p>Didn’t find what you were looking for? Tell us and we’ll add it.</p>
+
+        <input id="requestInput" type="text" placeholder="Enter movie/show name…">
+        <button onclick="sendRequest()">Send Request</button>
+
+        <p id="requestStatus" class="status"></p>
+    </section>
 
     <script src="script.js"></script>
-
 </body>
 </html>
