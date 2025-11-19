@@ -1,66 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinephile</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="logo">Cinephile</div>
-        <nav>
-    <ul>
-        <li class="category" id="hollywood-btn">Hollywood</li>
-        <li class="category" id="bollywood-btn">Bollywood</li>
-    </ul>
-</nav>
 
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1 class="logo">Cinephile</h1>
+
+        <nav>
+            <button id="bollywood-btn" class="cat-btn active">Bollywood</button>
+            <button id="hollywood-btn" class="cat-btn">Hollywood</button>
+        </nav>
     </header>
 
-    <main>
-        <section class="intro">
-            <h1>Welcome to Cinephile</h1>
-            <p>Your ultimate hub for movies and TV shows, curated and sleek.</p>
-        </section>
-
-        <section class="content">
-            <div class="movie-card">
-    <h2>Param Sundari</h2>
-    <p>Genre: Bollywood</p>
-    <div class="links">
-        <a href="https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Param.Sundari.2025.720p.HEVC.Hindi.WEB-DL.ESub.x265-%20moviesdrives.cv.mkv?token=1763547127142"
-           class="download"
-           data-resolution="Download 720p (794MB)">Download 720p (794MB)</a>
-        <a href="https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Param.Sundari.2025.1080p.HEVC.Hindi.WEB-DL.5.1.ESub.x265-%20moviesdrives.cv.mkv?token=1763547000140"
-           class="download"
-           data-resolution="Download 1080p (1.82GB)">Download 1080p (1.82GB)</a>
+    <!-- Content Section -->
+    <div class="content">
+        <section id="movies-container"></section>
     </div>
-    </div>
-        </section>
 
-        <section class="request">
-            <h2>Request a Movie or Show</h2>
-            <form action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST" target="_blank">
-                <input type="hidden" name="_captcha" value="false">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    <!-- Request Section -->
+    <section class="request">
+        <h2>Request Any Movie or Show</h2>
+        <p>Tell us what you want and we'll add it for you.</p>
 
-                <label for="movie">Movie/Show Name</label>
-                <input type="text" id="movie" name="movie" placeholder="Movie or Show you want" required>
+        <form action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
+            <input type="text" name="Requested Movie/Show" placeholder="Movie or Show name..." required>
+            <input type="hidden" name="_captcha" value="false">
+            <button type="submit" id="submitBtn">Send Request</button>
+        </form>
+    </section>
 
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" placeholder="Your email" required>
-
-                <button type="submit" id="submitBtn">Send Request</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Cinephile. All rights reserved.</p>
-    </footer>
-
+    <!-- JS Files -->
+    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,24 @@
+// Movie database
+
+const moviesData = [
+
+    // --------------------
+    // PARAM SUNDARI
+    // --------------------
+    {
+        title: "Param Sundari",
+        category: "Bollywood",
+        poster: "https://i.imgur.com/3XU7o9Z.jpeg",  // Replace with a real poster anytime
+
+        quality1080p: {
+            size: "1.82GB",
+            link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Param.Sundari.2025.1080p.HEVC.Hindi.WEB-DL.5.1.ESub.x265-%20moviesdrives.cv.mkv?token=1763547000140"
+        },
+
+        quality720p: {
+            size: "794MB",
+            link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Param.Sundari.2025.720p.HEVC.Hindi.WEB-DL.ESub.x265-%20moviesdrives.cv.mkv?token=1763547127142"
+        }
+    }
+
+];
