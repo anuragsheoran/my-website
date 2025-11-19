@@ -97,6 +97,29 @@ const moviesData = [
             quality720p: { size: "1.97GB", link: "https://mega.blockxpiracy.net/cs/g?x=us4yvo4XUQxK&n=LhozHQiJ&fn=Stranger.Things.S04-VOL2.E08-9.720p.WEB-DL.Hindi.5.1-English.ESub.x264.zip" }
         }
     ]
+},
+
+// --------------------
+// CHAINSAW MAN SERIES
+// --------------------
+{
+    title: "Chainsaw Man",
+    category: "Hollywood",
+    poster: "posters/chainsaw_man.jpg", // add the poster image in your folder
+    series: true,
+    seasons: [
+        {
+            season: 1,
+            quality1080p: {
+                size: "3.7GB",
+                link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Chainsaw.Man.S01.1080p.x264.Hindi.English.Japanese.Esubs.%20-%20moviesdrives.com.zip?token=1763587025147"
+            },
+            quality720p: {
+                size: "2.1GB",
+                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Chainsaw.Man.S01.720p.10Bit.Hindi.English.Japanese.Esubs.-.moviesdrives.com.zip?token=1763586950145"
+            }
+        }
+    ]
 }
 
 ];
