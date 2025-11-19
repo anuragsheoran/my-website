@@ -8,15 +8,12 @@ function loadMovies(category = "Bollywood") {
     moviesData
         .filter(movie => movie.category === category)
         .forEach(movie => {
-            // Check if this is a series
             if (movie.series) {
+                // Series with multiple seasons
                 let seasonsHTML = '';
                 movie.seasons.forEach((season, idx) => {
-                    let seasonLabel = `Season ${season.season}`;
-                    if (season.volume) {
-                        seasonLabel += ` Vol ${season.volume}`;
-                    }
-                    seasonsHTML += `<button class="season-btn" data-movie="${movie.title}" data-season="${idx}">${seasonLabel}</button>`;
+                    let seasonText = season.volume ? `Season ${season.season} Vol. ${season.volume}` : `Season ${season.season}`;
+                    seasonsHTML += `<button class="season-btn" data-movie="${movie.title}" data-season="${idx}">${seasonText}</button>`;
                 });
 
                 container.innerHTML += `
@@ -38,17 +35,8 @@ function loadMovies(category = "Bollywood") {
                         <h2>${movie.title}</h2>
                         <p class="movie-cat">${movie.category}</p>
                         <div class="download-buttons">
-                            <a href="${movie.quality1080p.link}"
-                               class="download download-btn"
-                               data-res="1080p • ${movie.quality1080p.size}">
-                               1080p • ${movie.quality1080p.size}
-                            </a>
-
-                            <a href="${movie.quality720p.link}"
-                               class="download download-btn"
-                               data-res="720p • ${movie.quality720p.size}">
-                               720p • ${movie.quality720p.size}
-                            </a>
+                            <a href="${movie.quality1080p.link}" class="download download-btn" data-res="1080p • ${movie.quality1080p.size}">1080p • ${movie.quality1080p.size}</a>
+                            <a href="${movie.quality720p.link}" class="download download-btn" data-res="720p • ${movie.quality720p.size}">720p • ${movie.quality720p.size}</a>
                         </div>
                     </div>
                 `;
@@ -99,11 +87,17 @@ function attachSeasonButtonEvents() {
     const seasonBtns = document.querySelectorAll('.season-btn');
     seasonBtns.forEach(btn => {
         btn.addEventListener('click', function() {
+            // Highlight the active season
+            seasonBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
             const movieTitle = this.dataset.movie;
             const seasonIdx = this.dataset.season;
             const movie = moviesData.find(m => m.title === movieTitle);
             const season = movie.seasons[seasonIdx];
+
             const downloadDiv = this.parentElement.nextElementSibling;
+            if (!downloadDiv) return;
 
             downloadDiv.innerHTML = `
                 <a href="${season.quality1080p.link}" class="download download-btn" data-res="1080p • ${season.quality1080p.size}">1080p • ${season.quality1080p.size}</a>
@@ -120,7 +114,6 @@ function attachSeasonButtonEvents() {
 const requestForm = document.getElementById("requestForm");
 const submitBtn = document.getElementById("submitBtn");
 
-// ----- DAILY LIMIT -----
 function getTodayKey() {
     const today = new Date().toISOString().split("T")[0];
     return `requests_${today}`;
@@ -135,7 +128,6 @@ function incrementRequestCount() {
     localStorage.setItem(getTodayKey(), count);
 }
 
-// ----- COOLDOWN -----
 let cooldown = false;
 
 function startCooldown() {
@@ -158,7 +150,6 @@ function startCooldown() {
     }, 1000);
 }
 
-// ----- FORM SUBMISSION -----
 requestForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -180,7 +171,6 @@ requestForm.addEventListener("submit", function(e) {
     setTimeout(() => requestForm.submit(), 600);
 });
 
-// ----- Popup animation -----
 function showPopup(message) {
     const overlay = document.createElement("div");
     overlay.classList.add("request-overlay");

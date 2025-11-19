@@ -65,66 +65,36 @@ const moviesData = [
     title: "Stranger Things",
     category: "Hollywood",
     poster: "posters/stranger_things.jpg",
-    series: true,  // indicates this is a series
+    series: true,
     seasons: [
         {
             season: 1,
-            quality1080p: {
-                size: "7.1GB",
-                link: "https://mega.blockxpiracy.net/cs/g?x=bARgn4oGSCLZ&n=2kwQ0LZI&fn=Stranger.Things.S01.1080p.Hindi.Eng.Vegamovies.NL.zip"
-            },
-            quality720p: {
-                size: "3.3GB",
-                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S01.720p.Hindi.Eng.moviesdrives.com.zip?token=176358087014"
-            }
+            quality1080p: { size: "7.1GB", link: "https://mega.blockxpiracy.net/cs/g?x=bARgn4oGSCLZ&n=2kwQ0LZI&fn=Stranger.Things.S01.1080p.Hindi.Eng.Vegamovies.NL.zip" },
+            quality720p: { size: "3.3GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S01.720p.Hindi.Eng.moviesdrives.com.zip?token=176358087014" }
         },
         {
             season: 2,
-            quality1080p: {
-                size: "8.17GB",
-                link: "https://mega.blockxpiracy.net/cs/g?x=CponL8h2DSxa&n=6wp2QaoY&fn=Stranger.Things.S02.1080p.Hindi.Eng.Vegamovies.NL.zip"
-            },
-            quality720p: {
-                size: "3.63GB",
-                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S02.720p.Hindi.Eng.moviesdrives.com.zip?token=1763581494115"
-            }
+            quality1080p: { size: "8.17GB", link: "https://mega.blockxpiracy.net/cs/g?x=CponL8h2DSxa&n=6wp2QaoY&fn=Stranger.Things.S02.1080p.Hindi.Eng.Vegamovies.NL.zip" },
+            quality720p: { size: "3.63GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S02.720p.Hindi.Eng.moviesdrives.com.zip?token=1763581494115" }
         },
         {
             season: 3,
-            quality1080p: {
-                size: "6.2GB",
-                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S03.1080p.Hindi.Eng.moviesdrives.com.zip?token=1763581617116"
-            },
-            quality720p: {
-                size: "3.86GB",
-                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/78e8d4a85cdc39774b4c8d8821ff1dd5?token=1763581572116"
-            }
+            quality1080p: { size: "6.2GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S03.1080p.Hindi.Eng.moviesdrives.com.zip?token=1763581617116" },
+            quality720p: { size: "3.86GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/78e8d4a85cdc39774b4c8d8821ff1dd5?token=1763581572116" }
         },
         {
             season: 4,
             volume: 1,
             episodes: "1-7",
-            quality1080p: {
-                size: "11.8GB",
-                link: "https://mega.blockxpiracy.net/cs/g?x=En6J7pwCHAhK&n=Ck4wTA5K&fn=Stranger%20Things%20[Season%2004%20%C3%A2%E2%82%AC%E2%80%9C%20Vol.%201]%201080p.Vegamovies.NL-1.zip"
-            },
-            quality720p: {
-                size: "2.92GB",
-                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/053b1986a0213897af866984235c5de3?token=1763581699118"
-            }
+            quality1080p: { size: "11.8GB", link: "https://mega.blockxpiracy.net/cs/g?x=En6J7pwCHAhK&n=Ck4wTA5K&fn=Stranger%20Things%20[Season%2004%20Vol.%201]%201080p.Vegamovies.NL-1.zip" },
+            quality720p: { size: "2.92GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/053b1986a0213897af866984235c5de3?token=1763581699118" }
         },
         {
             season: 4,
             volume: 2,
             episodes: "8-9",
-            quality1080p: {
-                size: "3.82GB",
-                link: "https://mega.blockxpiracy.net/cs/g?x=KpyCz4oEmRrT&n=24BW1JyT&fn=Stranger%20Things%20S04E08-9%201080p%20NF%20WEB-DL%20x264%20(DD+%205.1%20-%20192Kbps)%20[Hin%20+%20Eng]%20Vegamovies.NL.zip"
-            },
-            quality720p: {
-                size: "1.97GB",
-                link: "https://mega.blockxpiracy.net/cs/g?x=us4yvo4XUQxK&n=LhozHQiJ&fn=Stranger.Things.S04-VOL2.E08-9.720p.WEB-DL.Hindi.5.1-English.ESub.x264-Vegamovies.NL.zip"
-            }
+            quality1080p: { size: "3.82GB", link: "https://mega.blockxpiracy.net/cs/g?x=KpyCz4oEmRrT&n=24BW1JyT&fn=Stranger%20Things%20S04E08-9%201080p%20NF%20WEB-DL%20x264%20[Hin+Eng].zip" },
+            quality720p: { size: "1.97GB", link: "https://mega.blockxpiracy.net/cs/g?x=us4yvo4XUQxK&n=LhozHQiJ&fn=Stranger.Things.S04-VOL2.E08-9.720p.WEB-DL.Hindi.5.1-English.ESub.x264.zip" }
         }
     ]
 }
