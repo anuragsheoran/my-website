@@ -43,20 +43,23 @@ const moviesData = [
     // --------------------
     // INTERSTELLAR 2014
     // --------------------
-    {
-        title: "Interstellar [HINDI]",
-        category: "Hollywood",
-        poster: "posters/interstellar.jpg",
+    
+{
+    title: "Interstellar",
+    category: "Hollywood",
+    poster: "posters/interstellar.jpg",
 
-        quality1080p: {
-            size: "2.81GB",
-            link: "https://xpe9.com/sm_b2_ygbgxry90i72.html?zoneid=6973312&ymid=176357631809990TINTV62409R40d6R1013Rd8bR8000RR6Vc7776&sourceid=10553224-1560383409-4269441498&tt=2"
-        },
+    quality720p: {
+        size: "1.55GB",
+        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.BluRay.IMAX.720p.x265.HEVC.10bit.Hindi.English.AAC.5.1.ESub.-%20moviesdrives.com.mkv?token=176357717712"
+    },
 
-        quality720p: {
-            size: "1.55GB",
-            link: "https://rirki.com/i3CR5GtcXOtLaknWK/128897?param_5=176357635909990TINTV62409R40d6R1013Rd8bR8000RR6Vfec97&param_4=10553224-1560383409-4269441498&zoneid=128897&tt=2"
-        }
+    quality1080p: {
+        size: "2.81GB",
+        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.IMAX.1080p.10bit.BluRay.HEVC.x265.Org.NF.Hindi.DDP.5.1.640kbps.+.English.AAC.5.1.ESubs.-%20moviesdrives.com.mkv?token=176357724814"
     }
+}
+
+
 
 ];
