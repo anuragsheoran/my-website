@@ -22,18 +22,12 @@ categories.forEach(cat => {
 const downloadLinks = document.querySelectorAll('.download');
 
 downloadLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        link.style.transform = 'scale(1.05)';
-    });
-    link.addEventListener('mouseleave', () => {
-        link.style.transform = 'scale(1)';
-    });
+    link.addEventListener('mouseenter', () => link.style.transform = 'scale(1.05)');
+    link.addEventListener('mouseleave', () => link.style.transform = 'scale(1)');
     link.addEventListener('click', () => {
         const originalText = link.dataset.resolution;
         link.innerText = 'Downloading...';
-        setTimeout(() => {
-            link.innerText = originalText;
-        }, 1000);
+        setTimeout(() => link.innerText = originalText, 1000);
     });
 });
 
@@ -42,26 +36,21 @@ const form = document.querySelector('.request form');
 const submitBtn = document.getElementById('submitBtn');
 
 form.addEventListener('submit', function(e) {
-    e.preventDefault(); // stop default submit for animation
-    // create overlay popup
+    e.preventDefault();
     const overlay = document.createElement('div');
     overlay.classList.add('request-overlay');
     overlay.innerHTML = "<p>Your request has been sent! Check your email to activate the form.</p>";
     document.body.appendChild(overlay);
-    // animate popup
     overlay.style.opacity = 0;
     setTimeout(() => overlay.style.opacity = 1, 10);
-    // remove after 3 seconds
     setTimeout(() => {
         overlay.style.opacity = 0;
         setTimeout(() => overlay.remove(), 300);
     }, 3000);
-
-    // actually submit form after animation
     setTimeout(() => form.submit(), 500);
 });
 
-// ----- Optional Search Filter -----
+// ----- Search Filter -----
 const searchInput = document.createElement('input');
 searchInput.placeholder = 'Search movies/shows...';
 searchInput.style.marginBottom = '20px';
@@ -77,10 +66,6 @@ searchInput.addEventListener('input', () => {
     const cards = document.querySelectorAll('.movie-card');
     cards.forEach(card => {
         const title = card.querySelector('h2').innerText.toLowerCase();
-        if (title.includes(query)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+        card.style.display = title.includes(query) ? 'block' : 'none';
     });
 });
