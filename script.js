@@ -1,22 +1,22 @@
-// ----- Dropdown subcategories -----
-const categories = document.querySelectorAll('nav .category');
+// ----- Filter by category -----
+const hollywoodBtn = document.getElementById('hollywood-btn');
+const bollywoodBtn = document.getElementById('bollywood-btn');
+const movieCards = document.querySelectorAll('.movie-card');
 
-categories.forEach(cat => {
-    cat.addEventListener('mouseenter', () => {
-        const sub = cat.querySelector('.subcategory');
-        sub.style.display = 'block';
-        sub.style.opacity = '0';
-        setTimeout(() => {
-            sub.style.opacity = '1';
-            sub.style.transition = 'opacity 0.3s ease';
-        }, 10);
-    });
-    cat.addEventListener('mouseleave', () => {
-        const sub = cat.querySelector('.subcategory');
-        sub.style.opacity = '0';
-        setTimeout(() => sub.style.display = 'none', 300);
+hollywoodBtn.addEventListener('click', () => {
+    movieCards.forEach(card => {
+        const genre = card.querySelector('p').innerText.toLowerCase();
+        card.style.display = genre.includes('hollywood') ? 'block' : 'none';
     });
 });
+
+bollywoodBtn.addEventListener('click', () => {
+    movieCards.forEach(card => {
+        const genre = card.querySelector('p').innerText.toLowerCase();
+        card.style.display = genre.includes('bollywood') ? 'block' : 'none';
+    });
+});
+
 
 // ----- Download link animation -----
 const downloadLinks = document.querySelectorAll('.download');

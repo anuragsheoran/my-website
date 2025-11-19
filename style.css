@@ -31,30 +31,6 @@ nav ul {
     gap: 20px;
 }
 
-nav ul li {
-    position: relative;
-    cursor: pointer;
-}
-
-nav ul li .subcategory {
-    display: none;
-    position: absolute;
-    top: 35px;
-    left: 0;
-    background: #2c2c44;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-nav ul li:hover .subcategory {
-    display: block;
-}
-
-nav ul li .subcategory li {
-    margin: 5px 0;
-    color: #fff;
-}
-
 main {
     padding: 20px;
 }
