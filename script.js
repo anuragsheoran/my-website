@@ -1,66 +1,62 @@
 // ----------------------------
-// Load movies & series dynamically
+// Load movies dynamically
 // ----------------------------
 function loadMovies(category = "Bollywood") {
     const container = document.getElementById("movies-container");
     container.innerHTML = "";
 
     moviesData
-        .filter(item => item.category === category)
-        .forEach(item => {
-            if (item.seasons) {
-                // Series with multiple seasons
-                const seriesCard = document.createElement("div");
-                seriesCard.classList.add("movie-card");
-
-                seriesCard.innerHTML = `
-                    <img src="${item.poster}" class="poster">
-                    <h2>${item.title} (Series)</h2>
-                    <div class="seasons-container"></div>
-                `;
-
-                const seasonsContainer = seriesCard.querySelector(".seasons-container");
-
-                item.seasons.forEach(season => {
-                    const seasonDiv = document.createElement("div");
-                    seasonDiv.classList.add("season-card");
-                    seasonDiv.innerHTML = `
-                        <h3>Season ${season.season}</h3>
-                        <div class="download-buttons">
-                            <a href="${season.quality720p.link}" class="download download-btn" data-res="720p • ${season.quality720p.size}">
-                                720p • ${season.quality720p.size}
-                            </a>
-                            <a href="${season.quality1080p.link}" class="download download-btn" data-res="1080p • ${season.quality1080p.size}">
-                                1080p • ${season.quality1080p.size}
-                            </a>
-                        </div>
-                    `;
-                    seasonsContainer.appendChild(seasonDiv);
+        .filter(movie => movie.category === category)
+        .forEach(movie => {
+            // Check if this is a series
+            if (movie.series) {
+                let seasonsHTML = '';
+                movie.seasons.forEach((season, idx) => {
+                    let seasonLabel = `Season ${season.season}`;
+                    if (season.volume) {
+                        seasonLabel += ` Vol ${season.volume}`;
+                    }
+                    seasonsHTML += `<button class="season-btn" data-movie="${movie.title}" data-season="${idx}">${seasonLabel}</button>`;
                 });
 
-                container.appendChild(seriesCard);
-
-            } else {
-                // Regular movie
-                const card = document.createElement("div");
-                card.classList.add("movie-card");
-                card.innerHTML = `
-                    <img src="${item.poster}" class="poster">
-                    <h2>${item.title}</h2>
-                    <div class="download-buttons">
-                        <a href="${item.quality720p.link}" class="download download-btn" data-res="720p • ${item.quality720p.size}">
-                            720p • ${item.quality720p.size}
-                        </a>
-                        <a href="${item.quality1080p.link}" class="download download-btn" data-res="1080p • ${item.quality1080p.size}">
-                            1080p • ${item.quality1080p.size}
-                        </a>
+                container.innerHTML += `
+                    <div class="movie-card">
+                        <img src="${movie.poster}" class="poster">
+                        <h2>${movie.title}</h2>
+                        <p class="movie-cat">${movie.category}</p>
+                        <div class="seasons-container">
+                            ${seasonsHTML}
+                        </div>
+                        <div class="download-buttons"></div>
                     </div>
                 `;
-                container.appendChild(card);
+            } else {
+                // Normal movie
+                container.innerHTML += `
+                    <div class="movie-card">
+                        <img src="${movie.poster}" class="poster">
+                        <h2>${movie.title}</h2>
+                        <p class="movie-cat">${movie.category}</p>
+                        <div class="download-buttons">
+                            <a href="${movie.quality1080p.link}"
+                               class="download download-btn"
+                               data-res="1080p • ${movie.quality1080p.size}">
+                               1080p • ${movie.quality1080p.size}
+                            </a>
+
+                            <a href="${movie.quality720p.link}"
+                               class="download download-btn"
+                               data-res="720p • ${movie.quality720p.size}">
+                               720p • ${movie.quality720p.size}
+                            </a>
+                        </div>
+                    </div>
+                `;
             }
         });
 
     attachAnimations();
+    attachSeasonButtonEvents();
 }
 
 // ----------------------------
@@ -83,9 +79,11 @@ document.getElementById("hollywood-btn").onclick = () => {
 // ----------------------------
 function attachAnimations() {
     const links = document.querySelectorAll('.download');
+
     links.forEach(link => {
         link.addEventListener('mouseenter', () => link.style.transform = 'scale(1.05)');
         link.addEventListener('mouseleave', () => link.style.transform = 'scale(1)');
+
         link.addEventListener('click', () => {
             const original = link.dataset.res;
             link.innerText = "Preparing...";
@@ -95,11 +93,34 @@ function attachAnimations() {
 }
 
 // ----------------------------
-// Request Form Popup & Daily Limit
+// Season Button Logic
+// ----------------------------
+function attachSeasonButtonEvents() {
+    const seasonBtns = document.querySelectorAll('.season-btn');
+    seasonBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const movieTitle = this.dataset.movie;
+            const seasonIdx = this.dataset.season;
+            const movie = moviesData.find(m => m.title === movieTitle);
+            const season = movie.seasons[seasonIdx];
+            const downloadDiv = this.parentElement.nextElementSibling;
+
+            downloadDiv.innerHTML = `
+                <a href="${season.quality1080p.link}" class="download download-btn" data-res="1080p • ${season.quality1080p.size}">1080p • ${season.quality1080p.size}</a>
+                <a href="${season.quality720p.link}" class="download download-btn" data-res="720p • ${season.quality720p.size}">720p • ${season.quality720p.size}</a>
+            `;
+            attachAnimations();
+        });
+    });
+}
+
+// ----------------------------
+// Request Form Popup
 // ----------------------------
 const requestForm = document.getElementById("requestForm");
 const submitBtn = document.getElementById("submitBtn");
 
+// ----- DAILY LIMIT -----
 function getTodayKey() {
     const today = new Date().toISOString().split("T")[0];
     return `requests_${today}`;
@@ -114,6 +135,7 @@ function incrementRequestCount() {
     localStorage.setItem(getTodayKey(), count);
 }
 
+// ----- COOLDOWN -----
 let cooldown = false;
 
 function startCooldown() {
@@ -136,6 +158,7 @@ function startCooldown() {
     }, 1000);
 }
 
+// ----- FORM SUBMISSION -----
 requestForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -150,12 +173,14 @@ requestForm.addEventListener("submit", function(e) {
     }
 
     showPopup("Your request has been sent!");
+
     incrementRequestCount();
     startCooldown();
 
     setTimeout(() => requestForm.submit(), 600);
 });
 
+// ----- Popup animation -----
 function showPopup(message) {
     const overlay = document.createElement("div");
     overlay.classList.add("request-overlay");
@@ -173,7 +198,7 @@ function showPopup(message) {
 // Search Bar
 // ----------------------------
 const searchInput = document.createElement("input");
-searchInput.placeholder = "Search movies or shows...";
+searchInput.placeholder = "Search movies...";
 searchInput.classList.add("search-bar");
 
 const topSection = document.querySelector(".content");
@@ -181,7 +206,9 @@ topSection.parentNode.insertBefore(searchInput, topSection);
 
 searchInput.addEventListener("input", () => {
     const q = searchInput.value.toLowerCase();
-    document.querySelectorAll(".movie-card").forEach(card => {
+    const cards = document.querySelectorAll(".movie-card");
+
+    cards.forEach(card => {
         const title = card.querySelector("h2").innerText.toLowerCase();
         card.style.display = title.includes(q) ? "block" : "none";
     });
