@@ -8,7 +8,7 @@ const moviesData = [
     {
         title: "Param Sundari",
         category: "Bollywood",
-        poster: "poster: "posters/param_sundari.jpg",",  // Replace with a real poster anytime
+        poster: "posters/param_sundari.jpg",  // Replace with a real poster anytime
 
         quality1080p: {
             size: "1.82GB",
