@@ -8,7 +8,7 @@ const moviesData = [
     {
         title: "Param Sundari",
         category: "Bollywood",
-        poster: "https://media.themoviedb.org/t/p/w94_and_h141_bestv2/uLPUsH3Fwe6mAU7n6WpMSDLdYCm.jpg",  // Replace with a real poster anytime
+        poster: "poster: "posters/param_sundari.jpg",",  // Replace with a real poster anytime
 
         quality1080p: {
             size: "1.82GB",
