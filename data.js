@@ -1,5 +1,4 @@
-// Movie database
-
+// Movie & Series Database
 const moviesData = [
 
     // --------------------
@@ -43,23 +42,76 @@ const moviesData = [
     // --------------------
     // INTERSTELLAR 2014
     // --------------------
-    
-{
-    title: "Interstellar",
-    category: "Hollywood",
-    poster: "posters/interstellar.jpg",
+    {
+        title: "Interstellar",
+        category: "Hollywood",
+        poster: "posters/interstellar.jpg",
 
-    quality720p: {
-        size: "1.55GB",
-        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.BluRay.IMAX.720p.x265.HEVC.10bit.Hindi.English.AAC.5.1.ESub.-%20moviesdrives.com.mkv?token=176357717712"
+        quality1080p: {
+            size: "2.81GB",
+            link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.IMAX.1080p.10bit.BluRay.HEVC.x265.Org.NF.Hindi.DDP.5.1.640kbps.+.English.AAC.5.1.ESubs.-%20moviesdrives.com.mkv?token=176357724814"
+        },
+
+        quality720p: {
+            size: "1.55GB",
+            link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.BluRay.IMAX.720p.x265.HEVC.10bit.Hindi.English.AAC.5.1.ESub.-%20moviesdrives.com.mkv?token=176357717712"
+        }
     },
 
-    quality1080p: {
-        size: "2.81GB",
-        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.IMAX.1080p.10bit.BluRay.HEVC.x265.Org.NF.Hindi.DDP.5.1.640kbps.+.English.AAC.5.1.ESubs.-%20moviesdrives.com.mkv?token=176357724814"
+    // --------------------
+    // STRANGER THINGS SERIES
+    // --------------------
+    {
+        title: "Stranger Things",
+        category: "Hollywood",
+        poster: "posters/stranger_things.jpg",
+        series: true,  // indicates this is a series
+        seasons: [
+            {
+                season: 1,
+                quality1080p: {
+                    size: "6.2GB",
+                    link: "https://example.com/strangerthings_s1_1080p.mkv"
+                },
+                quality720p: {
+                    size: "3.4GB",
+                    link: "https://example.com/strangerthings_s1_720p.mkv"
+                }
+            },
+            {
+                season: 2,
+                quality1080p: {
+                    size: "6.8GB",
+                    link: "https://example.com/strangerthings_s2_1080p.mkv"
+                },
+                quality720p: {
+                    size: "3.6GB",
+                    link: "https://example.com/strangerthings_s2_720p.mkv"
+                }
+            },
+            {
+                season: 3,
+                quality1080p: {
+                    size: "7.5GB",
+                    link: "https://example.com/strangerthings_s3_1080p.mkv"
+                },
+                quality720p: {
+                    size: "4.0GB",
+                    link: "https://example.com/strangerthings_s3_720p.mkv"
+                }
+            },
+            {
+                season: 4,
+                quality1080p: {
+                    size: "8.2GB",
+                    link: "https://example.com/strangerthings_s4_1080p.mkv"
+                },
+                quality720p: {
+                    size: "4.5GB",
+                    link: "https://example.com/strangerthings_s4_720p.mkv"
+                }
+            }
+        ]
     }
-}
-
-
 
 ];

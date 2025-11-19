@@ -117,6 +117,44 @@ nav {
     background: #ff5959;
 }
 
+/* SERIES SEASONS */
+.seasons-container {
+    margin-top: 12px;
+}
+
+.season-card {
+    background: #222;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 8px;
+    transition: 0.2s;
+}
+
+.season-card h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    color: #ff4646;
+}
+
+.season-card .download-buttons {
+    display: none;
+}
+
+.season-card.expanded .download-buttons {
+    display: flex;
+}
+
+/* SERIES COLLAPSE ANIMATION */
+.season-card h3::after {
+    content: ' ▼';
+    font-size: 10px;
+}
+
+.season-card.expanded h3::after {
+    content: ' ▲';
+}
+
 /* REQUEST SECTION */
 .request {
     margin: 40px auto;
@@ -153,31 +191,6 @@ nav {
     background: #ff5959;
 }
 
-/* POPUP ANIMATION */
-.request-overlay {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #222;
-    padding: 20px 30px;
-    border-radius: 12px;
-    z-index: 1000;
-    opacity: 0;
-    transition: 0.3s;
-}
-
-/* SEARCH BAR */
-.search-bar {
-    width: 90%;
-    margin: 15px auto;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    display: block;
-    background: #1a1a1a;
-    color: white;
-}
 .request form input {
     width: 100%;
     margin-bottom: 12px;
@@ -212,6 +225,7 @@ nav {
     cursor: not-allowed;
 }
 
+/* POPUP ANIMATION */
 .request-overlay {
     position: fixed;
     top: 20px;
@@ -223,4 +237,28 @@ nav {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     z-index: 9999;
+}
+
+/* SEARCH BAR */
+.search-bar {
+    width: 90%;
+    margin: 15px auto;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    display: block;
+    background: #1a1a1a;
+    color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    #movies-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+    }
+
+    .poster {
+        height: 180px;
+    }
 }

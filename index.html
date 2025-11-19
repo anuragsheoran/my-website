@@ -31,21 +31,19 @@
         <p>Tell us what you want and we'll add it for you.</p>
 
         <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
+            <!-- FormSubmit hidden settings -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
 
-    <!-- FormSubmit hidden settings -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="box">
+            <!-- USER NAME -->
+            <input type="text" name="User Name" placeholder="Your Name" required>
 
-    <!-- USER NAME -->
-    <input type="text" name="User Name" placeholder="Your Name" required>
+            <!-- MOVIE/SHOW REQUEST -->
+            <input type="text" name="Requested Title" placeholder="Movie or Show Name" required>
 
-    <!-- MOVIE/SHOW REQUEST -->
-    <input type="text" name="Requested Title" placeholder="Movie or Show Name" required>
-
-    <!-- SUBMIT BUTTON -->
-    <button id="submitBtn" type="submit">Send Request</button>
-</form>
-
+            <!-- SUBMIT BUTTON -->
+            <button id="submitBtn" type="submit">Send Request</button>
+        </form>
     </section>
 
     <!-- JS Files -->
