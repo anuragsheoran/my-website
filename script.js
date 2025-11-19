@@ -71,23 +71,87 @@ function attachAnimations() {
 // ----------------------------
 // Request Form Popup
 // ----------------------------
-const form = document.querySelector(".request form");
+const requestForm = document.getElementById("requestForm");
+const submitBtn = document.getElementById("submitBtn");
 
-form.addEventListener("submit", function (e) {
+// ----- DAILY LIMIT -----
+function getTodayKey() {
+    const today = new Date().toISOString().split("T")[0];
+    return `requests_${today}`;
+}
+
+function getRequestCount() {
+    return parseInt(localStorage.getItem(getTodayKey())) || 0;
+}
+
+function incrementRequestCount() {
+    const count = getRequestCount() + 1;
+    localStorage.setItem(getTodayKey(), count);
+}
+
+// ----- COOLDOWN -----
+let cooldown = false;
+
+function startCooldown() {
+    cooldown = true;
+    submitBtn.disabled = true;
+
+    let timer = 12;
+    submitBtn.innerText = `Wait ${timer}s`;
+
+    const interval = setInterval(() => {
+        timer--;
+        submitBtn.innerText = `Wait ${timer}s`;
+
+        if (timer === 0) {
+            clearInterval(interval);
+            cooldown = false;
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Send Request";
+        }
+    }, 1000);
+}
+
+// ----- FORM SUBMISSION -----
+requestForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
+    // Check 12 per day limit
+    if (getRequestCount() >= 12) {
+        showPopup("Daily limit reached! Try again tomorrow.");
+        return;
+    }
+
+    // Check cooldown
+    if (cooldown) {
+        showPopup("Wait before sending another request.");
+        return;
+    }
+
+    // Success animation
+    showPopup("Your request has been sent!");
+
+    // Increase count & start cooldown
+    incrementRequestCount();
+    startCooldown();
+
+    // Allow formsubmit.co to process after animation
+    setTimeout(() => requestForm.submit(), 600);
+});
+
+// ----- Popup animation -----
+function showPopup(message) {
     const overlay = document.createElement("div");
     overlay.classList.add("request-overlay");
-    overlay.innerHTML = "<p>Your request has been sent!</p>";
+    overlay.innerHTML = `<p>${message}</p>`;
     document.body.appendChild(overlay);
 
-    overlay.style.opacity = 0;
     setTimeout(() => overlay.style.opacity = 1, 10);
-    setTimeout(() => overlay.style.opacity = 0, 2500);
-    setTimeout(() => overlay.remove(), 3000);
-
-    setTimeout(() => form.submit(), 600);
-});
+    setTimeout(() => {
+        overlay.style.opacity = 0;
+        setTimeout(() => overlay.remove(), 300);
+    }, 2500);
+}
 
 // ----------------------------
 // Search Bar

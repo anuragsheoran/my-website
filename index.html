@@ -30,11 +30,22 @@
         <h2>Request Any Movie or Show</h2>
         <p>Tell us what you want and we'll add it for you.</p>
 
-        <form action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
-            <input type="text" name="Requested Movie/Show" placeholder="Movie or Show name..." required>
-            <input type="hidden" name="_captcha" value="false">
-            <button type="submit" id="submitBtn">Send Request</button>
-        </form>
+        <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
+
+    <!-- FormSubmit hidden settings -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+
+    <!-- USER NAME -->
+    <input type="text" name="User Name" placeholder="Your Name" required>
+
+    <!-- MOVIE/SHOW REQUEST -->
+    <input type="text" name="Requested Title" placeholder="Movie or Show Name" required>
+
+    <!-- SUBMIT BUTTON -->
+    <button id="submitBtn" type="submit">Send Request</button>
+</form>
+
     </section>
 
     <!-- JS Files -->
