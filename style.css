@@ -25,11 +25,26 @@ header {
     font-weight: bold;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+/* Category buttons */
+nav ul li.category {
+    padding: 10px 20px;
+    background: #1e1e2f;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;          /* Show pointer on hover */
+    transition: background 0.3s ease, transform 0.1s ease;
+    user-select: none;        /* Prevent text selection */
+    text-align: center;
 }
+
+nav ul li.category:hover {
+    background: #ff4c4c;
+}
+
+nav ul li.category:active {
+    transform: scale(0.95);  /* Click animation */
+}
+
 
 main {
     padding: 20px;
