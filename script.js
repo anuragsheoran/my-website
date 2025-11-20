@@ -1,47 +1,92 @@
 // ----------------------------
+// Helpers: fade animation
+// ----------------------------
+function fadeIn(element) {
+    element.style.opacity = 0;
+    element.style.transform = "translateY(10px)";
+    setTimeout(() => {
+        element.style.transition = "0.35s ease";
+        element.style.opacity = 1;
+        element.style.transform = "translateY(0)";
+    }, 20);
+}
+
+// ----------------------------
+// Memory Keys
+// ----------------------------
+const ACTIVE_CATEGORY_KEY = "cine_active_category";
+const ACTIVE_SEASON_KEY = title => `cine_active_season_${title}`;
+
+// ----------------------------
 // Load movies dynamically
 // ----------------------------
 function loadMovies(category = "Bollywood") {
+    localStorage.setItem(ACTIVE_CATEGORY_KEY, category);
+
     const container = document.getElementById("movies-container");
     container.innerHTML = "";
 
     moviesData
         .filter(movie => movie.category === category)
         .forEach(movie => {
+            let cardHTML = "";
+
             if (movie.series) {
-                // Series with multiple seasons
-                let seasonsHTML = '';
+                let seasonsHTML = "";
                 movie.seasons.forEach((season, idx) => {
-                    let seasonText = season.volume ? `Season ${season.season} Vol. ${season.volume}` : `Season ${season.season}`;
-                    seasonsHTML += `<button class="season-btn" data-movie="${movie.title}" data-season="${idx}">${seasonText}</button>`;
+                    let seasonLabel = season.volume
+                        ? `Season ${season.season} Vol. ${season.volume}`
+                        : `Season ${season.season}`;
+
+                    seasonsHTML += `
+                        <button class="season-btn"
+                            data-movie="${movie.title}"
+                            data-season="${idx}">
+                            ${seasonLabel}
+                        </button>`;
                 });
 
-                container.innerHTML += `
-                    <div class="movie-card">
-                        <img src="${movie.poster}" class="poster">
-                        <h2>${movie.title}</h2>
-                        <p class="movie-cat">${movie.category}</p>
-                        <div class="seasons-container">
-                            ${seasonsHTML}
-                        </div>
-                        <div class="download-buttons"></div>
+                cardHTML = `
+                <div class="movie-card">
+                    <img src="${movie.poster}" class="poster">
+                    <h2>${movie.title}</h2>
+                    <p class="movie-cat">${movie.category}</p>
+
+                    <div class="seasons-container">
+                        ${seasonsHTML}
                     </div>
-                `;
-            } else {
-                // Normal movie
-                container.innerHTML += `
-                    <div class="movie-card">
-                        <img src="${movie.poster}" class="poster">
-                        <h2>${movie.title}</h2>
-                        <p class="movie-cat">${movie.category}</p>
-                        <div class="download-buttons">
-                            <a href="${movie.quality1080p.link}" class="download download-btn" data-res="1080p • ${movie.quality1080p.size}">1080p • ${movie.quality1080p.size}</a>
-                            <a href="${movie.quality720p.link}" class="download download-btn" data-res="720p • ${movie.quality720p.size}">720p • ${movie.quality720p.size}</a>
-                        </div>
-                    </div>
-                `;
+
+                    <div class="download-buttons"></div>
+                </div>`;
             }
+
+            else {
+                // Normal Movie Card
+                cardHTML = `
+                <div class="movie-card">
+                    <img src="${movie.poster}" class="poster">
+                    <h2>${movie.title}</h2>
+                    <p class="movie-cat">${movie.category}</p>
+
+                    <div class="download-buttons">
+                        <a href="${movie.quality1080p.link}" class="download download-btn"
+                           data-res="1080p • ${movie.quality1080p.size}">
+                           1080p • ${movie.quality1080p.size}
+                        </a>
+
+                        <a href="${movie.quality720p.link}" class="download download-btn"
+                           data-res="720p • ${movie.quality720p.size}">
+                           720p • ${movie.quality720p.size}
+                        </a>
+                    </div>
+                </div>`;
+            }
+
+            container.innerHTML += cardHTML;
         });
+
+    // Fade-in animation for each new card
+    document.querySelectorAll(".movie-card").forEach(card => fadeIn(card));
 
     attachAnimations();
     attachSeasonButtonEvents();
@@ -62,13 +107,18 @@ document.getElementById("hollywood-btn").onclick = () => {
     loadMovies("Hollywood");
 };
 
+// Restore previously selected category
+const savedCategory = localStorage.getItem(ACTIVE_CATEGORY_KEY);
+if (savedCategory) {
+    document.querySelectorAll(".cat-btn").forEach(btn => btn.classList.remove("active"));
+    document.getElementById(savedCategory.toLowerCase() + "-btn").classList.add("active");
+}
+
 // ----------------------------
-// Download Animations
+// Download Button Animation
 // ----------------------------
 function attachAnimations() {
-    const links = document.querySelectorAll('.download');
-
-    links.forEach(link => {
+    document.querySelectorAll('.download').forEach(link => {
         link.addEventListener('mouseenter', () => link.style.transform = 'scale(1.05)');
         link.addEventListener('mouseleave', () => link.style.transform = 'scale(1)');
 
@@ -85,31 +135,64 @@ function attachAnimations() {
 // ----------------------------
 function attachSeasonButtonEvents() {
     const seasonBtns = document.querySelectorAll('.season-btn');
+
     seasonBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Highlight the active season
-            seasonBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+        btn.addEventListener('click', function () {
+
+            // highlight active season
+            seasonBtns.forEach(b => b.classList.remove("active"));
+            this.classList.add("active");
 
             const movieTitle = this.dataset.movie;
-            const seasonIdx = this.dataset.season;
+            const seasonIdx = parseInt(this.dataset.season);
+
+            // save active season
+            localStorage.setItem(ACTIVE_SEASON_KEY(movieTitle), seasonIdx);
+
             const movie = moviesData.find(m => m.title === movieTitle);
             const season = movie.seasons[seasonIdx];
 
             const downloadDiv = this.parentElement.nextElementSibling;
-            if (!downloadDiv) return;
 
             downloadDiv.innerHTML = `
-                <a href="${season.quality1080p.link}" class="download download-btn" data-res="1080p • ${season.quality1080p.size}">1080p • ${season.quality1080p.size}</a>
-                <a href="${season.quality720p.link}" class="download download-btn" data-res="720p • ${season.quality720p.size}">720p • ${season.quality720p.size}</a>
+                <a href="${season.quality1080p.link}" class="download download-btn"
+                   data-res="1080p • ${season.quality1080p.size}">
+                   1080p • ${season.quality1080p.size}
+                </a>
+
+                <a href="${season.quality720p.link}" class="download download-btn"
+                   data-res="720p • ${season.quality720p.size}">
+                   720p • ${season.quality720p.size}
+                </a>
             `;
+
             attachAnimations();
+
+            // Scroll season area into view smoothly
+            this.closest(".movie-card").scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            // Click pulse animation
+            this.style.animation = "pulse 0.35s ease";
+            setTimeout(() => (this.style.animation = ""), 350);
         });
+    });
+
+    // Restore previously selected seasons
+    seasonBtns.forEach(btn => {
+        const movieTitle = btn.dataset.movie;
+        const savedSeason = localStorage.getItem(ACTIVE_SEASON_KEY(movieTitle));
+
+        if (savedSeason && parseInt(savedSeason) === parseInt(btn.dataset.season)) {
+            btn.click(); // auto-load season links
+        }
     });
 }
 
 // ----------------------------
-// Request Form Popup
+// Request Form Logic (same)
 // ----------------------------
 const requestForm = document.getElementById("requestForm");
 const submitBtn = document.getElementById("submitBtn");
@@ -124,8 +207,7 @@ function getRequestCount() {
 }
 
 function incrementRequestCount() {
-    const count = getRequestCount() + 1;
-    localStorage.setItem(getTodayKey(), count);
+    localStorage.setItem(getTodayKey(), getRequestCount() + 1);
 }
 
 let cooldown = false;
@@ -150,7 +232,7 @@ function startCooldown() {
     }, 1000);
 }
 
-requestForm.addEventListener("submit", function(e) {
+requestForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     if (getRequestCount() >= 12) {
@@ -196,9 +278,7 @@ topSection.parentNode.insertBefore(searchInput, topSection);
 
 searchInput.addEventListener("input", () => {
     const q = searchInput.value.toLowerCase();
-    const cards = document.querySelectorAll(".movie-card");
-
-    cards.forEach(card => {
+    document.querySelectorAll(".movie-card").forEach(card => {
         const title = card.querySelector("h2").innerText.toLowerCase();
         card.style.display = title.includes(q) ? "block" : "none";
     });
@@ -207,4 +287,4 @@ searchInput.addEventListener("input", () => {
 // ----------------------------
 // Default Load
 // ----------------------------
-loadMovies("Bollywood");
+loadMovies(savedCategory || "Bollywood");

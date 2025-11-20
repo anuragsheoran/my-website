@@ -17,8 +17,14 @@
         <nav>
             <button id="bollywood-btn" class="cat-btn active">Bollywood</button>
             <button id="hollywood-btn" class="cat-btn">Hollywood</button>
+
+            <!-- Dark Mode Toggle (will activate later in JS) -->
+            <button id="theme-toggle" class="theme-btn">☾</button>
         </nav>
     </header>
+
+    <!-- Search Bar (JS places it here visually, but structure kept clean) -->
+    <div id="search-area"></div>
 
     <!-- Content Section -->
     <div class="content">
@@ -31,12 +37,13 @@
         <p>Tell us what you want and we'll add it for you.</p>
 
         <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
+
             <!-- FormSubmit hidden settings -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="box">
 
             <!-- USER NAME -->
-            <input type="text" name="User Name" placeholder="Your Name" required>
+            <input type="text" name="User Name" placeholder="Your Name">
 
             <!-- MOVIE/SHOW REQUEST -->
             <input type="text" name="Requested Title" placeholder="Movie or Show Name" required>
@@ -45,6 +52,14 @@
             <button id="submitBtn" type="submit">Send Request</button>
         </form>
     </section>
+
+    <!-- Movie Details Popup (for future feature) -->
+    <div id="details-popup" class="details-popup hidden">
+        <div class="details-content">
+            <span id="details-close">&times;</span>
+            <div id="details-body"></div>
+        </div>
+    </div>
 
     <!-- JS Files -->
     <script src="data.js"></script>

@@ -69,7 +69,8 @@ nav {
     background: #1a1a1a;
     padding: 12px;
     border-radius: 12px;
-    transition: 0.3s;
+    transition: 0.3s ease;
+    opacity: 0;  /* fadeIn() will animate this to 1 */
 }
 
 .movie-card:hover {
@@ -117,42 +118,40 @@ nav {
     background: #ff5959;
 }
 
-/* SERIES SEASONS */
+/* SEASONS CONTAINER */
 .seasons-container {
     margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.season-card {
+/* SEASON BUTTON */
+.season-btn {
+    padding: 8px 12px;
     background: #222;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 8px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
     transition: 0.2s;
 }
 
-.season-card h3 {
-    font-size: 14px;
-    margin-bottom: 6px;
-    cursor: pointer;
-    color: #ff4646;
+.season-btn:hover {
+    background: #333;
 }
 
-.season-card .download-buttons {
-    display: none;
+.season-btn.active {
+    background: #ff4646;
+    color: white;
 }
 
-.season-card.expanded .download-buttons {
-    display: flex;
-}
-
-/* SERIES COLLAPSE ANIMATION */
-.season-card h3::after {
-    content: ' ▼';
-    font-size: 10px;
-}
-
-.season-card.expanded h3::after {
-    content: ' ▲';
+/* Pulse click animation */
+@keyframes pulse {
+    0% { transform: scale(1); background:#ff4646; }
+    50% { transform: scale(1.07); background:#ff5c5c; }
+    100% { transform: scale(1); background:#ff4646; }
 }
 
 /* REQUEST SECTION */
@@ -166,7 +165,8 @@ nav {
     text-align: center;
 }
 
-.request input, .request button {
+.request input,
+.request button {
     width: 100%;
     padding: 12px;
     margin-top: 12px;
@@ -191,6 +191,7 @@ nav {
     background: #ff5959;
 }
 
+/* FORM INPUTS */
 .request form input {
     width: 100%;
     margin-bottom: 12px;
