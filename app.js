@@ -214,20 +214,4 @@ try{ document.documentElement.setAttribute('data-theme', 'dark'); }catch(e){/* n
 // Register a simple service worker for caching assets & data (sw.js)
 if ('serviceWorker' in navigator){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').then(reg=>{ console.log('SW registered', reg.scope); }).catch(err=>{ console.warn('SW registration failed', err); }); }); }
 
-// Random Spotlight feature: pick a random movie, open details and highlight card
-const randomBtn = document.getElementById('randomBtn');
-if (randomBtn){ randomBtn.addEventListener('click', ()=>{
-  try{
-    const pool = Array.isArray(moviesData) ? moviesData : [];
-    if (!pool.length) return;
-    const idx = Math.floor(Math.random() * pool.length);
-    const item = pool[idx];
-    // open modal details
-    showDetails(item.title);
-    // try to find card and scroll into view and highlight
-    setTimeout(()=>{
-      const card = document.querySelector(`.movie-card[data-title="${encodeURIComponent(item.title)}"]`);
-      if (card){ card.scrollIntoView({behavior:'smooth', block:'center'}); card.classList.add('highlight'); setTimeout(()=>card.classList.remove('highlight'), 3500); }
-    }, 220);
-  }catch(e){ console.warn('random spotlight failed', e); }
-}); }
+// Random Spotlight removed per request (dice button removed)

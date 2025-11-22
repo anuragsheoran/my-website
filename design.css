@@ -10,45 +10,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap');
 
 :root{
-  /* Chromatic layered palette (dark-first). Easily change by swapping vars. */
-  --bg-900: #09060b;    /* deep */
-  --bg-800: #0f0b14;    /* base */
-  --bg-700: #151220;    /* elevated */
+  /* Custom project palette (enforced dark theme) */
+  --bg-900: #0D0D0D; /* Primary Background */
+  --bg-800: #0D0D0D;
+  --bg-700: #121212;
 
-  --surface-1: rgba(255,255,255,0.02);
-  --surface-2: rgba(255,255,255,0.03);
+  /* Card / container background */
+  --surface-1: rgba(26,26,26,0.96); /* #1A1A1A */
+  --surface-2: rgba(26,26,26,0.88);
 
-  --accent-1: linear-gradient(135deg, #7b61ff 0%, #ff6ac1 40%, #ff8a65 100%);
-  --accent-2: #7b61ff; /* purple */
-  --muted: #9aa0a6;
-  --glass: rgba(255,255,255,0.06);
+  /* Accent and highlights */
+  --accent-color: #E50914; /* deep cinematic red */
+  --highlight: #FF3B5C; /* highlight/buttons */
+  --accent-1: linear-gradient(90deg, #E50914 0%, #FF3B5C 100%);
+  --accent-2: #E50914;
 
-  /* glassmorphism variants */
-  --glass-surface: rgba(255,255,255,0.06);
-  --glass-border: rgba(255,255,255,0.08);
-  --glass-elev: rgba(2,6,23,0.5);
+  --muted: #9A9A9A; /* secondary text */
+  --text: #EDEDED;  /* primary text */
+  --muted-text: rgba(154,154,154,0.9);
 
-  /* shadows for soft-ui / neumorphism */
-  --shadow-soft: 0 8px 18px rgba(3,6,23,0.55), inset 0 1px 0 rgba(255,255,255,0.02);
-  --shadow-press: 0 6px 12px rgba(2,6,23,0.4), inset 0 2px 6px rgba(255,255,255,0.02);
+  --glass: rgba(255,255,255,0.03);
+  --glass-surface: rgba(255,255,255,0.02);
+  --glass-border: rgba(255,255,255,0.04);
 
-  --radius-lg: 16px;
-  --radius-md: 12px;
+  --success: #00E676;
+
+  --shadow-soft: 0 8px 18px rgba(0,0,0,0.6);
+
+  --radius-lg: 12px;
+  --radius-md: 10px;
   --radius-sm: 8px;
 
-  --gap: 18px;
-  --max-width: 1200px;
-
-  --text: #e8eef8;
-  --muted-text: rgba(232,238,248,0.6);
+  --gap: 16px;
+  --max-width: 1100px;
 }
 
 /* Light theme removed — site enforces dark theme only */
 
 /* ------------- Base layout & utilities ------------- */
-html,body{ height:100%; background: linear-gradient(180deg,var(--bg-900),var(--bg-800)); color:var(--text); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
-.container--wide{ width:calc(100% - 40px); max-width:var(--max-width); margin:0 auto; padding:20px; }
-.header{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:20px 0; }
+  .base-layout-note{ /* helper: correct html/body selector below */ }
+  html, body { height:100%; background: linear-gradient(180deg,var(--bg-900),var(--bg-800)); color:var(--text); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+.container--wide{ width:calc(100% - 24px); max-width:var(--max-width); margin:0 auto; padding:12px; }
+/* Center page content so left and right are even and tighter gutters */
+header{ width:calc(100% - 24px); max-width:var(--max-width); margin:0 auto; padding:14px 0; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.header{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0; }
 .logo{ font-family:'Space Grotesk', 'Inter', sans-serif; font-weight:700; font-size:28px; letter-spacing:0.6px; color:transparent; background-clip:text; -webkit-background-clip:text; background-image:var(--accent-1); }
 
 /* soft, biomorphic container for header controls */
@@ -56,8 +61,8 @@ html,body{ height:100%; background: linear-gradient(180deg,var(--bg-900),var(--b
 .theme-toggle{ padding:8px 10px; border-radius:12px; border: none; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow:var(--shadow-soft); cursor:pointer; color:var(--text); }
 
 /* Hero / top area — asymmetric biomorphic shape */
-.hero{ position:relative; margin: 18px 0; padding:28px; border-radius:20px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow:var(--shadow-soft); overflow:hidden; }
-.hero .hero-inner{ display:flex; gap:24px; align-items:center; justify-content:space-between; }
+.hero{ position:relative; margin:12px 0; padding:14px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow:var(--shadow-soft); overflow:hidden; }
+.hero .hero-inner{ display:flex; gap:12px; align-items:center; justify-content:center; }
 .hero h2{ font-family:'Space Grotesk'; font-weight:700; font-size:28px; margin-bottom:6px; }
 .hero p{ color:var(--muted-text); margin:0; }
 
@@ -71,36 +76,31 @@ html,body{ height:100%; background: linear-gradient(180deg,var(--bg-900),var(--b
 .search-bar{ flex:1; padding:12px 14px; border-radius:10px; border: none; background:rgba(255,255,255,0.02); color:var(--text); font-size:14px; }
 .controls .filters select{ padding:8px 10px; border-radius:10px; border:none; background:rgba(255,255,255,0.02); color:var(--text); }
 
-/* ------------- Movies grid — broken / asymmetrical grid ------------- */
-/* Bento grid: mobile-first 2-column stack, larger screens create modular bento blocks */
+/* Sleek centered search in hero */
+.hero .controls--card{ display:flex; justify-content:center; align-items:center; width:100%; max-width:980px; margin:0 auto; padding:0 8px; box-sizing:border-box; }
+.hero .search-bar{ max-width:720px; width:100%; margin:0 auto; font-size:16px; padding:12px 14px; border-radius:12px; box-shadow: 0 8px 24px rgba(2,6,23,0.5); }
+.hero .controls--card .filters{ margin-left:12px; display:flex; gap:8px; align-items:center; }
+
+/* Remove extra visual clutter around hero — keep it minimal */
+.hero{ padding:14px; }
+
+/* ------------- Movies grid — uniform responsive grid ------------- */
 #movies-container{
   display:grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap:20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap:18px;
   align-items:start;
-  grid-auto-rows: 10px; /* base for auto row height so row-span works */
+  width: calc(100% - 24px);
+  max-width: var(--max-width);
+  margin: 0 auto 36px auto;
 }
 
-/* Desktop bento layout: creative, modular blocks */
-@media(min-width:900px){
-  #movies-container{
-    grid-template-columns: 1.6fr 1fr 1fr 0.8fr;
-    grid-auto-rows: 10px;
-    gap:24px;
-  }
+@media (max-width: 700px){
+  #movies-container{ grid-template-columns: repeat(2, 1fr); gap:14px; }
+}
 
-  /* Make the first card large and span rows+cols for a featured look */
-  #movies-container .movie-card:nth-child(1){
-    grid-column: 1 / span 2;
-    grid-row: span 30;
-  }
-
-  /* vary sizes for other cards to create the bento mosaic */
-  #movies-container .movie-card:nth-child(2){ grid-column: 3 / span 1; grid-row: span 16; }
-  #movies-container .movie-card:nth-child(3){ grid-column: 4 / span 1; grid-row: span 16; }
-  #movies-container .movie-card:nth-child(4){ grid-column: 2 / span 1; grid-row: span 10; }
-  #movies-container .movie-card:nth-child(5){ grid-column: 3 / span 2; grid-row: span 10; }
-  /* subsequent items keep normal flow but the grid creates variety */
+@media (max-width: 420px){
+  #movies-container{ grid-template-columns: 1fr; gap:12px; }
 }
 
 /* ---------- Featured banner styles (large, noticeable) ---------- */
@@ -111,10 +111,10 @@ html,body{ height:100%; background: linear-gradient(180deg,var(--bg-900),var(--b
   overflow:hidden;
   display:flex;
   align-items:center;
-  min-height: 180px;
-  background: linear-gradient(135deg, rgba(123,97,255,0.14), rgba(255,106,161,0.06));
-  border: 1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 18px 48px rgba(2,6,23,0.55);
+  min-height: 160px;
+  background: linear-gradient(135deg, rgba(229,9,20,0.06), rgba(255,59,92,0.03));
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 .promo-banner .promo-inner{ padding:22px 28px; display:flex; flex-direction:column; gap:8px; }
 .promo-kicker{ font-weight:700; color:var(--accent-2); letter-spacing:0.6px; font-size:13px; }
@@ -134,13 +134,13 @@ html,body{ height:100%; background: linear-gradient(180deg,var(--bg-900),var(--b
 .movie-card{
   border-radius:var(--radius-lg);
   padding:12px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+  background: var(--surface-1);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   box-shadow: var(--shadow-soft);
   transition: transform 280ms cubic-bezier(.2,.9,.2,1), box-shadow 280ms, border-color 280ms;
   position:relative; overflow:hidden;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(255,255,255,0.03);
 }
 .movie-card .poster, .movie-card .poster-wrap { border-radius:12px; width:100%; height:220px; object-fit:cover; transition: transform 360ms ease; display:block; }
 .movie-card:hover{ transform: translateY(-10px); box-shadow: 0 26px 60px rgba(2,6,23,0.6); }
@@ -200,9 +200,11 @@ button:active, a:active{ transform: translateY(1px) scale(0.998); }
 
 /* small screens adjustments */
 @media(max-width:700px){
-  .hero .hero-inner{ flex-direction:column; gap:12px; }
+  .hero .hero-inner{ flex-direction:column; gap:12px; width:100%; }
+  .hero .controls--card{ padding:0 12px; }
   #movies-container{ grid-template-columns: repeat(2,1fr); }
   .poster, .poster-wrap { height:180px; }
+  .hero .search-bar{ max-width:100%; }
 }
 
 /* Top request panel styles (slide-down, compact form) */
@@ -272,9 +274,9 @@ h1, h2, h3 { margin:0; line-height:1.05; }
 h2{ font-size:28px; }
 h3{ font-size:18px; }
 
-/* Increase whitespace for a minimalist look */
-.container--wide{ padding:28px 20px; }
-.hero{ padding:34px; }
+/* Increase whitespace for a minimalist look (reduced for tighter gutters) */
+.container--wide{ padding:12px; }
+.hero{ padding:14px; }
 
 /* Card micro-interactions */
 .movie-card{ transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 320ms, border-color 320ms; will-change: transform; }
