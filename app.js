@@ -208,12 +208,8 @@ function setupParallax(){
 // init parallax after DOM ready
 window.addEventListener('load', ()=>{ try{ setupParallax(); }catch(e){ console.warn('parallax setup failed', e); } });
 
-// Theme toggle: persist and apply
-const themeToggle = document.getElementById('themeToggle');
-function applyTheme(theme){ try{ document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('cine_theme', theme); if (themeToggle) themeToggle.innerText = theme === 'light' ? '🌞' : '🌙'; }catch(e){console.warn(e);} }
-function loadTheme(){ const saved = localStorage.getItem('cine_theme') || 'dark'; applyTheme(saved); }
-if (themeToggle){ themeToggle.addEventListener('click', ()=>{ const cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light'; applyTheme(cur); }); }
-loadTheme();
+// Enforce dark theme (theme toggle removed)
+try{ document.documentElement.setAttribute('data-theme', 'dark'); }catch(e){/* noop */}
 
 // Register a simple service worker for caching assets & data (sw.js)
 if ('serviceWorker' in navigator){ window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').then(reg=>{ console.log('SW registered', reg.scope); }).catch(err=>{ console.warn('SW registration failed', err); }); }); }
