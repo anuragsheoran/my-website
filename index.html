@@ -4,8 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinephile</title>
+    <title>Cinephile — Movies & Series</title>
+    <meta name="description" content="Cinephile — Browse and download movies and series. Search, filter, and save favorites.">
+    <meta name="theme-color" content="#0d0d0d">
+    <meta property="og:title" content="Cinephile — Movies & Series">
+    <meta property="og:description" content="Browse and download movies and series. Search, filter, and save favorites.">
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/design.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Cinephile",
+            "url": "./",
+            "description": "Browse and download movies and series. Search, filter, and save favorites."
+        }
+        </script>
 </head>
 
 <body>
@@ -14,56 +29,97 @@
     <header>
         <h1 class="logo">Cinephile</h1>
 
-        <nav>
+        <div class="header-actions">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+                <button id="randomBtn" class="theme-toggle" aria-label="Random spotlight" title="Random pick">🎲</button>
+                <button id="openRequestBtn" class="theme-toggle" aria-label="Send request" title="Send request">✉️</button>
+        </div>
+
+        <nav aria-label="Categories">
             <button id="bollywood-btn" class="cat-btn active">Bollywood</button>
             <button id="hollywood-btn" class="cat-btn">Hollywood</button>
-
-            <!-- Dark Mode Toggle (will activate later in JS) -->
-            <button id="theme-toggle" class="theme-btn">☾</button>
         </nav>
     </header>
 
-    <!-- Search Bar (JS places it here visually, but structure kept clean) -->
-    <div id="search-area"></div>
+    <!-- Controls / Hero -->
+    <div class="hero container--wide">
+        <div class="hero-inner">
+            <div>
+                <h2>Discover movies & series</h2>
+                <p>Modern, fast, and delightful browsing — search, filter, and save favorites.</p>
+            </div>
+            <div class="controls--card" aria-hidden="false">
+                <input id="searchInput" class="search-bar" type="search" placeholder="Search movies and series..." aria-label="Search movies">
 
-    <!-- Content Section -->
-    <div class="content">
-        <section id="movies-container"></section>
+                <div class="filters">
+                    <label for="typeFilter" class="visually-hidden">Type</label>
+                    <select id="typeFilter" aria-label="Filter by type">
+                        <option value="all">All</option>
+                        <option value="movies">Movies</option>
+                        <option value="series">Series</option>
+                    </select>
+
+                    <label for="sortSelect" class="visually-hidden">Sort</label>
+                    <select id="sortSelect" aria-label="Sort results">
+                        <option value="title">Title</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="shape shape-1" aria-hidden="true"></div>
+        <div class="shape shape-2" aria-hidden="true"></div>
     </div>
 
-    <!-- Request Section -->
-    <section class="request">
-        <h2>Request Any Movie or Show</h2>
-        <p>Tell us what you want and we'll add it for you.</p>
-
-        <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
-
-            <!-- FormSubmit hidden settings -->
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="box">
-
-            <!-- USER NAME -->
-            <input type="text" name="User Name" placeholder="Your Name">
-
-            <!-- MOVIE/SHOW REQUEST -->
-            <input type="text" name="Requested Title" placeholder="Movie or Show Name" required>
-
-            <!-- SUBMIT BUTTON -->
-            <button id="submitBtn" type="submit">Send Request</button>
-        </form>
-    </section>
-
-    <!-- Movie Details Popup (for future feature) -->
-    <div id="details-popup" class="details-popup hidden">
-        <div class="details-content">
-            <span id="details-close">&times;</span>
-            <div id="details-body"></div>
+    <!-- Top request panel (hidden by default) -->
+    <div id="requestPanel" class="request-panel" aria-hidden="true">
+        <div class="request-panel-inner container--wide">
+            <button id="closeRequestBtn" class="request-close" aria-label="Close request panel">×</button>
+            <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="box">
+                <div class="request-fields">
+                    <label class="visually-hidden" for="req_name">Your name</label>
+                    <input id="req_name" name="User Name" type="text" placeholder="Your Name">
+                    <label class="visually-hidden" for="req_title">Requested title</label>
+                    <input id="req_title" name="Requested Title" type="text" placeholder="Movie or Show Name" required>
+                    <button id="submitBtn" type="submit" class="details-btn">Send Request</button>
+                </div>
+            </form>
         </div>
     </div>
 
+    <!-- Promo banner: static, colorful, and sleek (replaces dynamic featured movie) -->
+    <section class="promo-banner container--wide" aria-label="Hero promotion">
+        <div class="promo-inner">
+            <div class="promo-kicker">Cinephile</div>
+            <h2>Handpicked picks, no noise</h2>
+            <p>Explore curated collections, fast search, and favorites — sleek, colourful, and quick.</p>
+            <div class="promo-cta">
+                <a class="btn btn-primary" href="#movies-container">Explore Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <main class="content" role="main">
+        <section id="movies-container" aria-live="polite"></section>
+
+        <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button id="modalClose" class="modal-close" aria-label="Close">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- legacy request section removed; top request panel is used instead -->
+
     <!-- JS Files -->
     <script src="data.js"></script>
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

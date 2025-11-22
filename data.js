@@ -120,6 +120,51 @@ const moviesData = [
             }
         }
     ]
-}
+},
+
+    // --------------------
+    // THE FAMILY MAN SERIES
+    // --------------------
+    {
+        title: "The Family Man",
+        category: "Bollywood",
+        poster: "posters/the_family_man.jpg",
+        series: true,  // indicates this is a series
+        seasons: [
+            {
+                season: 1,
+                quality1080p: {
+                    size: "8.3GB",
+                    link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/330cdbceaa8acfd10a64a3051556ce79?token=1763806747115"
+                },
+                quality720p: {
+                    size: "3.23GB",
+                    link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/The.Family.Man.S01.Hindi.720p.WEB-DL.x264.ESub-[Moviesdrives.cv].zip?token=1763807560"
+                }
+            },
+            {
+                season: 2,
+                quality1080p: {
+                    size: "7.6GB",
+                    link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/747212c56d123ef73bbb6f7eda437bc7?token=1763807083117"
+                },
+                quality720p: {
+                    size: "3.3GB",
+                    link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Family.Man.S02.Hindi.720p.WEB-DL.DD5.1.x264-[Moviesdrives.cv].zip?token=1763807895"
+                }
+            },
+            {
+                season: 3,
+                quality1080p: {
+                    size: "6.35GB",
+                    link: "https://true.boblover.click/d5352851bafe0512c6a8aa88dd49e7df?token=1763805427"
+                },
+                quality720p: {
+                    size: "3.8GB",
+                    link: "https://true.boblover.click/122107f9a3137d25ca9ee8551fef24fc?token=1763803584"
+                }
+            }
+        ]
+    }
 
 ];
