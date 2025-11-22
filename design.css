@@ -146,11 +146,6 @@ header{ width:calc(100% - 24px); max-width:var(--max-width); margin:0 auto; padd
 .movie-card:hover{ transform: translateY(-10px); box-shadow: 0 26px 60px rgba(2,6,23,0.6); }
 .movie-card:hover .poster{ transform: scale(1.03); }
 
-/* Homepage card link and title styling */
-.movie-card .card-link{ display:block; color:inherit; text-decoration:none; width:100%; }
-.movie-card .card-link .poster-wrap{ width:100%; height:320px; border-radius:12px; background-size:cover; background-position:center; }
-.movie-card .card-link h2{ margin:10px 0 0; font-size:15px; font-weight:700; color:var(--text); text-align:center; }
-
 .card-head{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:10px; }
 .movie-card h2{ font-size:16px; font-weight:700; letter-spacing:0.2px; }
 .movie-cat{ color:var(--muted-text); font-size:13px; }
@@ -266,27 +261,6 @@ button:active, a:active{ transform: translateY(1px) scale(0.998); }
 /* Keep contrast and accessibility in check: high-contrast focus outlines */
 :focus{ outline: 3px solid rgba(123,97,255,0.22); outline-offset:2px; }
 /* No-op placeholder to ensure patch tool segments correctly */
-
-/* Quick safety: hide any remaining Details buttons if still present */
-.details-btn{ display:none !important; }
-
-/* Detail page styles */
-.detail-page{ color:var(--text); padding-top:18px; }
-.detail-hero{ display:flex; gap:20px; align-items:flex-start; margin-bottom:18px; }
-.detail-poster{ width:360px; height:540px; background-size:cover; background-position:center; border-radius:12px; box-shadow: var(--shadow-soft); }
-.detail-meta{ flex:1; max-width:640px; }
-.detail-meta h2{ font-size:28px; margin:0 0 8px 0; }
-.detail-category{ color:var(--muted-text); margin:0 0 10px 0; }
-.detail-synopsis{ color:var(--muted-text); margin:0 0 16px 0; line-height:1.5; }
-.detail-seasons .season-row{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px; border-radius:10px; background: rgba(255,255,255,0.02); margin-bottom:8px; }
-.season-links a{ margin-left:8px; }
-.detail-downloads .season-links{ display:flex; gap:10px; align-items:center; margin-top:8px; }
-
-@media(max-width:900px){
-  .detail-hero{ flex-direction:column; align-items:center; }
-  .detail-poster{ width:80%; height:auto; aspect-ratio:2/3; }
-  .detail-meta{ width:100%; }
-}
 
 /* ------------- Performance notes in comments ------------- */
 /* - Use `loading="lazy"` on images (already set) and avoid large background images.

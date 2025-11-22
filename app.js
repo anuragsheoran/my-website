@@ -39,19 +39,34 @@ function renderMovies(){
 
   const favs = getFavorites();
   pageItems.forEach(movie=>{
-    // Homepage cards show only poster + title and link to the detail page
-    const enc = encodeURIComponent(movie.title);
-    container.insertAdjacentHTML('beforeend', `
-      <article class="movie-card" data-title="${enc}">
-        <a class="card-link" href="detail.html?title=${enc}" aria-label="Open ${escapeHtml(movie.title)} details">
+    const isFav = favs.includes(movie.title);
+    if (movie.series) {
+      let seasonsHTML = '';
+      movie.seasons.forEach((s,idx)=>{ const seasonText = s.volume ? `Season ${s.season} Vol. ${s.volume}` : `Season ${s.season}`; seasonsHTML += `<button class="season-btn" data-movie="${encodeURIComponent(movie.title)}" data-season="${idx}">${escapeHtml(seasonText)}</button>`; });
+      container.insertAdjacentHTML('beforeend', `
+        <article class="movie-card" data-title="${encodeURIComponent(movie.title)}">
           <div class="poster-wrap" style="background-image: url('${movie.poster}');" role="img" aria-label="${escapeHtml(movie.title)} poster"></div>
-          <h2 tabindex="0">${escapeHtml(movie.title)}</h2>
-        </a>
-      </article>
-    `);
-    
-    // no download links or extra meta on homepage (keeps UI minimal)
-    
+          <div class="card-head"><h2 tabindex="0">${escapeHtml(movie.title)}</h2><button class="fav-btn" data-title="${encodeURIComponent(movie.title)}">${isFav ? '★' : '☆'}</button></div>
+          <p class="movie-cat">${escapeHtml(movie.category)}</p>
+          <div class="seasons-container">${seasonsHTML}</div>
+          <div class="download-buttons"></div>
+          <button class="details-btn" data-title="${encodeURIComponent(movie.title)}">Details</button>
+        </article>
+      `);
+    } else {
+      container.insertAdjacentHTML('beforeend', `
+        <article class="movie-card" data-title="${encodeURIComponent(movie.title)}">
+          <div class="poster-wrap" style="background-image: url('${movie.poster}');" role="img" aria-label="${escapeHtml(movie.title)} poster"></div>
+          <div class="card-head"><h2 tabindex="0">${escapeHtml(movie.title)}</h2><button class="fav-btn" data-title="${encodeURIComponent(movie.title)}">${isFav ? '★' : '☆'}</button></div>
+          <p class="movie-cat">${escapeHtml(movie.category)}</p>
+          <div class="download-buttons">
+            <a href="${movie.quality1080p.link}" class="download download-btn" data-res="1080p • ${movie.quality1080p.size}">1080p • ${movie.quality1080p.size}</a>
+            <a href="${movie.quality720p.link}" class="download download-btn" data-res="720p • ${movie.quality720p.size}">720p • ${movie.quality720p.size}</a>
+          </div>
+          <button class="details-btn" data-title="${encodeURIComponent(movie.title)}">Details</button>
+        </article>
+      `);
+    }
   });
 
   renderPagination(Math.max(1, Math.ceil(items.length / state.perPage)));
@@ -107,9 +122,17 @@ document.getElementById('hollywood-btn').onclick = ()=>{ document.querySelectorA
 function attachAnimations(){ document.querySelectorAll('.download').forEach(link=>{ link.style.transition='transform 140ms ease'; link.onmouseenter=()=>link.style.transform='translateY(-3px) scale(1.02)'; link.onmouseleave=()=>link.style.transform='translateY(0) scale(1)'; link.onclick=()=>{ const original=link.dataset.res; link.innerText='Preparing...'; setTimeout(()=>link.innerText=original,800); }; }); }
 
 // Delegation
-document.getElementById('movies-container').addEventListener('click',(e)=>{ const t=e.target; if (t.classList.contains('season-btn')){ const movieTitle = decodeURIComponent(t.dataset.movie); const seasonIdx = Number(t.dataset.season); const movie = moviesData.find(m=>m.title===movieTitle); if (!movie) return; const s=movie.seasons[seasonIdx]; const downloadDiv = t.closest('.movie-card').querySelector('.download-buttons'); if (!downloadDiv) return; downloadDiv.innerHTML = `<a href="${s.quality1080p.link}" class="download download-btn" data-res="1080p • ${s.quality1080p.size}">1080p • ${s.quality1080p.size}</a><a href="${s.quality720p.link}" class="download download-btn" data-res="720p • ${s.quality720p.size}">720p • ${s.quality720p.size}</a>`; attachAnimations(); return; } if (t.classList.contains('fav-btn')){ const title = decodeURIComponent(t.dataset.title); toggleFavorite(title); return; } });
+document.getElementById('movies-container').addEventListener('click',(e)=>{ const t=e.target; if (t.classList.contains('season-btn')){ const movieTitle = decodeURIComponent(t.dataset.movie); const seasonIdx = Number(t.dataset.season); const movie = moviesData.find(m=>m.title===movieTitle); if (!movie) return; const s=movie.seasons[seasonIdx]; const downloadDiv = t.closest('.movie-card').querySelector('.download-buttons'); if (!downloadDiv) return; downloadDiv.innerHTML = `<a href="${s.quality1080p.link}" class="download download-btn" data-res="1080p • ${s.quality1080p.size}">1080p • ${s.quality1080p.size}</a><a href="${s.quality720p.link}" class="download download-btn" data-res="720p • ${s.quality720p.size}">720p • ${s.quality720p.size}</a>`; attachAnimations(); return; } if (t.classList.contains('fav-btn')){ const title = decodeURIComponent(t.dataset.title); toggleFavorite(title); return; } if (t.classList.contains('details-btn')|| t.tagName==='H2'){ const enc = t.dataset.title || t.closest('.movie-card').dataset.title; const title = enc?decodeURIComponent(enc):null; if (title) showDetails(title); return; } });
 
 document.getElementById('pagination').addEventListener('click',(e)=>{ if (e.target.classList.contains('page-btn')){ state.page = Number(e.target.dataset.page); renderMovies(); }});
+
+// Modal
+const modal = document.getElementById('detailModal');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+function showDetails(title){ const movie = moviesData.find(m=>m.title===title); if (!movie) return; let html = `<h2>${escapeHtml(movie.title)}</h2><img src="${movie.poster}" class="modal-poster" alt="${escapeHtml(movie.title)} poster"><p>Category: ${escapeHtml(movie.category)}</p>`; if (movie.series){ html += '<div class="modal-seasons">'; movie.seasons.forEach(s=>{ html += `<div class="modal-season"><strong>Season ${s.season}${s.volume? ' Vol. '+s.volume:''}</strong><div class="modal-links"><a href="${s.quality1080p.link}">1080p • ${s.quality1080p.size}</a><a href="${s.quality720p.link}">720p • ${s.quality720p.size}</a></div></div>`; }); html += '</div>'; } else { html += `<div class="modal-links"><a href="${movie.quality1080p.link}">1080p • ${movie.quality1080p.size}</a><a href="${movie.quality720p.link}">720p • ${movie.quality720p.size}</a></div>`; } modalBody.innerHTML = html; modal.setAttribute('aria-hidden','false'); modal.style.display='block'; }
+modalClose.addEventListener('click',()=>{ modal.setAttribute('aria-hidden','true'); modal.style.display='none'; });
+modal.addEventListener('click',(e)=>{ if (e.target===modal){ modal.setAttribute('aria-hidden','true'); modal.style.display='none'; }});
 
 // Request form
 const requestForm = document.getElementById('requestForm');
