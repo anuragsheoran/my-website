@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinephile</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container flex justify-between items-center">
+      <a href="#" class="logo">Cinephile</a>
+      <div class="header-actions">
+        <button id="bollywood-btn" class="cat-btn is-active">Bollywood</button>
+        <button id="hollywood-btn" class="cat-btn">Hollywood</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Discover Movies & Series</h2>
+      <p>Download in 1080p or 720p, fast and easy.</p>
+    </div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+  </section>
+
+  <!-- Search & Filters -->
+  <section class="search-container container">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for movies or series...">
+    <select id="typeFilter" class="filters">
+      <option value="all">All</option>
+      <option value="movies">Movies</option>
+      <option value="series">Series</option>
+    </select>
+    <select id="sortSelect" class="filters">
+      <option value="title">Sort by Title</option>
+    </select>
+  </section>
+
+  <!-- Movies/Series Grid -->
+  <main id="movies-container" class="container"></main>
+
+  <!-- Modal for Details -->
+  <div id="detailModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Request Panel -->
+  <div id="requestPanel" class="request-panel" aria-hidden="true">
+    <div class="request-panel-inner">
+      <button id="closeRequestBtn" class="action-btn">Close</button>
+      <div class="request-fields">
+        <input type="text" placeholder="Request a movie or series">
+        <button class="action-btn">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
