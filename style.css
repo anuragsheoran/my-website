@@ -155,7 +155,7 @@ header h1 {
   flex-wrap: wrap;
 }
 
-/* ---- Detail Modal ---- */
+/* ---- Modal ---- */
 #detailModal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -201,109 +201,6 @@ header h1 {
   background-color: #ff5555;
 }
 
-/* ---- Request Modal ---- */
-#requestModal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease;
-  z-index: 1100;
-}
-
-#requestModal[aria-hidden="false"] {
-  opacity: 1;
-  visibility: visible;
-}
-
-#requestModalContent {
-  background: #1c1c1c;
-  padding: 1.5rem;
-  border-radius: 10px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-}
-
-#requestModalContent h2 {
-  margin-bottom: 0.5rem;
-}
-
-#requestForm input,
-#requestForm textarea,
-#requestForm button {
-  width: 100%;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  font-size: 0.9rem;
-}
-
-#requestForm input,
-#requestForm textarea {
-  background: #111;
-  color: #fff;
-  resize: none;
-}
-
-#requestForm button {
-  background: #ff3b3b;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-#requestForm button:hover {
-  background: #ff5555;
-}
-
-#requestClose {
-  margin-top: 0.5rem;
-  padding: 0.3rem 0.6rem;
-  background: #ff3b3b;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #fff;
-  border: none;
-}
-
-#requestClose:hover {
-  background-color: #ff5555;
-}
-
-#requestSuccess {
-  display: none;
-  color: #0f0;
-  margin-top: 0.5rem;
-  font-weight: bold;
-}
-
-/* ---- Floating Request Button ---- */
-#requestBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ff3b3b;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  color: #fff;
-  cursor: pointer;
-  z-index: 1200;
-  box-shadow: 0 0 10px #ff3b3b;
-}
-
-#requestBtn:hover {
-  background: #ff5555;
-}
-
 /* ---- Responsive Enhancements ---- */
 @media(min-width: 600px) {
   header {
@@ -329,5 +226,19 @@ header h1 {
 @media(min-width: 900px) {
   .cards-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* ---- Mobile Poster Size Fix ---- */
+@media(max-width: 599px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .poster-wrap img {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
   }
 }
