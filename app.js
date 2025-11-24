@@ -54,12 +54,20 @@
   };
 
   const filterAndSort = (data) => {
-    return data
-      .filter(item => item.category === activeCategory)
-      .filter(item => currentType === 'all' ? true : currentType === 'movies' ? !item.series : item.series)
-      .filter(item => item.title.toLowerCase().includes(currentSearch.toLowerCase()))
-      .sort((a,b) => sortBy === 'title' ? a.title.localeCompare(b.title) : 0);
-  };
+  return data
+    .filter(item => item.category === activeCategory)
+    .filter(item => currentType === 'all' ? true : currentType === 'movies' ? !item.series : item.series)
+    .filter(item => item.title.toLowerCase().includes(currentSearch.toLowerCase()))
+    .sort((a, b) => {
+      if (sortBy === 'title') return a.title.localeCompare(b.title);
+      if (sortBy === 'releaseDate') {
+        // Sort newest first
+        return new Date(b.releaseDate) - new Date(a.releaseDate);
+      }
+      return 0;
+    });
+};
+
 
   const addCardMagic = (card) => {
     card.addEventListener('mousemove', e => {
