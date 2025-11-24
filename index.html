@@ -22,6 +22,7 @@
       align-items: center;
       padding: 1rem;
       background: #1a1a1a;
+      position: relative;
     }
 
     header h1 {
@@ -135,7 +136,7 @@
     }
 
     /* Modal styles */
-    #detailModal {
+    #detailModal, #requestModal {
       position: fixed;
       top: 0; left: 0; right:0; bottom:0;
       background: rgba(0,0,0,0.85);
@@ -148,12 +149,13 @@
       z-index: 1000;
     }
 
-    #detailModal[aria-hidden="false"] {
+    #detailModal[aria-hidden="false"],
+    #requestModal[aria-hidden="false"] {
       opacity: 1;
       visibility: visible;
     }
 
-    #modalBody {
+    #modalBody, #requestBody {
       background: #1c1c1c;
       padding: 1rem;
       border-radius: 10px;
@@ -162,7 +164,7 @@
       text-align: center;
     }
 
-    #modalClose {
+    #modalClose, #requestClose, #requestSend {
       margin-top: 1rem;
       padding: 0.4rem 0.8rem;
       background: #ff3b3b;
@@ -170,6 +172,41 @@
       color: #fff;
       border-radius: 5px;
       cursor: pointer;
+    }
+
+    /* Floating mail button */
+    #requestBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ff3b3b;
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 0 10px #ff3b3b;
+    }
+
+    /* Success message */
+    #requestSuccess {
+      display: none;
+      margin-top: 0.5rem;
+      color: #0f0;
+      font-weight: bold;
+      animation: fadeInOut 2s ease forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
     }
 
   </style>
@@ -202,7 +239,43 @@
     </div>
   </div>
 
+  <!-- Request Modal -->
+  <div id="requestModal" aria-hidden="true">
+    <div id="requestBody">
+      <h2>Request a Movie/Show</h2>
+      <form id="requestForm" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" target="_blank">
+        <input type="text" name="name" placeholder="Your Name" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
+        <input type="email" name="email" placeholder="Your Email" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
+        <input type="text" name="movie" placeholder="Movie/Show Name" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
+        <button type="submit" id="requestSend">Send Request</button>
+      </form>
+      <button id="requestClose">Close</button>
+      <div id="requestSuccess">Request Sent!</div>
+    </div>
+  </div>
+
+  <!-- Floating Mail Button -->
+  <div id="requestBtn">&#9993;</div>
+
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script>
+    // Request Modal functionality
+    const requestBtn = document.getElementById('requestBtn');
+    const requestModal = document.getElementById('requestModal');
+    const requestClose = document.getElementById('requestClose');
+    const requestForm = document.getElementById('requestForm');
+    const requestSuccess = document.getElementById('requestSuccess');
+
+    requestBtn.addEventListener('click', () => requestModal.setAttribute('aria-hidden','false'));
+    requestClose.addEventListener('click', () => requestModal.setAttribute('aria-hidden','true'));
+    requestModal.addEventListener('click', e => { if(e.target === requestModal) requestModal.setAttribute('aria-hidden','true'); });
+
+    requestForm.addEventListener('submit', (e) => {
+      // let it submit normally to FormSubmit
+      requestSuccess.style.display = 'block';
+      setTimeout(() => { requestSuccess.style.display = 'none'; }, 2000);
+    });
+  </script>
 </body>
 </html>

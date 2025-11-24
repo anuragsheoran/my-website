@@ -1,5 +1,5 @@
-/* ========================================================================== 
-   Cinephile — app.js (Dynamic, Ultra-Smooth, Interactive)
+/* ==========================================================================
+   Cinephile — app.js (Dynamic, Ultra-Smooth, Interactive with Request Feature)
    ========================================================================== */
 (() => {
   'use strict';
@@ -12,9 +12,13 @@
   const detailModal = document.getElementById('detailModal');
   const modalBody = document.getElementById('modalBody');
   const modalClose = document.getElementById('modalClose');
-  const requestPanel = document.getElementById('requestPanel');
-  const openRequestBtn = document.getElementById('openRequestBtn');
-  const closeRequestBtn = document.getElementById('closeRequestBtn');
+
+  // Request modal elements
+  const requestBtn = document.getElementById('requestBtn');
+  const requestModal = document.getElementById('requestModal');
+  const requestClose = document.getElementById('requestClose');
+  const requestForm = document.getElementById('requestForm');
+  const requestSuccess = document.getElementById('requestSuccess');
 
   let activeCategory = 'Bollywood';
   let currentSearch = '';
@@ -65,18 +69,17 @@
         // Season selector
         const seasonSelect = createElement('select', 'season-select');
         item.seasons.forEach((s, idx) => {
-          const option = createElement('option', '', `Season ${s.season}${s.volume ? ' Vol.' + s.volume : ''}`);
+          const option = createElement('option', '', `Season ${s.season}${s.volume ? ' Vol.'+s.volume : ''}`);
           option.value = idx;
           seasonSelect.appendChild(option);
         });
         btnContainer.appendChild(seasonSelect);
 
-        // Download buttons wrapper
+        // Download buttons
         const seriesBtns = createElement('div', 'series-downloads');
         const download1080 = createElement('button', 'download-btn', 'Download 1080p');
         const download720 = createElement('button', 'download-btn', 'Download 720p');
 
-        // Attach click events
         download1080.addEventListener('click', () => {
           const selected = item.seasons[seasonSelect.value];
           if (selected.quality1080p?.link) window.open(selected.quality1080p.link, '_blank');
@@ -91,7 +94,6 @@
         btnContainer.appendChild(seriesBtns);
 
       } else {
-        // Movie buttons
         const d1080 = createElement('button', 'download-btn', 'Download 1080p');
         const d720 = createElement('button', 'download-btn', 'Download 720p');
         d1080.addEventListener('click', () => item.quality1080p.link && window.open(item.quality1080p.link, '_blank'));
@@ -140,10 +142,14 @@
   modalClose.addEventListener('click', closeModal);
   detailModal.addEventListener('click', e => { if(e.target === detailModal) closeModal(); });
 
-  if(openRequestBtn && closeRequestBtn){
-    openRequestBtn.addEventListener('click', () => requestPanel.setAttribute('aria-hidden','false'));
-    closeRequestBtn.addEventListener('click', () => requestPanel.setAttribute('aria-hidden','true'));
-  }
+  // Request modal functionality
+  requestBtn.addEventListener('click', () => requestModal.setAttribute('aria-hidden','false'));
+  requestClose.addEventListener('click', () => requestModal.setAttribute('aria-hidden','true'));
+  requestModal.addEventListener('click', e => { if(e.target === requestModal) requestModal.setAttribute('aria-hidden','true'); });
+  requestForm.addEventListener('submit', (e) => {
+    requestSuccess.style.display = 'block';
+    setTimeout(() => { requestSuccess.style.display = 'none'; }, 2000);
+  });
 
   renderCards();
 })();
