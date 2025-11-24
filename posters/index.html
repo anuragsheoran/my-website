@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinephile</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* =======================
+       Mobile-first responsive styles
+       ======================= */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      background: #1a1a1a;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      justify-content: center;
+    }
+
+    .filters input, .filters select, .filters button {
+      padding: 0.4rem 0.6rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .filters button.is-active {
+      background: #ff3b3b;
+      color: #fff;
+    }
+
+    #movies-container {
+      padding: 1rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .movie-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px #ff3b3b;
+    }
+
+    .poster-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-head {
+      padding: 0.5rem;
+    }
+
+    .movie-cat {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin: 0 0.5rem 0.5rem;
+    }
+
+    .card-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 0.5rem;
+    }
+
+    .card-buttons button, .card-buttons select {
+      width: 100%;
+      padding: 0.4rem;
+      background: #ff3b3b;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .card-buttons button:hover {
+      background: #ff5555;
+    }
+
+    .series-downloads {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    @media(min-width: 600px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .filters {
+        margin-top: 0;
+      }
+      .card-buttons {
+        flex-direction: row;
+      }
+      .card-buttons button, .card-buttons select {
+        width: auto;
+        flex: 1;
+      }
+    }
+
+    /* Modal styles */
+    #detailModal, #requestModal {
+      position: fixed;
+      top: 0; left: 0; right:0; bottom:0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s;
+      z-index: 1000;
+    }
+
+    #detailModal[aria-hidden="false"],
+    #requestModal[aria-hidden="false"] {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #modalBody, #requestBody {
+      background: #1c1c1c;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    #modalClose, #requestClose, #requestSend {
+      margin-top: 1rem;
+      padding: 0.4rem 0.8rem;
+      background: #ff3b3b;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Floating mail button */
+    #requestBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #ff3b3b;
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 0 10px #ff3b3b;
+    }
+
+    /* Success message */
+    #requestSuccess {
+      display: none;
+      margin-top: 0.5rem;
+      color: #0f0;
+      font-weight: bold;
+      animation: fadeInOut 2s ease forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+  </style>
+</head>
+<body>
+    
+<header>
+  <h1>Cinephile</h1>
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Search movies/series">
+    
+    <select id="typeFilter">
+      <option value="all">All</option>
+      <option value="movies">Movies</option>
+      <option value="series">Series</option>
+    </select>
+    
+    <select id="sortSelect">
+      <option value="title">Sort by Title</option>
+    </select>
+    
+    <div class="category-buttons">
+      <button id="hollywood-btn">Hollywood</button>
+      <button id="anime-btn">Anime</button>
+      <button id="bollywood-btn" class="is-active">Bollywood</button>
+    </div>
+  </div>
+</header>
+
+  <main>
+    <div id="movies-container"></div>
+  </main>
+
+  <div id="detailModal" aria-hidden="true">
+    <div id="modalBody">
+      <button id="modalClose">Close</button>
+    </div>
+  </div>
+
+  <!-- Request Modal -->
+  <div id="requestModal" aria-hidden="true">
+    <div id="requestBody">
+      <h2>Request a Movie/Show</h2>
+      <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST" target="_blank">
+        <input type="text" name="name" placeholder="Your Name" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
+        <input type="email" name="email" placeholder="Your Email" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
+        <input type="text" name="movie" placeholder="Movie/Show Name" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
+        <button type="submit" id="requestSend">Send Request</button>
+      </form>
+      <button id="requestClose">Close</button>
+      <div id="requestSuccess">Request Sent!</div>
+    </div>
+  </div>
+
+  <!-- Floating Mail Button -->
+  <div id="requestBtn">&#9993;</div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Request Modal functionality
+    const requestBtn = document.getElementById('requestBtn');
+    const requestModal = document.getElementById('requestModal');
+    const requestClose = document.getElementById('requestClose');
+    const requestForm = document.getElementById('requestForm');
+    const requestSuccess = document.getElementById('requestSuccess');
+
+    requestBtn.addEventListener('click', () => requestModal.setAttribute('aria-hidden','false'));
+    requestClose.addEventListener('click', () => requestModal.setAttribute('aria-hidden','true'));
+    requestModal.addEventListener('click', e => { if(e.target === requestModal) requestModal.setAttribute('aria-hidden','true'); });
+
+    requestForm.addEventListener('submit', (e) => {
+      // let it submit normally to FormSubmit
+      requestSuccess.style.display = 'block';
+      setTimeout(() => { requestSuccess.style.display = 'none'; }, 2000);
+    });
+  </script>
+</body>
+</html>
