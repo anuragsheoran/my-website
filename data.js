@@ -98,7 +98,7 @@ const moviesData = [
     // --------------------
     {
         title: "Chainsaw Man",
-        category: "Hollywood",
+        category: "Anime",
         poster: "posters/chainsaw_man.jpg",
         series: true,
         seasons: [
@@ -143,75 +143,245 @@ const moviesData = [
         ]
     },
 
-    // --------------------
-    // BREAKING BAD SERIES
-    // --------------------
-    {
-        title: "Breaking Bad",
-        category: "Hollywood",
-        poster: "posters/breaking_bad.jpg",
-        series: true,
-        seasons: Array.from({length:4}, (_,i) => ({
-            season: i+1,
-            quality1080p: { size: "", link: "" },
-            quality720p: { size: "", link: "" }
-        }))
+// --------------------
+// INCEPTION 2010
+// --------------------
+{
+    title: "Inception",
+    category: "Hollywood",
+    poster: "posters/inception.jpg",
+
+    quality720p: {
+        size: "1.4GB",
+        link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/d36127d8a974ad9e793dac303d5aa335?token=1764018110131"
     },
 
-    // --------------------
-    // GAME OF THRONES SERIES
-    // --------------------
-    {
-        title: "Game of Thrones",
-        category: "Hollywood",
-        poster: "posters/game_of_thrones.jpg",
-        series: true,
-        seasons: Array.from({length:8}, (_,i) => ({
-            season: i+1,
-            quality1080p: { size: "", link: "" },
-            quality720p: { size: "", link: "" }
-        }))
-    },
-
-    // --------------------
-    // MONEY HEIST SERIES
-    // --------------------
-    {
-        title: "Money Heist",
-        category: "Hollywood",
-        poster: "posters/money_heist.jpg",
-        series: true,
-        seasons: Array.from({length:5}, (_,i) => ({
-            season: i+1,
-            quality1080p: { size: "", link: "" },
-            quality720p: { size: "", link: "" }
-        }))
-    },
-
-    // --------------------
-    // THE BOYS SERIES
-    // --------------------
-    {
-        title: "The Boys",
-        category: "Hollywood",
-        poster: "posters/the_boys.jpg",
-        series: true,
-        seasons: Array.from({length:5}, (_,i) => ({
-            season: i+1,
-            quality1080p: { size: "", link: "" },
-            quality720p: { size: "", link: "" }
-        }))
-    },
-
-    // --------------------
-    // INCEPTION 2010
-    // --------------------
-    {
-        title: "Inception",
-        category: "Hollywood",
-        poster: "posters/inception.jpg",
-        quality1080p: { size: "", link: "" },
-        quality720p: { size: "", link: "" }
+    quality1080p: {
+        size: "2.3GB",
+        link: "https://true.boblover.click/81f3f913841f36675e591ca798dc9a78?token=1764016462132"
     }
+},
+// --------------------
+// BREAKING BAD SERIES
+// --------------------
+{
+    title: "Breaking Bad",
+    category: "Hollywood",
+    poster: "posters/breaking_bad.jpg",
+    series: true,  // indicates this is a series
+    seasons: [
+        {
+            season: 1,
+            quality1080p: {
+                size: "7.5GB",
+                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Breaking.Bad.S01.1080p.BluRay.Hindi.DD2.0-English.5.1.ESub.x264-moviesdrives.com.zip?token=1764018451137"
+            },
+            quality720p: {
+                size: "2.6GB",
+                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Breaking.Bad.S01.720p.BluRay.Hindi.ORG2.0-English.ESub.x264-moviesdrives.com.zip?token=1764018408136"
+            }
+        },
+        {
+            season: 2,
+            quality1080p: {
+                size: "11.2GB",
+                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/37e75803c1011e7d016e5310fa768fc3?token=1764018610"
+            },
+            quality720p: {
+                size: "5.2GB",
+                link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Breaking.Bad.S02.720p.x264.Bluray.Hindi.English.Esubs.-moviesdrives.com.zip?token=1764015981138"
+            }
+        },
+        {
+            season: 3,
+            quality1080p: {
+                size: "11.3GB",
+                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/2400325a02d690a3f754e80faa9148ee?token=1764018759"
+            },
+            quality720p: {
+                size: "5.4GB",
+                link: "https://pub-b4f6189790d849f486a17274ada684e7.r2.dev/Breaking.Bad.S03.720p.BluRay.Hindi.ORG.2.0-English.ESub.x264.moviesdrives.com.zip"
+            }
+        },
+        {
+            season: 4,
+            quality1080p: {
+                size: "11.1GB",
+                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/0631564e1eee9a1a01eda6246d4c27a3?token=1764018919"
+            },
+            quality720p: {
+                size: "5.3GB",
+                link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Breaking.Bad.S04.720p.BluRay.Hindi.ORG.2.0-English.x264.moviesdrives.com.zip?token=1764018808143"
+            }
+        },
+        {
+            season: 5,
+            quality1080p: {
+                size: "13.5GB",
+                link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Breaking.Bad.S05.Complete.1080p.BluRay.Hindi.DD2.0-English.5.1.x264.Vegamovies.to.zip?token=1764019017"
+            },
+            quality720p: {
+                size: "6.5GB",
+                link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Breaking.Bad.S05.720p.BluRay.HIN-ENG.x264.ESub-%20moviesdrives.com.zip?token=1764015981146"
+            }
+        }
+    ]
+},
+// --------------------
+// GAME OF THRONES SERIES
+// --------------------
+{
+    title: "Game Of Thrones",
+    category: "Hollywood",
+    poster: "posters/game_of_thrones.jpg",
+    series: true,  // indicates this is a series
+    seasons: [
+        {
+            season: 1,
+            quality1080p: {
+                size: "11.5GB",
+                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/httpsgame.of.thrones.s01e10.1080p.x264.bluray.hindi.english.esubs.moviesdrives.com.zip?token=1764019528155"
+            },
+            quality720p: {
+                size: "5GB",
+                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/ab2cd36df1ba219e5f8908d821e575c3?token=1764019456154"
+            },
+            quality480p: {
+                size: "1.9GB",
+                link: "https://true.boblover.click/f150810e22dc6f5dbae9c3531f32bc08?token=1764019588156"
+            }
+        },
+        {
+            season: 2,
+            quality1080p: {
+                size: "11.2GB",
+                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/c075228644250e2fa2efbd20eef83621?token=1764019729158"
+            },
+            quality720p: {
+                size: "5.4GB",
+                link: "https://true.boblover.click/54693f05dea3fd4e37be0ed10522d86d?token=1764019688158"
+            },
+            quality480p: {
+                size: "1.6GB",
+                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Game.of.Thrones.S02.BluRay.480p.Hindi.English.ESub.moviesdrives.com.zip?token=1764019644157"
+            }
+        },
+        {
+            season: 3,
+            quality1080p: {
+                size: "9.2GB",
+                link: "https://true.boblover.click/f777eddd2d863d4b47b3d2620787782b?token=176401984310"
+            },
+            quality720p: {
+                size: "4.4GB",
+                link: "https://pub-17aa05f0dc574b439c7ef91a1216e119.r2.dev/Game%20of%20Thrones%202013%20S03%20Hindi%20DDP%202.0%20+%20Eng%20AAC%202.0%20%20720p%20BluRay%20HEVC%20x265%20ESubs%20PSA%20%20[moviesdrives.com].zip"
+            },
+            quality480p: {
+                size: "2GB",
+                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Game.Of.Thrones.S03.480p.BluRay.Hindi.ORG-English.ESub.x264-moviesdrives.com.zip?token=1764019768159"
+            }
+        },
+        {
+            season: 4,
+            quality1080p: {
+                size: "7.5GB",
+                link: "https://true.boblover.click/a161d95e4c334cb548bc2535c75a56ea?token=176401996412"
+            },
+            quality720p: {
+                size: "4.7GB",
+                link: "https://pub-2dba1d7e471a4b8bba8ed3579443db5c.r2.dev/Game.of.Thrones.S04.720p.BluRay.HIN-ENG.x264-moviesdrives.com.zip"
+            },
+            quality480p: {
+                size: "1.8GB",
+                link: "https://mega.blockxpiracy.net/cs/g?x=AI3cvlhBkISa&n=Tho1GKoR&fn=Game.Of.Thrones.S04.Complete.480p.x264.BluRay.Hindi.English.Esubs.Vegamovies.To.zip"
+            }
+        },
+        {
+            season: 5,
+            quality1080p: {
+                size: "8.2GB",
+                link: "https://true.boblover.click/52a6bc3a6918672af59253c991ec94e7?token=176402010415"
+            },
+            quality720p: {
+                size: "5GB",
+                link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Game.of.Thrones.S05.720p.BluRay.HIN-ENG.x264.ESub-moviesdrives.com.zip?token=176402006214"
+            },
+            quality480p: {
+                size: "2.2GB",
+                link: "https://pub-7ed2ec042b2e4cf48ddce55517eb9cde.r2.dev/Game.of.Thrones.S05.480p.BluRay.HIN-ENG.x264.ESub-moviesdrives.com.zip"
+            }
+        },
+        {
+            season: 6,
+            quality1080p: {
+                size: "7.8GB",
+                link: "https://true.boblover.click/5d2cacf56fb87a6f2c2b05b82fde4eff?token=176402021716"
+            },
+            quality720p: {
+                size: "4.6GB",
+                link: "https://true.boblover.click/b8f3f48c0a1f4f6b3d0c162a8179d4b9?token=176402016416"
+            },
+            quality480p: {
+                size: "1.8GB",
+                link: "https://mega.blockxpiracy.net/cs/g?x=DvR0Chg1wRyA&n=r05hnJAR&fn=Game.Of.Thrones.S06.480p.x264.BluRay.Hindi.English.Esubs.Vegamovies.To.zip"
+            }
+        },
+        {
+            season: 7,
+            quality1080p: {
+                size: "6.7GB",
+                link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/9dd994017ba44e0da35fde7ef89c92a4?token=176402033618"
+            },
+            quality720p: {
+                size: "3.6GB",
+                link: "https://pub-1618d05e29644c42ba22bd345833bf30.r2.dev/Game.of.Thrones.S07.720p.BluRay.HIN-ENG.x264.ESub-moviesdrives.com.zip"
+            },
+            quality480p: {
+                size: "1.4GB",
+                link: "https://mega.blockxpiracy.net/cs/g?x=M2RAmsggxZjD&n=zhhVDRDY&fn=Game.Of.Thrones.S07.480p.x264.BluRay.Hindi.English.Esubs.Vegamovies.To.zip"
+            }
+        },
+        {
+            season: 8,
+            quality1080p: {
+                size: "3.4GB",
+                link: "https://pub-a60db46801fe4f969e381c50f61fa04b.r2.dev/Game.of.Thrones.S08.1080p.10bit.BluRay.HIN-ENG.x265.ESub-moviesdrives.com.zip"
+            },
+            quality720p: {
+                size: "3.5GB",
+                link: "https://pub-6abba2fd77524411b9dd417da32394ee.r2.dev/Game.of.Thrones.S08.720p.BluRay.HIN-ENG.x264.ESub-moviesdrives.com.zip"
+            },
+            quality480p: {
+                size: "1.7GB",
+                link: "https://true.boblover.click/34e548c2343d9dbe37b558d1612cf15e?token=176402038219"
+            }
+        }
+    ]
+},
+// --------------------
+// CHAINSAW MAN – THE MOVIE: REZE ARC 2025
+// --------------------
+{
+    title: "Chainsaw Man – The Movie: Reze Arc",
+    category: "Anime",
+    poster: "posters/chainsaw_man_reze.jpg",
+
+    quality480p: {
+        size: "200MB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Chainsaw%20Man%20The%20Movie%20Reze%20Arc%202025%20HDTS%20480p%20Hindi%20x264%20-%20Vegamovies.is.mkv?token=1764022274"
+    },
+
+    quality720p: {
+        size: "815MB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Chainsaw%20Man%20The%20Movie%20Reze%20Arc%202025%20HDTS%20720p%20Hindi%20AAC%202.0%20x264%20-%20Vegamovies.is.mkv?token=1764022369"
+    },
+
+    quality1080p: {
+        size: "1.7GB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Chainsaw%20Man%20The%20Movie%20Reze%20Arc%202025%20HDTS%201080p%20Hindi%20AAC%202.0%20x264%20-%20Vegamovies.is.mkv?token=1764020720"
+    }
+}
+
+
 
 ];
