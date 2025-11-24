@@ -7,6 +7,7 @@ const moviesData = [
     {
         title: "Param Sundari",
         category: "Bollywood",
+        releaseDate: "2025",
         poster: "posters/param_sundari.jpg",
         quality1080p: {
             size: "1.82GB",
@@ -24,6 +25,7 @@ const moviesData = [
     {
         title: "Jolly LLB",
         category: "Bollywood",
+        releaseDate: "2013",
         poster: "posters/jolly_llb.jpg",
         quality1080p: {
             size: "3.73GB",
@@ -41,6 +43,7 @@ const moviesData = [
     {
         title: "Interstellar",
         category: "Hollywood",
+        releaseDate: "2014",
         poster: "posters/interstellar.jpg",
         quality1080p: {
             size: "2.81GB",
@@ -58,6 +61,7 @@ const moviesData = [
     {
         title: "Stranger Things",
         category: "Hollywood",
+        releaseDate: "2016",
         poster: "posters/stranger_things.jpg",
         series: true,
         seasons: [
@@ -99,6 +103,7 @@ const moviesData = [
     {
         title: "Chainsaw Man",
         category: "Anime",
+        releaseDate: "2022",
         poster: "posters/chainsaw_man.jpg",
         series: true,
         seasons: [
@@ -122,6 +127,7 @@ const moviesData = [
     {
         title: "The Family Man",
         category: "Bollywood",
+        releaseDate: "2019",
         poster: "posters/the_family_man.jpg",
         series: true,
         seasons: [
@@ -149,6 +155,7 @@ const moviesData = [
 {
     title: "Inception",
     category: "Hollywood",
+    releaseDate: "2010",
     poster: "posters/inception.jpg",
 
     quality720p: {
@@ -167,6 +174,7 @@ const moviesData = [
 {
     title: "Breaking Bad",
     category: "Hollywood",
+    releaseDate: "2008",
     poster: "posters/breaking_bad.jpg",
     series: true,  // indicates this is a series
     seasons: [
@@ -233,6 +241,7 @@ const moviesData = [
 {
     title: "Game Of Thrones",
     category: "Hollywood",
+    releaseDate: "2011",
     poster: "posters/game_of_thrones.jpg",
     series: true,  // indicates this is a series
     seasons: [
@@ -364,6 +373,7 @@ const moviesData = [
 {
     title: "Chainsaw Man – The Movie: Reze Arc",
     category: "Anime",
+    releaseDate: "2025",
     poster: "posters/chainsaw_man_reze.jpg",
 
     quality480p: {
