@@ -1,6 +1,6 @@
-/* ==========================================================================
+/* ========================================================================== 
    Cinephile — app.js (Dynamic, Ultra-Smooth, Interactive)
-   ========================================================================= */
+   ========================================================================== */
 (() => {
   'use strict';
   const moviesContainer = document.getElementById('movies-container');
@@ -43,6 +43,8 @@
 
     filtered.forEach(item => {
       const card = createElement('div', 'movie-card');
+
+      // Poster
       const posterWrap = createElement('div', 'poster-wrap');
       const poster = createElement('img', 'poster');
       poster.src = item.poster;
@@ -50,38 +52,46 @@
       posterWrap.appendChild(poster);
       card.appendChild(posterWrap);
 
+      // Title & Category
       const cardHead = createElement('div', 'card-head');
       cardHead.appendChild(createElement('h3', '', item.title));
       card.appendChild(cardHead);
       card.appendChild(createElement('p', 'movie-cat', item.category));
 
+      // Buttons
       const btnContainer = createElement('div', 'card-buttons');
 
       if (item.series) {
+        // Season selector
         const seasonSelect = createElement('select', 'season-select');
         item.seasons.forEach((s, idx) => {
-          const option = createElement('option', '', `Season ${s.season}`);
+          const option = createElement('option', '', `Season ${s.season}${s.volume ? ' Vol.' + s.volume : ''}`);
           option.value = idx;
           seasonSelect.appendChild(option);
         });
         btnContainer.appendChild(seasonSelect);
 
+        // Download buttons wrapper
+        const seriesBtns = createElement('div', 'series-downloads');
         const download1080 = createElement('button', 'download-btn', 'Download 1080p');
         const download720 = createElement('button', 'download-btn', 'Download 720p');
 
-        const updateLinks = () => {
-          const selectedSeason = item.seasons[seasonSelect.value];
-          download1080.onclick = () => { if(selectedSeason.quality1080p.link) window.open(selectedSeason.quality1080p.link, '_blank'); };
-          download720.onclick = () => { if(selectedSeason.quality720p.link) window.open(selectedSeason.quality720p.link, '_blank'); };
-        };
+        // Attach click events
+        download1080.addEventListener('click', () => {
+          const selected = item.seasons[seasonSelect.value];
+          if (selected.quality1080p?.link) window.open(selected.quality1080p.link, '_blank');
+        });
+        download720.addEventListener('click', () => {
+          const selected = item.seasons[seasonSelect.value];
+          if (selected.quality720p?.link) window.open(selected.quality720p.link, '_blank');
+        });
 
-        seasonSelect.addEventListener('change', updateLinks);
-        updateLinks(); // initialize links for default season
-
-        btnContainer.appendChild(download1080);
-        btnContainer.appendChild(download720);
+        seriesBtns.appendChild(download1080);
+        seriesBtns.appendChild(download720);
+        btnContainer.appendChild(seriesBtns);
 
       } else {
+        // Movie buttons
         const d1080 = createElement('button', 'download-btn', 'Download 1080p');
         const d720 = createElement('button', 'download-btn', 'Download 720p');
         d1080.addEventListener('click', () => item.quality1080p.link && window.open(item.quality1080p.link, '_blank'));
@@ -92,6 +102,7 @@
 
       card.appendChild(btnContainer);
 
+      // Card click opens modal
       card.addEventListener('click', e => {
         if(!e.target.classList.contains('download-btn') && !e.target.classList.contains('season-select')) showModal(item);
       });
@@ -108,12 +119,23 @@
   };
   const closeModal = () => detailModal.setAttribute('aria-hidden', 'true');
 
+  // Event listeners
   searchInput.addEventListener('input', e => { currentSearch = e.target.value; renderCards(); });
   typeFilter.addEventListener('change', e => { currentType = e.target.value; renderCards(); });
   sortSelect.addEventListener('change', e => { sortBy = e.target.value; renderCards(); });
 
-  bollywoodBtn.addEventListener('click', () => { activeCategory='Bollywood'; bollywoodBtn.classList.add('is-active'); hollywoodBtn.classList.remove('is-active'); renderCards(); });
-  hollywoodBtn.addEventListener('click', () => { activeCategory='Hollywood'; hollywoodBtn.classList.add('is-active'); bollywoodBtn.classList.remove('is-active'); renderCards(); });
+  bollywoodBtn.addEventListener('click', () => {
+    activeCategory='Bollywood';
+    bollywoodBtn.classList.add('is-active');
+    hollywoodBtn.classList.remove('is-active');
+    renderCards();
+  });
+  hollywoodBtn.addEventListener('click', () => {
+    activeCategory='Hollywood';
+    hollywoodBtn.classList.add('is-active');
+    bollywoodBtn.classList.remove('is-active');
+    renderCards();
+  });
 
   modalClose.addEventListener('click', closeModal);
   detailModal.addEventListener('click', e => { if(e.target === detailModal) closeModal(); });

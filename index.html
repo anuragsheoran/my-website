@@ -5,69 +5,203 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinephile</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* =======================
+       Mobile-first responsive styles
+       ======================= */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      background: #1a1a1a;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      justify-content: center;
+    }
+
+    .filters input, .filters select, .filters button {
+      padding: 0.4rem 0.6rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .filters button.is-active {
+      background: #ff3b3b;
+      color: #fff;
+    }
+
+    #movies-container {
+      padding: 1rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .movie-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px #ff3b3b;
+    }
+
+    .poster-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-head {
+      padding: 0.5rem;
+    }
+
+    .movie-cat {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin: 0 0.5rem 0.5rem;
+    }
+
+    .card-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 0.5rem;
+    }
+
+    .card-buttons button, .card-buttons select {
+      width: 100%;
+      padding: 0.4rem;
+      background: #ff3b3b;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .card-buttons button:hover {
+      background: #ff5555;
+    }
+
+    .series-downloads {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    @media(min-width: 600px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .filters {
+        margin-top: 0;
+      }
+      .card-buttons {
+        flex-direction: row;
+      }
+      .card-buttons button, .card-buttons select {
+        width: auto;
+        flex: 1;
+      }
+    }
+
+    /* Modal styles */
+    #detailModal {
+      position: fixed;
+      top: 0; left: 0; right:0; bottom:0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s;
+      z-index: 1000;
+    }
+
+    #detailModal[aria-hidden="false"] {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #modalBody {
+      background: #1c1c1c;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    #modalClose {
+      margin-top: 1rem;
+      padding: 0.4rem 0.8rem;
+      background: #ff3b3b;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
 <body>
-
-  <a href="#main" class="skip-link">Skip to content</a>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container flex justify-between items-center">
-      <a href="#" class="logo">Cinephile</a>
-      <div class="header-actions">
-        <button id="bollywood-btn" class="cat-btn is-active">Bollywood</button>
-        <button id="hollywood-btn" class="cat-btn">Hollywood</button>
-      </div>
+  <header>
+    <h1>Cinephile</h1>
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search movies/series">
+      <select id="typeFilter">
+        <option value="all">All</option>
+        <option value="movies">Movies</option>
+        <option value="series">Series</option>
+      </select>
+      <select id="sortSelect">
+        <option value="title">Sort by Title</option>
+      </select>
+      <button id="bollywood-btn" class="is-active">Bollywood</button>
+      <button id="hollywood-btn">Hollywood</button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Discover Movies & Series</h2>
-      <p>Download in 1080p or 720p, fast and easy.</p>
-    </div>
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-  </section>
+  <main>
+    <div id="movies-container"></div>
+  </main>
 
-  <!-- Search & Filters -->
-  <section class="search-container container">
-    <input type="text" id="searchInput" class="search-bar" placeholder="Search for movies or series...">
-    <select id="typeFilter" class="filters">
-      <option value="all">All</option>
-      <option value="movies">Movies</option>
-      <option value="series">Series</option>
-    </select>
-    <select id="sortSelect" class="filters">
-      <option value="title">Sort by Title</option>
-    </select>
-  </section>
-
-  <!-- Movies/Series Grid -->
-  <main id="movies-container" class="container"></main>
-
-  <!-- Modal for Details -->
-  <div id="detailModal" class="modal" aria-hidden="true">
-    <div class="modal-content">
-      <button id="modalClose" class="modal-close">&times;</button>
-      <div id="modalBody"></div>
+  <div id="detailModal" aria-hidden="true">
+    <div id="modalBody">
+      <button id="modalClose">Close</button>
     </div>
   </div>
 
-  <!-- Request Panel -->
-  <div id="requestPanel" class="request-panel" aria-hidden="true">
-    <div class="request-panel-inner">
-      <button id="closeRequestBtn" class="action-btn">Close</button>
-      <div class="request-fields">
-        <input type="text" placeholder="Request a movie or series">
-        <button class="action-btn">Submit</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
