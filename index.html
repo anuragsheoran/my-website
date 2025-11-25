@@ -1,289 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cinephile</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* =======================
-       Mobile-first responsive styles
-       ======================= */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0f0f0f;
-      color: #fff;
-    }
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinephile</title>
+<link rel="stylesheet" href="style.css">
 
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      background: #1a1a1a;
-      position: relative;
-    }
+<style>
+ body{margin:0;font-family:Segoe UI,sans-serif;background:#0f0f0f;color:#fff;}
+ header{background:#1a1a1a;padding:1rem;display:flex;flex-direction:column;align-items:center;}
+ header h1{margin:0;font-size:2rem;}
+ .filters{margin-top:.7rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;}
+ .filters input,.filters select,.filters button{padding:.45rem .6rem;font-size:.9rem;border:none;border-radius:6px;}
+ .filters button.is-active{background:#ff3b3b;color:#fff;}
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
+ #movies-container{padding:1rem;}
+ .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;}
 
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-      justify-content: center;
-    }
+ .movie-card{background:#1c1c1c;border-radius:10px;overflow:hidden;transition:.2s;}
+ .movie-card:hover{transform:scale(1.03);box-shadow:0 0 10px #ff3b3b;}
+ .poster-wrap{width:100%;aspect-ratio:2/3;overflow:hidden;}
+ .poster-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+ .card-head{padding:.5rem .6rem;font-size:.9rem;}
+ .card-buttons{display:flex;flex-direction:column;gap:.4rem;padding:0 .6rem .7rem;}
+ .card-buttons button,.card-buttons select{padding:.5rem;background:#ff3b3b;border:none;color:#fff;border-radius:6px;font-size:.9rem;cursor:pointer;}
 
-    .filters input, .filters select, .filters button {
-      padding: 0.4rem 0.6rem;
-      border-radius: 5px;
-      border: none;
-      outline: none;
-      font-size: 0.9rem;
-    }
+ /* MODAL */
+ #detailModal,#requestModal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;justify-content:center;align-items:center;opacity:0;visibility:hidden;transition:.2s;z-index:1000;}
+ #detailModal[aria-hidden="false"],#requestModal[aria-hidden="false"]{opacity:1;visibility:visible;}
+ .modal-box{background:#1d1d1d;width:90%;max-width:420px;padding:1rem;border-radius:12px;text-align:center;box-shadow:0 0 10px #ff3b3b40;}
 
-    .filters button.is-active {
-      background: #ff3b3b;
-      color: #fff;
-    }
+ /* Popup shining buttons */
+ .modal-box button,
+ .episode-row button,
+ .quality-btn,
+ #modalClose,
+ #requestBody button{
+   background:#ff3b3b;
+   border:none;
+   color:white;
+   padding:.5rem .8rem;
+   border-radius:6px;
+   cursor:pointer;
+   font-size:.9rem;
+   box-shadow:0 0 8px #ff3b3b80;
+   transition:.15s;
+ }
+ .modal-box button:hover{transform:scale(1.03);box-shadow:0 0 12px #ff3b3bcc;}
 
-    #movies-container {
-      padding: 1rem;
-    }
+ /* Release date styling inside popup */
+ .release-line{color:#ff5252;font-weight:bold;margin-bottom:.7rem;font-size:.95rem;}
 
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1rem;
-    }
+ #modalClose{margin-top:1rem;}
 
-    .movie-card {
-      background: #1c1c1c;
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+ /* Request button */
+ #requestBtn{position:fixed;bottom:20px;right:20px;width:55px;height:55px;background:#ff3b3b;color:#fff;border-radius:50%;font-size:26px;display:flex;justify-content:center;align-items:center;box-shadow:0 0 10px #ff3b3b;z-index:999;cursor:pointer;}
 
-    .movie-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 10px #ff3b3b;
-    }
+ /* Request modal fixes */
+ #requestBody input{width:90%;padding:.6rem;margin:.4rem 0;border:none;border-radius:6px;background:#111;color:#fff;}
+ #requestSuccess{display:none;margin-top:.5rem;color:#0f0;animation:fadeInOut 2s forwards;}
 
-    .poster-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .card-head {
-      padding: 0.5rem;
-    }
-
-    .movie-cat {
-      font-size: 0.8rem;
-      color: #aaa;
-      margin: 0 0.5rem 0.5rem;
-    }
-
-    .card-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      padding: 0.5rem;
-    }
-
-    .card-buttons button, .card-buttons select {
-      width: 100%;
-      padding: 0.4rem;
-      background: #ff3b3b;
-      border: none;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    .card-buttons button:hover {
-      background: #ff5555;
-    }
-
-    .series-downloads {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    @media(min-width: 600px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-      .filters {
-        margin-top: 0;
-      }
-      .card-buttons {
-        flex-direction: row;
-      }
-      .card-buttons button, .card-buttons select {
-        width: auto;
-        flex: 1;
-      }
-    }
-
-    /* Modal styles */
-    #detailModal, #requestModal {
-      position: fixed;
-      top: 0; left: 0; right:0; bottom:0;
-      background: rgba(0,0,0,0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s;
-      z-index: 1000;
-    }
-
-    #detailModal[aria-hidden="false"],
-    #requestModal[aria-hidden="false"] {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #modalBody, #requestBody {
-      background: #1c1c1c;
-      padding: 1rem;
-      border-radius: 10px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-    }
-
-    #modalClose, #requestClose, #requestSend {
-      margin-top: 1rem;
-      padding: 0.4rem 0.8rem;
-      background: #ff3b3b;
-      border: none;
-      color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    /* Floating mail button */
-    #requestBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #ff3b3b;
-      color: #fff;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 999;
-      box-shadow: 0 0 10px #ff3b3b;
-    }
-
-    /* Success message */
-    #requestSuccess {
-      display: none;
-      margin-top: 0.5rem;
-      color: #0f0;
-      font-weight: bold;
-      animation: fadeInOut 2s ease forwards;
-    }
-
-    @keyframes fadeInOut {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
-  </style>
+ @keyframes fadeInOut{0%{opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{opacity:0;}}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Cinephile</h1>
-  <div class="filters">
-    <input type="text" id="searchInput" placeholder="Search movies/series">
-    
-    <select id="typeFilter">
-      <option value="all">All</option>
-      <option value="movies">Movies</option>
-      <option value="series">Series</option>
-    </select>
-    
-    <select id="sortSelect">
-      <option value="title">Sort by Title</option>
-      <option value="releaseDate">Sort by Release Date</option>
-    </select>
-    
-    <div class="category-buttons">
-      <button id="hollywood-btn" class="is-active">Hollywood</button>
-      <button id="anime-btn">Anime</button>
-      <button id="bollywood-btn">Bollywood</button>
-    </div>
-  </div>
+ <h1>Cinephile</h1>
+ <div class="filters">
+  <input type="text" id="searchInput" placeholder="Search">
+  <select id="typeFilter"><option value="all">All</option><option value="movies">Movies</option><option value="series">Series</option></select>
+  <select id="sortSelect"><option value="title">Sort by Title</option><option value="releaseDate">Sort by Release Date</option></select>
+  <button id="hollywood-btn" class="is-active">Hollywood</button>
+  <button id="anime-btn">Anime</button>
+  <button id="bollywood-btn">Bollywood</button>
+ </div>
 </header>
 
-  <main>
-    <div id="movies-container"></div>
-  </main>
+<main><div id="movies-container"></div></main>
 
-  <div id="detailModal" aria-hidden="true">
-    <div id="modalBody">
-      <button id="modalClose">Close</button>
-    </div>
-  </div>
+<!-- DETAILS MODAL -->
+<div id="detailModal" aria-hidden="true">
+ <div id="modalBody" class="modal-box"></div>
+</div>
 
-  <!-- Request Modal -->
-  <div id="requestModal" aria-hidden="true">
-    <div id="requestBody">
-      <h2>Request a Movie/Show</h2>
-      <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST" target="_blank">
-        <input type="text" name="name" placeholder="Your Name" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
-        <input type="email" name="email" placeholder="Your Email" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
-        <input type="text" name="movie" placeholder="Movie/Show Name" required style="width: 90%; margin:0.4rem 0; padding:0.4rem; border-radius:5px; border:none;">
-        <button type="submit" id="requestSend">Send Request</button>
-      </form>
-      <button id="requestClose">Close</button>
-      <div id="requestSuccess">Request Sent!</div>
-    </div>
-  </div>
+<!-- REQUEST MODAL -->
+<div id="requestModal" aria-hidden="true">
+ <div id="requestBody" class="modal-box">
+  <h2>Request a Movie/Show</h2>
 
-  <!-- Floating Mail Button -->
-  <div id="requestBtn">&#9993;</div>
+  <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
+    <input type="hidden" name="_redirect" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="movie" placeholder="Movie/Show Name" required>
+    <button type="submit">Send Request</button>
+  </form>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-  <script>
-    // Request Modal functionality
-    const requestBtn = document.getElementById('requestBtn');
-    const requestModal = document.getElementById('requestModal');
-    const requestClose = document.getElementById('requestClose');
-    const requestForm = document.getElementById('requestForm');
-    const requestSuccess = document.getElementById('requestSuccess');
+  <button id="requestClose">Close</button>
+  <div id="requestSuccess">Request Sent Successfully ✔</div>
+ </div>
+</div>
 
-    requestBtn.addEventListener('click', () => requestModal.setAttribute('aria-hidden','false'));
-    requestClose.addEventListener('click', () => requestModal.setAttribute('aria-hidden','true'));
-    requestModal.addEventListener('click', e => { if(e.target === requestModal) requestModal.setAttribute('aria-hidden','true'); });
+<div id="requestBtn">&#9993;</div>
 
-    requestForm.addEventListener('submit', (e) => {
-      // let it submit normally to FormSubmit
-      requestSuccess.style.display = 'block';
-      setTimeout(() => { requestSuccess.style.display = 'none'; }, 2000);
-    });
-  </script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+<script>
+const rqBtn=document.getElementById('requestBtn'),
+ rqModal=document.getElementById('requestModal'),
+ rqClose=document.getElementById('requestClose'),
+ rqForm=document.getElementById('requestForm'),
+ rqSuccess=document.getElementById('requestSuccess');
+
+rqBtn.onclick=()=>{rqModal.setAttribute('aria-hidden','false');};
+rqClose.onclick=()=>{rqModal.setAttribute('aria-hidden','true');};
+rqModal.onclick=e=>{if(e.target===rqModal){rqModal.setAttribute('aria-hidden','true');}};
+
+rqForm.addEventListener('submit',async e=>{
+ e.preventDefault();
+ await fetch(rqForm.action,{method:'POST',body:new FormData(rqForm)});
+ rqSuccess.style.display='block';
+ setTimeout(()=>{rqSuccess.style.display='none';rqModal.setAttribute('aria-hidden','true');rqForm.reset();},2000);
+});
+</script>
+
 </body>
 </html>

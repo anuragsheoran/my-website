@@ -390,8 +390,140 @@ const moviesData = [
         size: "1.7GB",
         link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Chainsaw%20Man%20The%20Movie%20Reze%20Arc%202025%20HDTS%201080p%20Hindi%20AAC%202.0%20x264%20-%20Vegamovies.is.mkv?token=1764020720"
     }
+},
+// --------------------
+// JUJUTSU KAISEN SERIES
+// --------------------
+{
+    title: "Jujutsu Kaisen",
+    category: "Anime",
+    releaseDate: "2020",
+    poster: "posters/jujutsu_kaisen.jpg",
+    series: true,  // indicates this is a series
+    seasons: [
+        {
+            season: 1,
+            quality1080p: {
+                size: "7.7GB",
+                link: "https://zrlqm.com/9589000?c=176406589509990TINTV62409R40d6R118cRc4eeR8000RR6V47021&p=10553224-1560383409-4269441498"
+            },
+            quality720p: {
+                size: "4.4GB",
+                link: "https://true.boblover.click/d89ccfd56e4a8ac0c6f491638718b3c8?token=1764065845147"
+            }
+        },
+        {
+            season: 2,
+            quality1080p: {
+                size: "7.5GB",
+                link: "https://mega.blockxpiracy.net/cs/g?x=lzvRewxhTarY&n=itwwFaKZ&fn=[Vegamovies.to].Jujutsu.Kaisen.S02.[1080p.x265.10bit.WEB-DL].[Multi.Audio].MSub.Vegamovies.to.zip"
+            },
+            quality720p: {
+                size: "3.7GB",
+                link: "https://true.boblover.click/a4508df5e30a2e74acd9877030706f4c?token=1764065030148"
+            }
+        }
+    ]
+},
+{
+  title: "IT: Welcome to Derry",
+  category: "Hollywood",
+  poster: "posters/it_welcome_to_derry.jpg",
+  releaseDate: "2025",
+  series: true,
+
+  episodes: [
+    {
+      season: 1,
+      episode: 1,
+      title: "Episode 1",
+      quality720p: {
+        size: "380MB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/IT.Welcome.to.Derry.S01E01.The.Pilot.720p.HS.WEB-DL.AAC2.0.HEVC-[Moviesdrives.cv].mkv?token=1764093481128"
+      },
+      quality1080p: {
+        size: "720MB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/IT.Welcome.to.Derry.S01E01.1080p.10Bit.WEB-DL.Hindi.2.0-English.5.1.HEVC.x265-[Moviesdrives.cv].mkv?token=1764093818133"
+      },
+      quality4k: {
+        size: "4.4GB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/IT.Welcome.to.Derry.S01E01.The.Pilot.2160p.HS.WEB-DL.AAC2.0.H.265-[Moviesdrives.cv].mkv?token=1764092586137"
+      }
+    },
+
+    {
+      season: 1,
+      episode: 2,
+      title: "Episode 2",
+      quality720p: {
+        size: "418MB",
+        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/IT.Welcome.to.Derry.S01E02.720p.10Bit.WEB-DL.Hindi-English.HEVC.x265-[Moviesdrives.cv].mkv?token=1764093470130"
+      },
+      quality1080p: {
+        size: "930MB",
+        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/IT.Welcome.to.Derry.S01E02.1080p.10Bit.WEB-DL.Hindi.2.0-English.5.1.HEVC.x265-[Moviesdrives.cv].mkv?token=1764093871134"
+      },
+      quality4k: {
+        size: "6.5GB",
+        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/IT%20-%20Welcome%20to%20Derry%20S01E02%202160p%20CRAV%20WEB-DL%2010bit%20HEVC%20[Hindi%20AAC%202.0%20+%20English%20DDPA%205.1]%20x265-[Moviesdrives.cv].mkv?token=1764092908138"
+      }
+    },
+
+    {
+      season: 1,
+      episode: 3,
+      title: "Episode 3",
+      quality720p: {
+        size: "370MB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/IT.Welcome.to.Derry.S01E03.720p.10Bit.WEB-DL.Hindi-English.HEVC.x265-[Moviesdrives.cv].mkv?token=1764093490130"
+      },
+      quality1080p: {
+        size: "800MB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/IT.Welcome.to.Derry.S01E03.1080p.10Bit.WEB-DL.Hindi.2.0-English.5.1.HEVC.x265-[Moviesdrives.cv].mkv?token=1764093901135"
+      },
+      quality4k: {
+        size: "5.2GB",
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/IT%20-%20Welcome%20to%20Derry%20S01E03%202160p%20CRAV%20WEB-DL%2010bit%20HEVC%20[Hindi%20AAC%202.0%20+%20English%20DDPA%205.1]%20x265-[Moviesdrives.cv].mkv?token=1764094182139"
+      }
+    },
+
+    {
+      season: 1,
+      episode: 4,
+      title: "Episode 4",
+      quality720p: {
+        size: "411MB",
+        link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/1003d4b9a70397940b7af671a1918625?token=1764093509131"
+      },
+      quality1080p: {
+        size: "930MB",
+        link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/648c211ca2df61fba57e17885148d2c2?token=1764093933135"
+      },
+      quality4k: {
+        size: "6.5GB",
+        link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/0d3f01f7b696d5af39f4123eb0e774dd?token=1764094227140"
+      }
+    },
+
+    {
+      season: 1,
+      episode: 5,
+      title: "Episode 5",
+      quality720p: {
+        size: "380MB",
+        link: "https://true.boblover.click/17dbaf1a25678701cf049a03ba31dabb?token=1764088095131"
+      },
+      quality1080p: {
+        size: "730MB",
+        link: "https://true.boblover.click/4bffc108134b191c27cdbe44074280c5?token=1764093615"
+      },
+      quality4k: {
+        size: "5.7GB",
+        link: "https://true.boblover.click/1182454ee5b8e4983339ee7769a971e6?token=1764094271141"
+      }
+    }
+  ]
 }
 
-
-
 ];
+
