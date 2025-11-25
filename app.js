@@ -415,6 +415,7 @@
         requestForm.reset();
       }, 2000);
     });
+
   }
 
   renderCards();
