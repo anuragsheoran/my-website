@@ -56,7 +56,7 @@
  #requestBtn{position:fixed;bottom:20px;right:20px;width:55px;height:55px;background:#ff3b3b;color:#fff;border-radius:50%;font-size:26px;display:flex;justify-content:center;align-items:center;box-shadow:0 0 10px #ff3b3b;z-index:999;cursor:pointer;}
 
  /* Request modal fixes */
- #requestBody input{width:90%;padding:.6rem;margin:.4rem 0;border:none;border-radius:6px;background:#111;color:#fff;}
+ #requestBody input, #requestBody textarea{width:90%;padding:.6rem;margin:.4rem 0;border:none;border-radius:6px;background:#111;color:#fff;}
  #requestSuccess{display:none;margin-top:.5rem;color:#0f0;animation:fadeInOut 2s forwards;}
 
  @keyframes fadeInOut{0%{opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{opacity:0;}}
@@ -89,11 +89,21 @@
  <div id="requestBody" class="modal-box">
   <h2>Request a Movie/Show</h2>
 
-  <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST" target="_blank">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="text" placeholder="Movie/Show Name" required>
-    <button type="submit">Send</button>
+  <!-- FORM SUBMIT.CO FORM -->
+  <form id="requestForm" action="https://formsubmit.co/anuragsheoran25@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Request from Cinephile">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_autoresponse" value="Your request has been received!">
+    <input type="hidden" name="_next" value="https://anuragsheoran.github.io/my-website/">
+
+    <!-- User fields -->
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="text" name="Movie_or_Series_Name" placeholder="Movie/Series Name" required>
+    <input type="text" name="Year" placeholder="Year (optional)">
+    <textarea name="Message" placeholder="Anything else?" rows="3"></textarea>
+
+    <button type="submit">Send Request</button>
   </form>
 
   <button id="requestClose">Close</button>
@@ -107,22 +117,14 @@
 <script src="app.js"></script>
 
 <script>
-const rqBtn=document.getElementById('requestBtn'),
- rqModal=document.getElementById('requestModal'),
- rqClose=document.getElementById('requestClose'),
- rqForm=document.getElementById('requestForm'),
- rqSuccess=document.getElementById('requestSuccess');
+  // REQUEST MODAL TOGGLE
+  const rqBtn = document.getElementById('requestBtn'),
+        rqModal = document.getElementById('requestModal'),
+        rqClose = document.getElementById('requestClose');
 
-rqBtn.onclick=()=>{rqModal.setAttribute('aria-hidden','false');};
-rqClose.onclick=()=>{rqModal.setAttribute('aria-hidden','true');};
-rqModal.onclick=e=>{if(e.target===rqModal){rqModal.setAttribute('aria-hidden','true');}};
-
-rqForm.addEventListener('submit',async e=>{
- e.preventDefault();
- await fetch(rqForm.action,{method:'POST',body:new FormData(rqForm)});
- rqSuccess.style.display='block';
- setTimeout(()=>{rqSuccess.style.display='none';rqModal.setAttribute('aria-hidden','true');rqForm.reset();},2000);
-});
+  rqBtn.onclick = () => rqModal.setAttribute('aria-hidden','false');
+  rqClose.onclick = () => rqModal.setAttribute('aria-hidden','true');
+  rqModal.onclick = e => { if(e.target === rqModal) rqModal.setAttribute('aria-hidden','true'); };
 </script>
 
 </body>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Cinephile — app.js (Modal-style Episode UI, polished & future-proof)
+   Cinephile — app.js (Email-enabled Request Form via FormSubmit.co)
    ========================================================================== */
 (() => {
   'use strict';
@@ -81,11 +81,10 @@
     return btn;
   };
 
-  // FIXED FUNCTION — now handles null season index correctly
+  // FIXED FUNCTION — handles null season index correctly
   const renderEpisodeListInModal = (item, selectedSeasonIndex = 0, episodesArray = []) => {
-
     if (selectedSeasonIndex === null || isNaN(selectedSeasonIndex)) {
-      selectedSeasonIndex = 0; // ← FIX HERE
+      selectedSeasonIndex = 0;
     }
 
     modalBody.innerHTML = '';
@@ -214,7 +213,7 @@
 
         if (season.episodes?.length || item.episodes?.some(e=>Number(e.season)===Number(season.season))) {
           const viewEps = create('button','view-episodes','View Episodes');
-          viewEps.addEventListener('click', (ev)=>{
+          viewEps.addEventListener('click',(ev)=>{
             ev.stopPropagation();
             if (season.episodes?.length) {
               renderEpisodeListInModal(item, idx, season.episodes);
@@ -246,7 +245,7 @@
       modalBody.appendChild(create('p','', 'This series has episodes available.'));
 
       const viewEps = create('button','view-episodes','View Episodes');
-      viewEps.addEventListener('click', (ev)=>{
+      viewEps.addEventListener('click',(ev)=>{
         ev.stopPropagation();
         renderEpisodeListInModal(item, 0, item.episodes);
       });
@@ -267,7 +266,7 @@
     closeBtn.addEventListener('click', closeModal); 
     addButtonMagic(closeBtn); 
     modalBody.appendChild(closeBtn);
-    detailModal.setAttribute('aria-hidden','false');
+    detailModal.setAttribute('aria-hidden','true');
   };
 
   const closeModal = () => detailModal.setAttribute('aria-hidden','true');
@@ -402,20 +401,23 @@
   if (modalClose) modalClose.addEventListener('click', closeModal);
   detailModal.addEventListener('click', (e) => { if (e.target === detailModal) closeModal(); });
 
+  /* ===============================
+     EMAIL REQUEST FORM — FORM SUBMIT.CO
+     =============================== */
   if (requestBtn && requestModal && requestClose && requestForm && requestSuccess) {
     requestBtn.addEventListener('click', () => requestModal.setAttribute('aria-hidden','false'));
     requestClose.addEventListener('click', () => requestModal.setAttribute('aria-hidden','true'));
     requestModal.addEventListener('click', e => { if (e.target === requestModal) requestModal.setAttribute('aria-hidden','true'); });
 
-    requestForm.addEventListener('submit', (e) => {
-      requestSuccess.style.display = 'block';
+    // FormSubmit.co — add action & method if not present
+    requestForm.action = 'https://formsubmit.co/anuragsheoran25@gmail.com';
+    requestForm.method = 'POST';
+    requestForm.addEventListener('submit', () => {
+      // Show success after a small delay
       setTimeout(() => {
-        requestSuccess.style.display = 'none';
-        requestModal.setAttribute('aria-hidden','true');
-        requestForm.reset();
-      }, 2000);
+        requestSuccess.style.display = 'block';
+      }, 200);
     });
-
   }
 
   renderCards();
