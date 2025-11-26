@@ -3,26 +3,57 @@ const moviesData = [
 
     // PARAM SUNDARI
     {
+        id: 1,
         title: "Param Sundari",
         category: "Bollywood",
         releaseDate: "2025",
         poster: "posters/param_sundari.jpg",
+
 
         quality1080p: {size: "1.82GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Param.Sundari.2025.1080p.HEVC.Hindi.WEB-DL.5.1.ESub.x265-%20moviesdrives.cv.mkv?token=1763547000140"},
         quality720p: {size: "794MB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Param.Sundari.2025.720p.HEVC.Hindi.WEB-DL.ESub.x265-%20moviesdrives.cv.mkv?token=1763547127142"}
     },
     // JOLLY LLB 2013
     {
+        id: 2,
         title: "Jolly LLB",
         category: "Bollywood",
         releaseDate: "2013",
         poster: "posters/jolly_llb.jpg",
 
+        quality480p: { size: "350MB", link: "https://true.boblover.click/48e552832e6ab44a5207c89fee056862?token=1764183273124" },
         quality1080p: {size: "3.73GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/3e7f283a13e8ee60243f8d3110bf385e?token=1763574122112"},
         quality720p: {size: "1.12GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Jolly%20LLB%202013%20BluRay%20720p%20Hindi%20AAC%205.1%20x264%20ESub%20-%20%20moviesdrives.co.mkv?token=1763571646110"}
     },
+{
+    id: 3,
+    title: "Jolly LLB 2",
+    category: "Bollywood",
+    releaseDate: "2017",
+    poster: "posters/jolly_llb_2.jpg",
+    series: false,
+
+    quality480p: { size: "400MB", link: "https://true.boblover.click/15e1af8617520a191bb7ea8ececfb1c9?token=176418220416" },
+    quality720p: { size: "1.2GB", link: "https://true.boblover.click/ec7bbbe1255f5820837d13b2df4c3114?token=176418232318" },
+    quality1080p: { size: "4GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/7212ad91ce2e0446f01f8fe78771d962?token=176418236019" },
+},
+{
+    id: 4,
+    title: "Jolly LLB 3",
+    category: "Bollywood",
+    releaseDate: "2025",
+    poster: "posters/jolly_llb_3.jpg",
+    series: false,
+
+    quality480p: { size: "500MB", link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Jolly.LLB.3.2025.480p.NF.WEB-DL.Hindi.x264-%20moviesdrives.cv.mkv?token=1764182796116" },
+    quality720p: { size: "900MB", link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Jolly.LLB-3.2025.720p.HEVC.DS4K.Hindi.WEB-DL.ESub.x265-%20moviesdrives.cv.mkv?token=1764182879118" },
+    quality1080p: { size: "2GB", link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Jolly.LLB-3.2025.1080p.HEVC.DS4K.Hindi.WEB-DL.5.1.ESub.x265%20-%20moviesdrives.cv.mkv?token=1764182958119" },
+    quality4k: { size: "14GB", link: "https://pub-8665238777bb4575af3be7b624141905.r2.dev/Jolly.LLB.3.2025.2160p.NF.WEB-DL.DDP5.1.H.265-%20moiesdrives.cv.mkv?token=1764182992119" }
+},
+
     // INTERSTELLAR 2014
     {
+        id: 5,
         title: "Interstellar",
         category: "Hollywood",
         releaseDate: "2014",
@@ -33,6 +64,7 @@ const moviesData = [
     },
     // STRANGER THINGS SERIES
     {
+        id: 6,
         title: "Stranger Things (Season 5 Starting Soon)",
         category: "Hollywood",
         releaseDate: "2016",
@@ -70,6 +102,7 @@ const moviesData = [
     },
     // CHAINSAW MAN SERIES
     {
+        id: 7,
         title: "Chainsaw Man",
         category: "Anime",
         releaseDate: "2022",
@@ -85,6 +118,7 @@ const moviesData = [
     },
     // THE FAMILY MAN SERIES
     {
+        id: 8,
         title: "The Family Man",
         category: "Bollywood",
         releaseDate: "2019",
@@ -110,6 +144,7 @@ const moviesData = [
     },
     // INCEPTION 2010
     {
+        id: 9,
         title: "Inception",
         category: "Hollywood",
         releaseDate: "2010",
@@ -120,6 +155,7 @@ const moviesData = [
     },
     // BREAKING BAD SERIES
     {
+        id: 10,
         title: "Breaking Bad",
         category: "Hollywood",
         releaseDate: "2008",
@@ -155,6 +191,7 @@ const moviesData = [
     },
     // GAME OF THRONES SERIES
     {
+        id: 11,
         title: "Game Of Thrones",
         category: "Hollywood",
         releaseDate: "2011",
@@ -213,6 +250,7 @@ const moviesData = [
     },
     // CHAINSAW MAN – THE MOVIE: REZE ARC 2025
     {
+        id: 12,
         title: "Chainsaw Man – The Movie: Reze Arc",
         category: "Anime",
         releaseDate: "2025",
@@ -224,6 +262,7 @@ const moviesData = [
     },
     // JUJUTSU KAISEN SERIES
     {
+        id: 13,
         title: "Jujutsu Kaisen",
         category: "Anime",
         releaseDate: "2020",
@@ -244,6 +283,7 @@ const moviesData = [
     },
     // IT: WELCOME TO DERRY
     {
+        id: 15,
         title: "IT: Welcome to Derry (Episode 5 Added)",
         category: "Hollywood",
         poster: "posters/it_welcome_to_derry.jpg",
@@ -293,14 +333,17 @@ const moviesData = [
         ]
     },
     {
+        id: 14,
         title: "Vicky Vidya Ka Woh Wala Video",
         category: "Bollywood",
         releaseDate: "2024",
-        poster: "images/vicky_vidya.jpg",
+        poster: "posters/vicky_vidya.jpg",
         series: false,
 
         quality720p: {size: "1GB", link: "https://pixel.hubcdn.fans/?id=215c970adf0d7ea92f140e72d9db07d1edc78f399486d37c2fa3e0452b232fbe1c254fd704945ed067e77c80c35d807907f442dd33a1fa1a3b01e321c62a41f3c4d88ed910c64da59b3945a0beeaf7848e2d52a02bb4b9cf2fbd08e5d9a13e0e::760cdc8b7e8228cc8291a606041357d8"},
         quality1080p: {size: "2.5GB", link: "https://pixel.hubcdn.fans/?id=626cd66c8515c03183f0457dbefefcee1c25d0cf79b925256685796943c799f948626fac5a3029ded30455b6f2f2b8e2c22f82f48fe5bfc0fdb7371e7c5d0ed3829bdf67d505fa870ef23d1d2894bea10e1b64de406515f484423f99885ddd25::fe6f1a357af4ef50344808f6917edeb6"},
         quality4k: {size: "13GB", link: "https://pixel.hubcdn.fans/?id=3e9f885b438f1fdb9b13d02742b03ac76d0d3a5970bc91421a5dcddcc3d3e817d00e28fd026117a9dec7c14a5e3a0e0456c6d87796e115f73c40e9cf1546326ce7e39cf8affd32e8f10e48798bf09e4cb95e05f23615b1674a43324ee9617ea5::0c1811b1a35a248facd2fe5f372acbfa"}
     },
+
+
 ];

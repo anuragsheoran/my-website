@@ -64,10 +64,17 @@
       .filter(item => currentType === 'all' ? true : currentType === 'movies' ? !item.series : item.series)
       .filter(item => item.title.toLowerCase().includes(currentSearch.toLowerCase()))
       .sort((a,b) => {
-        if (sortBy === 'title') return a.title.localeCompare(b.title);
-        if (sortBy === 'releaseDate') return (new Date(b.releaseDate || 0)) - (new Date(a.releaseDate || 0));
-        return 0;
-      });
+        if (sortBy === 'title') {
+          return a.title.localeCompare(b.title);
+        }
+        if (sortBy === 'releaseDate') {
+          return (new Date(b.releaseDate || 0)) - (new Date(a.releaseDate || 0));
+        }
+        if (sortBy === 'dateAdded') {
+          return (b.id || 0) - (a.id || 0);    // NEW SORT: latest added first
+        }
+          return 0;
+    });
   };
 
   const createDownloadBtn = (qualityObj, label) => {

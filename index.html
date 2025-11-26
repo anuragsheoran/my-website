@@ -70,7 +70,12 @@
  <div class="filters">
   <input type="text" id="searchInput" placeholder="Search">
   <select id="typeFilter"><option value="all">All</option><option value="movies">Movies</option><option value="series">Series</option></select>
-  <select id="sortSelect"><option value="title">Sort by Title</option><option value="releaseDate">Sort by Release Date</option></select>
+  <select id="sortSelect">
+    <option value="title">Sort by Title</option>
+    <option value="releaseDate">Sort by Release Date</option>
+    <option value="dateAdded">Sort by Date Added</option>
+  </select>
+
   <button id="hollywood-btn" class="is-active">Hollywood</button>
   <button id="anime-btn">Anime</button>
   <button id="bollywood-btn">Bollywood</button>
@@ -98,9 +103,9 @@
     <input type="hidden" name="_next" value="https://anuragsheoran.github.io/my-website/">
 
     <!-- User fields -->
-    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="text" name="Name" placeholder="Your Name (Optional)">
     <input type="text" name="Movie_or_Series_Name" placeholder="Movie/Series Name" required>
-    <input type="text" name="Year" placeholder="Year (optional)">
+    <input type="text" name="Year" placeholder="Release Year (optional)">
     <textarea name="Message" placeholder="Anything else?" rows="3"></textarea>
 
     <button type="submit">Send Request</button>
