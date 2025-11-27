@@ -62,47 +62,9 @@ const moviesData = [
         quality1080p: {size: "2.81GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.IMAX.1080p.10bit.BluRay.HEVC.x265.Org.NF.Hindi.DDP.5.1.640kbps.+.English.AAC.5.1.ESubs.-%20moviesdrives.com.mkv?token=176357724814"},
         quality720p: {size: "1.55GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/[[%20moviesdrives.com%20]]%20Interstellar.2014.BluRay.IMAX.720p.x265.HEVC.10bit.Hindi.English.AAC.5.1.ESub.-%20moviesdrives.com.mkv?token=176357717712"}
     },
-    // STRANGER THINGS SERIES
-    {
-        id: 6,
-        title: "Stranger Things (Season 5 Starting Soon)",
-        category: "Hollywood",
-        releaseDate: "2016",
-        poster: "posters/stranger_things.jpg",
-        series: true,
-        seasons: [
-            {
-                season: 1,
-                quality1080p: { size: "7.1GB", link: "https://mega.blockxpiracy.net/cs/g?x=bARgn4oGSCLZ&n=2kwQ0LZI&fn=Stranger.Things.S01.1080p.Hindi.Eng.Vegamovies.NL.zip" },
-                quality720p: { size: "3.3GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S01.720p.Hindi.Eng.moviesdrives.com.zip?token=176358087014" }
-            },
-            {
-                season: 2,
-                quality1080p: { size: "8.17GB", link: "https://mega.blockxpiracy.net/cs/g?x=CponL8h2DSxa&n=6wp2QaoY&fn=Stranger.Things.S02.1080p.Hindi.Eng.Vegamovies.NL.zip" },
-                quality720p: { size: "3.63GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S02.720p.Hindi.Eng.moviesdrives.com.zip?token=1763581494115" }
-            },
-            {
-                season: 3,
-                quality1080p: { size: "6.2GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S03.1080p.Hindi.Eng.moviesdrives.com.zip?token=1763581617116" },
-                quality720p: { size: "3.86GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/78e8d4a85cdc39774b4c8d8821ff1dd5?token=1763581572116" }
-            },
-            {
-                season: 4,
-                volume: 1,
-                quality1080p: { size: "11.8GB", link: "https://mega.blockxpiracy.net/cs/g?x=En6J7pwCHAhK&n=Ck4wTA5K&fn=Stranger%20Things%20[Season%2004%20Vol.%201]%201080p.Vegamovies.NL-1.zip" },
-                quality720p: { size: "2.92GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/053b1986a0213897af866984235c5de3?token=1763581699118" }
-            },
-            {
-                season: 4,
-                volume: 2,
-                quality1080p: { size: "3.82GB", link: "https://mega.blockxpiracy.net/cs/g?x=KpyCz4oEmRrT&n=24BW1JyT&fn=Stranger%20Things%20S04E08-9%201080p%20NF%20WEB-DL%20x264%20[Hin+Eng].zip" },
-                quality720p: { size: "1.97GB", link: "https://mega.blockxpiracy.net/cs/g?x=us4yvo4XUQxK&n=LhozHQiJ&fn=Stranger.Things.S04-VOL2.E08-9.720p.WEB-DL.Hindi.5.1-English.ESub.x264.zip" }
-            }
-        ]
-    },
     // CHAINSAW MAN SERIES
     {
-        id: 7,
+        id: 6,
         title: "Chainsaw Man",
         category: "Anime",
         releaseDate: "2022",
@@ -118,7 +80,7 @@ const moviesData = [
     },
     // THE FAMILY MAN SERIES
     {
-        id: 8,
+        id: 7,
         title: "The Family Man",
         category: "Bollywood",
         releaseDate: "2019",
@@ -144,7 +106,7 @@ const moviesData = [
     },
     // INCEPTION 2010
     {
-        id: 9,
+        id: 8,
         title: "Inception",
         category: "Hollywood",
         releaseDate: "2010",
@@ -155,7 +117,7 @@ const moviesData = [
     },
     // BREAKING BAD SERIES
     {
-        id: 10,
+        id: 9,
         title: "Breaking Bad",
         category: "Hollywood",
         releaseDate: "2008",
@@ -191,7 +153,7 @@ const moviesData = [
     },
     // GAME OF THRONES SERIES
     {
-        id: 11,
+        id: 10,
         title: "Game Of Thrones",
         category: "Hollywood",
         releaseDate: "2011",
@@ -250,7 +212,7 @@ const moviesData = [
     },
     // CHAINSAW MAN – THE MOVIE: REZE ARC 2025
     {
-        id: 12,
+        id: 11,
         title: "Chainsaw Man – The Movie: Reze Arc",
         category: "Anime",
         releaseDate: "2025",
@@ -262,7 +224,7 @@ const moviesData = [
     },
     // JUJUTSU KAISEN SERIES
     {
-        id: 13,
+        id: 12,
         title: "Jujutsu Kaisen",
         category: "Anime",
         releaseDate: "2020",
@@ -281,9 +243,21 @@ const moviesData = [
             }
         ]
     },
+    {
+        id: 13,
+        title: "Vicky Vidya Ka Woh Wala Video",
+        category: "Bollywood",
+        releaseDate: "2024",
+        poster: "posters/vicky_vidya.jpg",
+        series: false,
+
+        quality720p: {size: "1GB", link: "https://pixel.hubcdn.fans/?id=215c970adf0d7ea92f140e72d9db07d1edc78f399486d37c2fa3e0452b232fbe1c254fd704945ed067e77c80c35d807907f442dd33a1fa1a3b01e321c62a41f3c4d88ed910c64da59b3945a0beeaf7848e2d52a02bb4b9cf2fbd08e5d9a13e0e::760cdc8b7e8228cc8291a606041357d8"},
+        quality1080p: {size: "2.5GB", link: "https://pixel.hubcdn.fans/?id=626cd66c8515c03183f0457dbefefcee1c25d0cf79b925256685796943c799f948626fac5a3029ded30455b6f2f2b8e2c22f82f48fe5bfc0fdb7371e7c5d0ed3829bdf67d505fa870ef23d1d2894bea10e1b64de406515f484423f99885ddd25::fe6f1a357af4ef50344808f6917edeb6"},
+        quality4k: {size: "13GB", link: "https://pixel.hubcdn.fans/?id=3e9f885b438f1fdb9b13d02742b03ac76d0d3a5970bc91421a5dcddcc3d3e817d00e28fd026117a9dec7c14a5e3a0e0456c6d87796e115f73c40e9cf1546326ce7e39cf8affd32e8f10e48798bf09e4cb95e05f23615b1674a43324ee9617ea5::0c1811b1a35a248facd2fe5f372acbfa"}
+    },
     // IT: WELCOME TO DERRY
     {
-        id: 15,
+        id: 14,
         title: "IT: Welcome to Derry (Episode 5 Added)",
         category: "Hollywood",
         poster: "posters/it_welcome_to_derry.jpg",
@@ -332,20 +306,9 @@ const moviesData = [
             }
         ]
     },
-    {
-        id: 14,
-        title: "Vicky Vidya Ka Woh Wala Video",
-        category: "Bollywood",
-        releaseDate: "2024",
-        poster: "posters/vicky_vidya.jpg",
-        series: false,
 
-        quality720p: {size: "1GB", link: "https://pixel.hubcdn.fans/?id=215c970adf0d7ea92f140e72d9db07d1edc78f399486d37c2fa3e0452b232fbe1c254fd704945ed067e77c80c35d807907f442dd33a1fa1a3b01e321c62a41f3c4d88ed910c64da59b3945a0beeaf7848e2d52a02bb4b9cf2fbd08e5d9a13e0e::760cdc8b7e8228cc8291a606041357d8"},
-        quality1080p: {size: "2.5GB", link: "https://pixel.hubcdn.fans/?id=626cd66c8515c03183f0457dbefefcee1c25d0cf79b925256685796943c799f948626fac5a3029ded30455b6f2f2b8e2c22f82f48fe5bfc0fdb7371e7c5d0ed3829bdf67d505fa870ef23d1d2894bea10e1b64de406515f484423f99885ddd25::fe6f1a357af4ef50344808f6917edeb6"},
-        quality4k: {size: "13GB", link: "https://pixel.hubcdn.fans/?id=3e9f885b438f1fdb9b13d02742b03ac76d0d3a5970bc91421a5dcddcc3d3e817d00e28fd026117a9dec7c14a5e3a0e0456c6d87796e115f73c40e9cf1546326ce7e39cf8affd32e8f10e48798bf09e4cb95e05f23615b1674a43324ee9617ea5::0c1811b1a35a248facd2fe5f372acbfa"}
-    },
     {
-        id: 16,
+        id: 15,
         title: "Frankenstein",
         category: "Hollywood",
         releaseDate: "2025",
@@ -356,6 +319,53 @@ const moviesData = [
         quality720p: {size: "1GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Frankenstein.2025.720p.10Bit.WEB-DL.Hindi.5.1-English.5.1.HEVC.x265-[Moviesdrives.cv].mkv?token=1764241324132"},
         quality1080p: {size: "2.3GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Frankenstein.2025.1080p.10Bit.WEB-DL.Hindi.5.1-English.5.1.HEVC.x265-%20moviesdrives.cv.mkv?token=1764239544133"},
         quality4k: {size: "16GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Frankenstein%202025%202160p%20NF%20WEB-DL%20SDR%20[Hindi%20Tamil+Telugu%20DDP%205.1%20+%20English%20DDPA%205.1].H.265-%20moviesdrives.cv.mkv?token=1764239544134"}
+    },
+    // STRANGER THINGS SERIES
+    {
+        id: 16,
+        title: "Stranger Things (Watch Season 5 Now)",
+        category: "Hollywood",
+        releaseDate: "2016",
+        poster: "posters/stranger_things.jpg",
+        series: true,
+        seasons: [
+            {
+                season: 1,
+                quality1080p: { size: "7.1GB", link: "https://mega.blockxpiracy.net/cs/g?x=bARgn4oGSCLZ&n=2kwQ0LZI&fn=Stranger.Things.S01.1080p.Hindi.Eng.Vegamovies.NL.zip" },
+                quality720p: { size: "3.3GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S01.720p.Hindi.Eng.moviesdrives.com.zip?token=176358087014" }
+            },
+            {
+                season: 2,
+                quality1080p: { size: "8.17GB", link: "https://mega.blockxpiracy.net/cs/g?x=CponL8h2DSxa&n=6wp2QaoY&fn=Stranger.Things.S02.1080p.Hindi.Eng.Vegamovies.NL.zip" },
+                quality720p: { size: "3.63GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S02.720p.Hindi.Eng.moviesdrives.com.zip?token=1763581494115" }
+            },
+            {
+                season: 3,
+                quality1080p: { size: "6.2GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Stranger.Things.S03.1080p.Hindi.Eng.moviesdrives.com.zip?token=1763581617116" },
+                quality720p: { size: "3.86GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/78e8d4a85cdc39774b4c8d8821ff1dd5?token=1763581572116" }
+            },
+            {
+                season: 4,
+                volume: 1,
+                quality1080p: { size: "11.8GB", link: "https://mega.blockxpiracy.net/cs/g?x=En6J7pwCHAhK&n=Ck4wTA5K&fn=Stranger%20Things%20[Season%2004%20Vol.%201]%201080p.Vegamovies.NL-1.zip" },
+                quality720p: { size: "2.92GB", link: "https://pub-2fe28ab4d73e444bb8b6de678d39a70d.r2.dev/053b1986a0213897af866984235c5de3?token=1763581699118" }
+            },
+            {
+                season: 4,
+                volume: 2,
+                quality1080p: { size: "3.82GB", link: "https://mega.blockxpiracy.net/cs/g?x=KpyCz4oEmRrT&n=24BW1JyT&fn=Stranger%20Things%20S04E08-9%201080p%20NF%20WEB-DL%20x264%20[Hin+Eng].zip" },
+                quality720p: { size: "1.97GB", link: "https://mega.blockxpiracy.net/cs/g?x=us4yvo4XUQxK&n=LhozHQiJ&fn=Stranger.Things.S04-VOL2.E08-9.720p.WEB-DL.Hindi.5.1-English.ESub.x264.zip" }
+            },
+            {
+                season: 5,
+                volume: 1,
+                quality480p: { size: "1GB", link: "https://love.stranger-things.buzz/f29d5cfd333a1efb31a3937d4efa302c?token=1764235935" },
+                quality720p: { size: "2.6GB", link: "https://love.stranger-things.buzz/7cc25c9610c6ecc424ee9d7194030677?token=1764238133" },
+                quality1080p: { size: "13GB", link: "https://love.stranger-things.buzz/9026f4d0d2854952d264995eb9b5f992?token=1764239501" },
+                quality4k: { size: "26GB", link: "https://love.stranger-things.buzz/1eb7cb278713ac998183f79aa2a41dd2?token=1764240139" }
+            }
+
+        ]
     },
 
 ];
