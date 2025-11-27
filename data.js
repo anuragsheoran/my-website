@@ -344,6 +344,18 @@ const moviesData = [
         quality1080p: {size: "2.5GB", link: "https://pixel.hubcdn.fans/?id=626cd66c8515c03183f0457dbefefcee1c25d0cf79b925256685796943c799f948626fac5a3029ded30455b6f2f2b8e2c22f82f48fe5bfc0fdb7371e7c5d0ed3829bdf67d505fa870ef23d1d2894bea10e1b64de406515f484423f99885ddd25::fe6f1a357af4ef50344808f6917edeb6"},
         quality4k: {size: "13GB", link: "https://pixel.hubcdn.fans/?id=3e9f885b438f1fdb9b13d02742b03ac76d0d3a5970bc91421a5dcddcc3d3e817d00e28fd026117a9dec7c14a5e3a0e0456c6d87796e115f73c40e9cf1546326ce7e39cf8affd32e8f10e48798bf09e4cb95e05f23615b1674a43324ee9617ea5::0c1811b1a35a248facd2fe5f372acbfa"}
     },
+    {
+        id: 16,
+        title: "Frankenstein",
+        category: "Hollywood",
+        releaseDate: "2025",
+        poster: "posters/frankenstein.jpg",
+        series: false,
 
+        quality480p: {size: "600MB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Frankenstein.2025.480p.WEB-DL.Hindi-English.ESub.x264-[Moviesdrives.cv].mkv?token=1764239625130"},
+        quality720p: {size: "1GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Frankenstein.2025.720p.10Bit.WEB-DL.Hindi.5.1-English.5.1.HEVC.x265-[Moviesdrives.cv].mkv?token=1764241324132"},
+        quality1080p: {size: "2.3GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Frankenstein.2025.1080p.10Bit.WEB-DL.Hindi.5.1-English.5.1.HEVC.x265-%20moviesdrives.cv.mkv?token=1764239544133"},
+        quality4k: {size: "16GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Frankenstein%202025%202160p%20NF%20WEB-DL%20SDR%20[Hindi%20Tamil+Telugu%20DDP%205.1%20+%20English%20DDPA%205.1].H.265-%20moviesdrives.cv.mkv?token=1764239544134"}
+    },
 
 ];
