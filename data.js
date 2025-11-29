@@ -368,6 +368,7 @@ const moviesData = [
         ]
     },
     {
+    id: 17,
     title: "Into the Wild",
     category: "Hollywood",
     releaseDate: "2007",
@@ -391,6 +392,7 @@ const moviesData = [
 
     },
     {
+    id: 18,
     title: "The Shawshank Redemption",
     category: "Hollywood",
     releaseDate: "1994",
