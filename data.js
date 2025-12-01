@@ -258,7 +258,7 @@ const moviesData = [
     // IT: WELCOME TO DERRY
     {
         id: 14,
-        title: "IT: Welcome to Derry (Episode 5 Added)",
+        title: "IT: Welcome to Derry (Episode 6 Added)",
         category: "Hollywood",
         poster: "posters/it_welcome_to_derry.jpg",
         releaseDate: "2025",
@@ -303,6 +303,15 @@ const moviesData = [
                 quality720p: {size: "380MB", link: "https://true.boblover.click/17dbaf1a25678701cf049a03ba31dabb?token=1764088095131"},
                 quality1080p: {size: "730MB", link: "https://true.boblover.click/4bffc108134b191c27cdbe44074280c5?token=1764093615"},
                 quality4k: {size: "5.7GB", link: "https://true.boblover.click/1182454ee5b8e4983339ee7769a971e6?token=1764094271141"}
+            }
+            ,
+            {
+                season: 1,
+                episode: 6,
+                title: "Episode 6",
+                quality720p: { size: "310mb", link: "https://love.stranger-things.buzz/203ccf1fd558347a824d926cabb0abd2?token=1764583920"},
+                quality1080p: { size: "700mb", link: "https://love.stranger-things.buzz/3a693987ccad0fc053aad46530bdcd6b?token=1764585336"},
+                quality4k: { size: "5.6gb", link: "https://love.stranger-things.buzz/92d2a8f62aa16c6959644b997317b6b0?token=1764586788"}
             }
         ]
     },
@@ -401,6 +410,7 @@ const moviesData = [
     quality1080p: { size: "1.8gb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.1080p.10Bit.BluRay.Hindi.2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764578527111" },
     quality4k: { size: "7.2gb", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/The.Shawshank.Redemption.1994.4K-2160p.SDR.10Bit.BluRay.Hindi.DDP2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764585738112" }
     }
+    
 
 
 ];
