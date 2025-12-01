@@ -389,8 +389,8 @@ const moviesData = [
         link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Into.the.Wild.2007.480p.BluRay.Hindi.English.DD.2.0.x264.ESubs.mkv?token=1764585854114" 
     },
     quality720p: { 
-        size: "1gb", 
-        link: "https://video-downloads.googleusercontent.com/ADGPM2nzgTFbCDNVMJ6jA7Ux7CdkAnK3pwezEyDUcZVaSgge-DKv5uWeCiWB8AARB2SBFYWlXJ0Hjoe5e_kIMie_zo_Xu8pd0uVVzNiSAKnAEwsN7fgYkql2gz1oWG8AvLNQQ_ut8iRJBkQ5lZtfLCkWtCoNtR3nI3K237BuvgT808tfraYFhJdq25Lovz9d0jNT2Q7REoecciiVV6-nptzKHsI9mPU2gzXoQHRRXI9ayfqqOafdaHza26u3pnc2Xc5TII-4Et1f" 
+        size: "x", 
+        link: "x" 
     },
     quality1080p: { 
         size: "1.5gb", 
@@ -405,12 +405,12 @@ const moviesData = [
     poster: "posters/the_shawshank_redemption.jpg",
     series: false,
 
-    quality480p: { size: "500mb", link: "https://video-downloads.googleusercontent.com/ADGPM2mMlIvsIX0kXTsbYsn8GpcVidurp9tFwNGDmax3GcnBFAMjjwclcNRUhKOVnQusHIRlk733-ndx8sKtqjgbaFTmGu5crN_k3g4QWmUrNrtJoFGlJeX32O6VKULM7hLILbtt3h7LUi0VY20SnODIBsobBM5OGVtQKXKHk8nfJ3ka6yWrJIdB9jJrEO-1V7wd9FScT0k0lfV0WZjecaHPozCHyE_gmAHK3-HNNa9zKkcku06gffDCtleg5IJTB9RMGtUkJvQo" },
+    quality480p: { size: "x", link: "x" },
     quality720p: { size: "900mb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.720p.10Bit.BluRay.Hindi.2.0-English.HEVC.x265-HDHub4u.Tv.mkv?token=1764585618110" },
     quality1080p: { size: "1.8gb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.1080p.10Bit.BluRay.Hindi.2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764578527111" },
     quality4k: { size: "7.2gb", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/The.Shawshank.Redemption.1994.4K-2160p.SDR.10Bit.BluRay.Hindi.DDP2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764585738112" }
     }
-    
+
 
 
 ];
