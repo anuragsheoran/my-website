@@ -375,21 +375,18 @@ const moviesData = [
     poster: "posters/into_the_wild.jpg",
     series: false,
 
-    quality480p: {
-        size: "500MB",
-        link: "https://video-downloads.googleusercontent.com/ADGPM2nV8Jr_qbzImGFvpZNDARwFHh8L-WrF1pdlLg7XrCPTIk-82wRTga0jiAVsF9aGcKeiGvkOSBbSDx10yFI08KiLyG2-z6u5gdnwRza6XoJHTBGWXDBo9Nt1-2CFWdd9R0UB5ipU_vCr0tQCkIQi8hslZA4404_UHxsU2LgBa336v_9wyLhwYs3lmwtYLVlfCu-YTIv2b3q8fLgjVbSEuICqFAfAws4VkLYx-uugGK1Er2K8Xs_fjKcj2IgZS3YTx8JMcemk"
+    quality480p: { 
+        size: "500mb", 
+        link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Into.the.Wild.2007.480p.BluRay.Hindi.English.DD.2.0.x264.ESubs.mkv?token=1764585854114" 
     },
-
-    quality720p: {
-        size: "1GB",
-        link: "https://video-downloads.googleusercontent.com/ADGPM2koApAAdsYui4Utgsq-tEN4xYUCOMdUlwujhY-pjdYtuvoCbqzVsKHQIyOjGwrX1Q8UEWFB0ZuyIOsVdtVpwFLdSi8PuWxMlLS9SGZyTrdQaPPc0maId5JWt_lzXvk8u3cksxCU_sXEUjWPBtdnth6WQhjMc4lk4bjAfitOA-XZK6bmQA2sCY3lDpemm8A3J3kX3ikZPrud_TaOHiv5cAMlBOhAEfCHsygKesKW2T39vOhdS0g"
+    quality720p: { 
+        size: "1gb", 
+        link: "https://video-downloads.googleusercontent.com/ADGPM2nzgTFbCDNVMJ6jA7Ux7CdkAnK3pwezEyDUcZVaSgge-DKv5uWeCiWB8AARB2SBFYWlXJ0Hjoe5e_kIMie_zo_Xu8pd0uVVzNiSAKnAEwsN7fgYkql2gz1oWG8AvLNQQ_ut8iRJBkQ5lZtfLCkWtCoNtR3nI3K237BuvgT808tfraYFhJdq25Lovz9d0jNT2Q7REoecciiVV6-nptzKHsI9mPU2gzXoQHRRXI9ayfqqOafdaHza26u3pnc2Xc5TII-4Et1f" 
     },
-
-    quality1080p: {
-        size: "3GB",
-        link: "https://video-downloads.googleusercontent.com/ADGPM2lx8E_0m2bzRCy7b_9s395f0qXnAACr7erjyOtdOefORWF-9cOTUJHKlXS8Ja9RHHHFqGhDhL6-PK7juFDiyGFBuIcQ33Hw2bHm8aTzAAZcPhWMbR8Va7-2Eb-K0TaiPurVk83k7Pz8jBYLI9unh2Ip7Ya1jZ0w_iCy3YDI1FMY2d203gO3jsG0eUGccyo8x-kCUySZIp9OaiHx1yLzo2udlsD35Zjju-MMImoyFIYeo9Pkj1x2NxC2TWY-kR008uNc88YL"
+    quality1080p: { 
+        size: "1.5gb", 
+        link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Into.the.Wild.2007.1080p.BluRay.Hindi.English.DD.5.1.x264.ESubs.mkv?token=1764581910117" 
     }
-
     },
     {
     id: 18,
@@ -399,22 +396,11 @@ const moviesData = [
     poster: "posters/the_shawshank_redemption.jpg",
     series: false,
 
-    quality480p: {
-        size: "500MB",
-        link: "https://video-downloads.googleusercontent.com/ADGPM2m3t5gXftYZnKgtGhlAv3L3zK2Wcj4wwZxcVWGLQ2UOohFrUHxoH7JIvzKcNTbG_pOHT7cXOza3fERmRIIMlOk4a1MYPqzM3ENp4rY0S6szHwkUHcCugx3iI9DIfkXDgI0VgGspUDnzYZcJHN5O0WwVq3k0kAwjkV-1CWZpb_UbZRkmS8H3y8Ka--kMzAxrbQvHzemwEKsyoi71VMQoPqFpR-JCH3uQIox_fITACRmgSH743vzMXFDvGzX7YgTBEwkcgzZSpz2ZeFM39m0QMEq_zBvQM9kf4-73iHzTbxNzYUiNd3_WdXHs1SD5GWau_10BwTH8g_FUFTSn8NcsYrpszRRtWUtNgPEBL8fosDey6dXLltQixSuQ8dksQK0JzPTJ0DjYI3PYJ5n8Sw1Yvqt0Lqbe1BmPk8KZ9dBq5MJFD99lnajF03o6rxhBPN4wPydRsZd5PoZ2Ri1N6prdgDwJo4zG0SEaYqwmnLJAff5LeOTj7iyxvj6WMKIqnRBTq39zCXmWiGrnn-70OyJiE19tkufAmXDOnFiPOmbyXtMMrsqjGva2ZVxulNZ6ykj5NfXbqVj7PKkDiypGXqSHW0pJPkCy02vvcShUOkn3fpNOmdBDwKLuRQglDX06ymZqd77mutshnEo0ZaTWKyzzfh2mb6gqm0Sej4GzKGqk17Szco27gjlF_7VHVNYRukLcfVqkQ1yLlpLbiNZRfaPVN6iofwnEO53C-eEvrWuwCo7tK7BE1_wTYnK9boCu1Bf9Qqh1Ew5cVMEi3L0QcmZUJOuGoYuCz1oNW2RI-X4J8QW9n77VubYVENfG_yi9xsF4HSf618qxow_qg7WyxAlKF4CRZYqp3sDbQp7a7vnffpPAg7juRM2yjH20QojUg5V9kSj990dx_4KC68amW-iUtbNgvCAO2299X5wvnPLTmNjC7ECz-SMHRHvCjuE9GgFy8sAxzvlTAAnAraiVWOeZYVcfINQuzXV07Pv8scNvOoyx1jLsOv-WgZFIrtMwQ_fXRgLDaf2iNRhzOOqMMKus0pBNcUK8ln2QMLejaawM0A5r_6CoYvfOrYOdokSK3ki0bpRfymiE1VaQ4Z6nmbjjTTSZOvTfBz_R5dCAi8gh434EZFdwLwiWnAzm2OYLwW8uZzxdAet3QYlddEMTh128lQmcar3rxA"
-    },
-
-    quality720p: {
-        size: "700MB",
-        link: "https://video-downloads.googleusercontent.com/ADGPM2lCzE7n2Fqh-F2lv1wT_Dlhdn7-fK0ZkhcJC3ZsZ0A5HEi5PDJtXk6O3XPLesshd8bMk-bO-sszpolybqv-b6Xc77spcek1gPbcE2jurzk6h9xPNM_ktkKuJ-SRXeppwLeAi7OrnxXIvhbkH5jabqVtAmd8gBoLPiXvBIgt96wfjq1E7kroKpDc0yd_GdCpw6nQnLoRlnaxpjMzUjppl8CUxxp_M-7o6fGsk0ltdUIE5ZIhSSIU0gFtZY5XoPOcJN0juBVkg3axzQr7Vcikdnm1JuWvqQI7W5hLys4N3QHkFwHnVZHRW18AdtEGovit5sb8aEDBFJ2dKZyRQzupoolpGuGatXLM1LhdC0f_ylb6hcZH-hRHgOHLbnzDe13RDHmMrWc-N0EcVZRg1kpfVhTBKdQ16LJuEWYdyag5SL-ntFB3Fcl2ff8ScK_RNSZt0fyoHD2IgpFY6DXxif0l9qS21DEM3oM391kMjM7YWKVYggB5p7GEuQIgXcvJenLmCnQuJrUI7v3I73YGJ1jvZVPoNL6WqMjw2WMcf00OpEQQkqZE3tSYNB6IczciOeGnXs6g7hVmmbldPj8Aza3cQTQHk-_1MybNNxL1gMd8zNi2Z9tNxdvxUk6GMbhMLr9rp1DFXFvWML3sy9GKuabAl_GaZhHXCbW0PWA_3qCq5ngVTaao0ONjcIdiyysH7_Y58ISgR5RM_d2S5znHMaJ_Zq09PHXRTsuxlcoGlCYKQuESRUPvKAv_ADZ8e1MEy6s2hGOVFc_OhqsRxNqi_JWt2zkL73H8WuhyFeCVuPhXkoiKw7ElcClQu0nflzjDES66b0Xse2O6iPx-SYTpgwkf-lg0_wMPOfsWBpx5nz4C6eM-w5jukEGJ_T7Wa4yJK2gyuLPTGK0lcwHnd8mvR0odQCn8PmgOMkVJ1pAwYHFy9-gKTP2QMDWkhoLiJs6ejamYMfPXNvfPTFoEljh7i-70OB-fK2I1hefOjS1WQG4NJHYFXXjWhBh3dHZRk-9rFQRyG-quyWU7AupLVnipWjXfIpLVU-FQomenWW6JvA7uyzlcG4KpekY4wMnnJ_gWKSREIkhQ3xA8kqWoxSD_GZG8ql19Co4-QD28Xt-qNFa4vIhhGs69w27oCF0Gq88M8km034qls7UjgVXnjF-5VsVm4Hu2fsRGEw"
-    },
-
-    quality1080p: {
-        size: "2.2GB",
-        link: "https://video-downloads.googleusercontent.com/ADGPM2l4f1GG1W3rqKWMecE5KCFYkuNn5CubXpZbxNuPZTSTQMwsqaHR7bBx-dmLfRq2ELXIqPR4Eo7zmU-HkLIxl4BYL48ZrC9bndVoxo-kvl5IT-MdH0WEsENMZ79cQXIi9Oq0bWCLsdkbXgiquwM6f5wDK5QCqNQrbbAXCdp7FZIO_K1ftXPYaeDZSKDbamsBZyh9Ie9lgeVHxcmALEiNe1GpLenNjqKtgpEq9_Oz5teN3qT8HrMogM5u_CDaAB8oIaI8fnNz"
-    },
-
-    },
+    quality480p: { size: "500mb", link: "https://video-downloads.googleusercontent.com/ADGPM2mMlIvsIX0kXTsbYsn8GpcVidurp9tFwNGDmax3GcnBFAMjjwclcNRUhKOVnQusHIRlk733-ndx8sKtqjgbaFTmGu5crN_k3g4QWmUrNrtJoFGlJeX32O6VKULM7hLILbtt3h7LUi0VY20SnODIBsobBM5OGVtQKXKHk8nfJ3ka6yWrJIdB9jJrEO-1V7wd9FScT0k0lfV0WZjecaHPozCHyE_gmAHK3-HNNa9zKkcku06gffDCtleg5IJTB9RMGtUkJvQo" },
+    quality720p: { size: "900mb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.720p.10Bit.BluRay.Hindi.2.0-English.HEVC.x265-HDHub4u.Tv.mkv?token=1764585618110" },
+    quality1080p: { size: "1.8gb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.1080p.10Bit.BluRay.Hindi.2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764578527111" },
+    quality4k: { size: "7.2gb", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/The.Shawshank.Redemption.1994.4K-2160p.SDR.10Bit.BluRay.Hindi.DDP2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764585738112" }
+    }
 
 
 ];
