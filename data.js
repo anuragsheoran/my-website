@@ -1,5 +1,5 @@
 // Movie & Series Database
-const moviesData = [
+window.moviesData = [
 
     // PARAM SUNDARI
     {
@@ -384,9 +384,9 @@ const moviesData = [
     poster: "posters/into_the_wild.jpg",
     series: false,
 
-    quality480p: { size: "500mb", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Into.the.Wild.2007.480p.BluRay.Hindi.English.DD.2.0.x264.ESubs.mkv?token=1764585854114" },
-    quality720p: { size: "1gb", link: "https://pixeldrain.dev/u/YRHs9GwQ?download" },
-    quality1080p: { size: "1.5gb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Into.the.Wild.2007.1080p.BluRay.Hindi.English.DD.5.1.x264.ESubs.mkv?token=1764581910117" }
+    quality480p: { size: "500MB", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/Into.the.Wild.2007.480p.BluRay.Hindi.English.DD.2.0.x264.ESubs.mkv?token=1764585854114" },
+    quality720p: { size: "1GB", link: "https://pixeldrain.dev/u/YRHs9GwQ?download" },
+    quality1080p: { size: "1.5GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/Into.the.Wild.2007.1080p.BluRay.Hindi.English.DD.5.1.x264.ESubs.mkv?token=1764581910117" }
     },
     {
     id: 18,
@@ -396,10 +396,10 @@ const moviesData = [
     poster: "posters/the_shawshank_redemption.jpg",
     series: false,
 
-    quality480p: { size: "560mb", link: "https://pixeldrain.dev/u/LyRa5HU7?download" },
-    quality720p: { size: "900mb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.720p.10Bit.BluRay.Hindi.2.0-English.HEVC.x265-HDHub4u.Tv.mkv?token=1764585618110" },
-    quality1080p: { size: "1.8gb", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.1080p.10Bit.BluRay.Hindi.2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764578527111" },
-    quality4k: { size: "7.2gb", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/The.Shawshank.Redemption.1994.4K-2160p.SDR.10Bit.BluRay.Hindi.DDP2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764585738112" }
+    quality480p: { size: "560MB", link: "https://pixeldrain.dev/u/LyRa5HU7?download" },
+    quality720p: { size: "900MB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.720p.10Bit.BluRay.Hindi.2.0-English.HEVC.x265-HDHub4u.Tv.mkv?token=1764585618110" },
+    quality1080p: { size: "1.8GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.1080p.10Bit.BluRay.Hindi.2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764578527111" },
+    quality4k: { size: "7.2GB", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/The.Shawshank.Redemption.1994.4K-2160p.SDR.10Bit.BluRay.Hindi.DDP2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764585738112" }
     }
 
 

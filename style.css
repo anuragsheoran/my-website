@@ -1,158 +1,678 @@
 /* ===================================================
-   Cinephile — style.css (Responsive, Modern, Sleek with Button + Card Magic)
+   Cinephile — style.css
+   Clean, cinematic, neon, but minimal.
    =================================================== */
 
-/* ---- Global Styles ---- */
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#0f0f0f; color:#fff; line-height:1.5; }
-a { text-decoration:none; color:inherit; }
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* ---- Header Styling ---- */
-header { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1rem 1.5rem; background:#1a1a1a; border-bottom:2px solid #ff3b3b; gap:.7rem; }
-header h1 { font-size:2rem; font-weight:900; color:#ff3b3b; text-transform:uppercase; letter-spacing:1px; text-shadow:0 0 12px rgba(255,59,59,.7); }
+:root {
+  --bg-main: #060608;
+  --bg-elevated: rgba(18, 18, 22, 0.96);
+  --bg-glass: rgba(18, 18, 22, 0.92);
+  --accent: #ff3b3b;
+  --accent-soft: rgba(255, 59, 59, 0.4);
+  --accent-alt: #ff7bff;
+  --text-main: #ffffff;
+  --text-muted: #a7a7b3;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.7);
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.25s ease;
+}
 
-.filters { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.5rem; }
-.filters input, .filters select { padding:.45rem .75rem; border-radius:6px; border:none; outline:none; font-size:.95rem; background:#222; color:#fff; transition:.2s; }
-.filters input::placeholder { color:#aaa; }
-.filters input:focus, .filters select:focus { border:1px solid #ff3b3b; background:#1c1c1c; }
+html,
+body {
+  height: 100%;
+}
 
-/* ---- Category Buttons ---- */
-.category-buttons { display:flex; gap:.4rem; flex-wrap:wrap; }
-.category-buttons button { padding:.45rem .9rem; border-radius:6px; border:none; font-weight:600; background:#333; color:#fff; cursor:pointer; transition: transform .2s, box-shadow .2s; }
-.category-buttons button:hover { transform:scale(1.05); box-shadow:0 0 8px rgba(255,59,59,.5); }
-.category-buttons button.is-active { background:#ff3b3b; color:#fff; box-shadow:0 0 12px rgba(255,59,59,.7); animation:pulse-glow 2.5s infinite ease-in-out; }
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
 
-/* ---- Responsive Header ---- */
-@media(max-width:768px){ header{flex-direction:column;gap:.5rem;} .filters{flex-direction:column;gap:.4rem;width:100%;} .filters input,.filters select{width:100%;} .category-buttons{justify-content:center;width:100%;} }
-@media(min-width:1200px){ header{flex-direction:row;justify-content:space-between;align-items:center;} .filters{gap:.7rem;} }
+/* Global background gradient overlay */
+.app-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 59, 59, 0.18), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(147, 51, 234, 0.2), transparent 55%),
+    linear-gradient(to bottom, #050509, #050506);
+}
 
-/* ---- Pulse Glow Animation ---- */
-@keyframes pulse-glow {0%{box-shadow:0 0 6px rgba(255,59,59,.4);}50%{box-shadow:0 0 12px rgba(255,59,59,.6);}100%{box-shadow:0 0 6px rgba(255,59,59,.4);}}
+/* Generic links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* ---- Movies Grid ---- */
-#movies-container{padding:.5rem;}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.8rem;}
+/* ===================================================
+   Header
+   =================================================== */
 
-/* ---- Movie Card ---- */
-.movie-card{background:#1c1c1c;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;}
-.movie-card:hover,.movie-card:active{transform:translateY(-4px) scale(1.03); box-shadow:0 12px 25px rgba(255,59,59,.45),0 0 12px rgba(255,59,59,.2) inset; filter:brightness(1.05);}
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+      to bottom,
+      rgba(5, 5, 10, 0.92),
+      rgba(5, 5, 10, 0.88),
+      rgba(5, 5, 10, 0.8)
+    );
+  border-bottom: 1px solid var(--border-subtle);
+}
 
-/* ---- Poster Wrap ---- */
-.poster-wrap{position:relative;overflow:hidden;width:100%;aspect-ratio:2/3;background:#111;}
-.poster-wrap img{width:100%;height:100%;display:block;object-fit:contain;transition:transform .25s ease;}
-.movie-card:hover .poster-wrap img,.movie-card:active .poster-wrap img{transform:scale(1.06);}
-.poster-wrap::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.15);transition:background .25s ease;}
-.movie-card:hover .poster-wrap::after,.movie-card:active .poster-wrap::after{background:rgba(0,0,0,.25);}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.9rem 1.2rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
 
-/* ---- Card Head ---- */
-.card-head{padding:.4rem;text-align:center;}
-.card-head h3{font-size:.95rem;margin-bottom:.3rem;}
-.movie-cat{font-size:.75rem;color:#aaa;text-align:center;margin-bottom:.5rem;}
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
 
-/* ---- Card Buttons ---- */
-.card-buttons{display:flex;flex-direction:column;gap:.35rem;padding:.4rem;}
-.card-buttons button,.card-buttons select{position:relative;width:100%;padding:.35rem;border-radius:5px;border:none;font-size:.85rem;cursor:pointer;overflow:hidden;transition:transform .25s ease,background .25s ease,box-shadow .25s ease;}
-.card-buttons button{background:#ff3b3b;color:#fff;animation:pulse-glow 2.5s infinite ease-in-out;}
-.card-buttons button:hover{transform:scale(1.1) translateY(-2px);box-shadow:0 6px 18px rgba(255,59,59,.55);}
-.card-buttons button:active{transform:scale(.95);box-shadow:0 0 12px rgba(255,59,59,.6) inset;}
-.card-buttons button::after{content:'';position:absolute;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.2);transform:scale(0);pointer-events:none;transition:width .3s,height .3s,transform .3s,opacity .3s;}
-.card-buttons button:active::after{width:200px;height:200px;transform:scale(1);opacity:0;transition:0s;}
-.series-downloads{display:flex;gap:.4rem;flex-wrap:wrap;}
-.card-buttons .download-btn:nth-child(1){background:linear-gradient(135deg,#ff3b3b,#ff5555);}
-.card-buttons .download-btn:nth-child(2){background:linear-gradient(135deg,#ff7b3b,#ff9855);}
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-main);
+  text-shadow: 0 0 18px rgba(255, 59, 59, 0.55);
+}
 
-/* ---- Modals ---- */
-#detailModal,#requestModal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;z-index:1000;backdrop-filter:blur(4px);}
-#detailModal[aria-hidden="false"],#requestModal[aria-hidden="false"]{display:flex;}
-.modal-box{background:#1b1b1b;width:90%;max-width:430px;padding:1.3rem;border-radius:14px;box-shadow:0 0 25px rgba(255,59,59,.2);animation:popIn .25s ease;}
-@keyframes popIn{from{transform:scale(.85);opacity:0;}to{transform:scale(1);opacity:1;}}
-.modal-box h2{margin:0 0 .6rem;font-size:1.4rem;color:#ff3b3b;}
-.modal-box input,.modal-box button,.modal-box select{width:100%;padding:.55rem;margin-bottom:.7rem;background:#121212;border:1px solid #2a2a2a;color:#fff;border-radius:8px;font-size:.95rem;}
-.modal-box button{background:#ff3b3b;border:none;cursor:pointer;transition:.15s;position:relative;overflow:hidden;}
-.modal-box button:hover{background:#ff4848;}
-#requestSuccess{display:none;margin-top:.3rem;color:#0f0;font-weight:bold;font-size:.95rem;}
+.tagline {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
 
-/* ---- Modal Release Date Styling ---- */
-.release-date{color:#ff3b3b;font-weight:700;font-size:.95rem;display:block;margin:.45rem 0;padding-left:.45rem;border-left:3px solid rgba(255,59,59,.18);backdrop-filter:blur(2px);}
+.controls-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
 
-/* ---- Modal Shiny Button Effect ---- */
-.modal-box button,.modal-box .modal-close,.modal-box .view-episodes,.modal-box .btn-ghost,.modal-box .download-btn{position:relative;overflow:hidden;}
-.modal-box button::after,.modal-box .download-btn::after,.modal-box a::after,.modal-box .view-episodes::after{content:"";position:absolute;top:-120%;left:-120%;width:300%;height:300%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.28),transparent);transform:rotate(25deg);transition:.45s;pointer-events:none;}
-.modal-box button:hover::after,.modal-box .download-btn:hover::after,.modal-box a:hover::after,.modal-box .view-episodes:hover::after{top:-30%;left:-30%;}
+/* Filters row */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
 
-/* ---- Episode List Styling ---- */
-.episode-list{display:flex;flex-direction:column;gap:.6rem;margin-top:.8rem;}
-.episode-row{display:flex;justify-content:space-between;align-items:center;gap:.6rem;background:#121212;padding:.55rem;border-radius:8px;border:1px solid #262626;}
-.ep-left{flex:1;}
-.ep-title{font-weight:600;color:#e9e9e9;margin-bottom:3px;}
-.ep-meta{font-size:.82rem;color:#9a9a9a;}
-.ep-right{display:flex;gap:.45rem;align-items:center;}
-.btn-small{padding:.35rem .45rem;font-size:.82rem;border-radius:6px;}
+.filters input,
+.filters select {
+  padding: 0.48rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(10, 10, 15, 0.95);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  outline: none;
+  min-width: 140px;
+  transition: border var(--transition-fast), background var(--transition-fast),
+    box-shadow var(--transition-fast), transform 0.08s ease;
+}
 
-/* ---- Modal body & request modal adjustments ---- */
-#modalBody.modal-box,#requestBody.modal-box{background:#1b1b1b;border-radius:12px;padding:1rem;box-shadow:0 12px 30px rgba(0,0,0,.6);}
+.filters input::placeholder {
+  color: #7c7c8b;
+}
 
-/* ---- Responsive Enhancements ---- */
-@media(min-width:600px){ header{flex-direction:row;justify-content:space-between;} .filters{margin-top:0;} .card-buttons{flex-direction:row;} .card-buttons button,.card-buttons select{flex:1;width:auto;} .poster-wrap{aspect-ratio:2/3;} }
-@media(min-width:900px){ .cards-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));} .poster-wrap{aspect-ratio:2/3;} }
+.filters input:focus,
+.filters select:focus {
+  border-color: var(--accent);
+  background: rgba(10, 10, 16, 1);
+  box-shadow: 0 0 0 1px rgba(255, 59, 59, 0.6);
+  transform: translateY(-1px);
+}
 
-/* ---- Mobile Tap/Focus Feedback ---- */
-.card-buttons button:focus,.card-buttons select:focus{outline:none;}
-.filters button:active,.filters button:focus,.filters select:active,.filters select:focus,.filters input:focus{transform:scale(.98);border:1px solid #ff3b3b;outline:none;transition:transform .1s,border .1s;}
-/* ================================
-   PERFECTED POPUP + SCROLL SYSTEM
-   ================================ */
+/* Category buttons */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
 
-/* Center popup perfectly */
-#detailModal {
-    display: flex !important;
+.category-buttons button {
+  position: relative;
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(28, 28, 35, 0.95);
+  color: var(--text-main);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.category-buttons button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.category-buttons button.is-active {
+  background: linear-gradient(135deg, var(--accent), #ff6a6a);
+  box-shadow: 0 0 18px var(--accent-soft);
+}
+
+/* Header layout for wider screens */
+@media (min-width: 800px) {
+  .header-inner {
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    max-height: 100vh;
-    overflow-y: auto;
+    justify-content: space-between;
+  }
+
+  .controls-block {
+    align-items: flex-end;
+  }
 }
 
-/* Popup box */
-#modalContent {
-    width: 90%;
-    max-width: 500px;
-    border-radius: 14px;
-    overflow: hidden; /* clean edges */
+/* ===================================================
+   Main layout
+   =================================================== */
+
+.content-shell {
+  max-width: 1100px;
+  margin: 1rem auto 2.5rem;
+  padding: 0 1.2rem;
 }
 
-/* Inner scrollable area */
-#modalBody {
-    max-height: 80vh;
-    overflow-y: auto;
-    padding-right: 10px;
+/* Grid of cards */
+#movies-container {
+  padding-top: 0.4rem;
 }
 
-/* Consistent spacing inside popup */
-#modalBody > * {
-    margin-bottom: 12px;
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.9rem;
 }
 
-/* Universal scroll forcing
-   Works no matter how HTML changes */
+/* ===================================================
+   Movie Card
+   =================================================== */
+
+.movie-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: var(--shadow-soft);
+  transform-origin: center;
+  transition: transform var(--transition-med), box-shadow var(--transition-med),
+    filter var(--transition-med), border-color var(--transition-med);
+}
+
+.movie-card:hover,
+.movie-card:active {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 59, 59, 0.4);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.9),
+    0 0 18px rgba(255, 59, 59, 0.35);
+  filter: brightness(1.04);
+}
+
+/* Poster area */
+.poster-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 0%, #3f3f46, #111827);
+}
+
+.poster-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-med);
+}
+
+.movie-card:hover .poster-wrap img {
+  transform: scale(1.07);
+}
+
+.poster-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(0, 0, 0, 0.1), transparent),
+    linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 55%);
+  mix-blend-mode: soft-light;
+}
+
+/* Card head */
+.card-head {
+  padding: 0.48rem 0.55rem 0.35rem;
+  text-align: left;
+}
+
+.card-head h3 {
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.movie-cat {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  padding: 0 0.55rem 0.1rem;
+}
+
+/* Buttons block */
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.4rem 0.55rem 0.55rem;
+}
+
+.card-buttons button,
+.card-buttons select {
+  position: relative;
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.85rem;
+  padding: 0.38rem 0.65rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform var(--transition-med), box-shadow var(--transition-med),
+    background var(--transition-med), filter var(--transition-med);
+}
+
+.download-btn {
+  background: linear-gradient(135deg, var(--accent), #ff6a6a);
+  color: var(--text-main);
+  box-shadow: 0 0 14px rgba(255, 59, 59, 0.6);
+}
+
+.download-btn:nth-child(2) {
+  background: linear-gradient(135deg, #ff7b3b, #ffb873);
+}
+
+.card-buttons button:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.9);
+}
+
+.card-buttons button:active {
+  transform: scale(0.97);
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.8);
+}
+
+/* view episodes / extra controls */
+.view-episodes {
+  background: radial-gradient(circle at 0 0, #4f46e5, #0f172a);
+  color: var(--text-main);
+}
+
+/* For series multiple buttons in horizontal flow on larger screens */
+.series-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+@media (min-width: 650px) {
+  .card-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card-buttons button,
+  .card-buttons select {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+/* Muted text */
+.muted {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   Ripple effect for buttons
+   =================================================== */
+
+.ripple {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent);
+  transform: translate(-50%, -50%);
+  animation: ripple 0.5s ease-out;
+}
+
+@keyframes ripple {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0.7;
+  }
+  to {
+    width: 220px;
+    height: 220px;
+    opacity: 0;
+  }
+}
+
+/* ===================================================
+   Modals
+   =================================================== */
+
 #detailModal,
-#detailModal .modal,
-#detailModal .modal-content,
-#detailModal #modalContent,
-#modalBody {
-    max-height: 90vh !important;
-    overflow-y: auto !important;
+#requestModal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.8), transparent),
+    rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(18px);
+  z-index: 1000;
+  padding: 1.25rem;
 }
 
-/* Modern scrollbar style */
-#detailModal *::-webkit-scrollbar {
-    width: 6px;
+#detailModal[aria-hidden="false"],
+#requestModal[aria-hidden="false"] {
+  display: flex;
 }
-#detailModal *::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.25);
-    border-radius: 10px;
+
+.modal-box {
+  width: 100%;
+  max-width: 480px;
+  background: radial-gradient(circle at 0 0, rgba(255, 59, 59, 0.21), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.25), transparent 60%),
+    rgba(12, 12, 18, 0.96);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.1rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.95);
+  animation: popIn 0.24s ease-out;
+  max-height: 80vh;
+  overflow-y: auto;
 }
-#detailModal *::-webkit-scrollbar-track {
-    background: transparent;
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9) translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
-/* End of PERFECTED POPUP + SCROLL SYSTEM */
+
+.modal-box h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+
+.modal-sub {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-bottom: 0.7rem;
+}
+
+/* Release date line */
+.release-date {
+  display: inline-block;
+  margin: 0.4rem 0 0.5rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  color: var(--accent);
+  background: rgba(255, 59, 59, 0.14);
+}
+
+/* Modal downloads / lists */
+.modal-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.6rem 0;
+}
+
+/* Episode list */
+.episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.6rem;
+}
+
+.episode-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.55rem 0.55rem;
+  border-radius: 10px;
+  background: rgba(15, 15, 22, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ep-left {
+  flex: 1;
+}
+
+.ep-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ep-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.ep-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.btn-small {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* Season selector inside modals */
+.season-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+
+.season-row label {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.season-select {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 15, 0.96);
+  color: var(--text-main);
+  outline: none;
+}
+
+/* Modal buttons & inputs */
+.modal-box input,
+.modal-box textarea,
+.modal-box select {
+  width: 100%;
+  margin-bottom: 0.6rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(12, 12, 18, 0.95);
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  outline: none;
+}
+
+.modal-box input:focus,
+.modal-box textarea:focus,
+.modal-box select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(255, 59, 59, 0.6);
+}
+
+.modal-box textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.modal-box button {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  padding: 0.55rem 0.8rem;
+  background: linear-gradient(135deg, var(--accent), #ff6a6a);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 59, 59, 0.45);
+  transition: transform var(--transition-med), box-shadow var(--transition-med),
+    filter var(--transition-med);
+}
+
+.modal-box button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.95);
+}
+
+.modal-box button:active {
+  transform: scale(0.98);
+}
+
+/* Secondary close button in request modal */
+.modal-close-btn {
+  margin-top: 0.25rem;
+  background: linear-gradient(135deg, #27272f, #18181b);
+  box-shadow: none;
+}
+
+/* Request success */
+#requestSuccess {
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  color: #22c55e;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+#requestSuccess.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ===================================================
+   Floating Request Button
+   =================================================== */
+
+#requestBtn {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 0 0, #f97316, #dc2626);
+  color: var(--text-main);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 18px rgba(248, 113, 113, 0.6);
+  z-index: 900;
+  transition: transform var(--transition-med), box-shadow var(--transition-med),
+    filter var(--transition-med);
+}
+
+#requestBtn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+#requestBtn:active {
+  transform: scale(0.96);
+}
+
+/* ===================================================
+   Footer
+   =================================================== */
+
+.site-footer {
+  padding: 1rem 1.2rem 1.4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   Responsive tweaks
+   =================================================== */
+
+@media (max-width: 600px) {
+  .header-inner {
+    padding: 0.85rem 0.9rem 0.7rem;
+  }
+
+  .content-shell {
+    padding: 0 0.9rem;
+  }
+
+  #requestBtn {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
