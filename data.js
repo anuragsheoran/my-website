@@ -400,7 +400,29 @@ window.moviesData = [
     quality720p: { size: "900MB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.720p.10Bit.BluRay.Hindi.2.0-English.HEVC.x265-HDHub4u.Tv.mkv?token=1764585618110" },
     quality1080p: { size: "1.8GB", link: "https://pub-58c37aacc5ca4f78ba86b47195edec29.r2.dev/The.Shawshank.Redemption.1994.1080p.10Bit.BluRay.Hindi.2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764578527111" },
     quality4k: { size: "7.2GB", link: "https://pub-b5ecaffddf2344a0ae2222f5e8913e1b.r2.dev/The.Shawshank.Redemption.1994.4K-2160p.SDR.10Bit.BluRay.Hindi.DDP2.0-English.5.1.HEVC.x265-HDHub4u.Tv.mkv?token=1764585738112" }
-    }
+    },
+    {
+    id: 19,
+    title: "Dhurandhar",
+    category: "Bollywood",
+    releaseDate: "2025",
+    poster: "posters/dhurandhar.jpg",
+    series: false,
 
+    quality480p: { 
+        size: "700MB", 
+        link: "https://pub-6b25c191839c4b01a878de4fdde0227b.r2.dev/ea6fea4bf5f497289a10de2143c7b3a9?token=1765376431125" 
+    },
+
+    quality720p: { 
+        size: "1.2GB", 
+        link: "https://pub-6b25c191839c4b01a878de4fdde0227b.r2.dev/f78b0a44df95b5f40f60796e4bc75bd7?token=1765380251126" 
+    },
+
+    quality1080p: { 
+        size: "2.7GB", 
+        link: "https://pub-6b25c191839c4b01a878de4fdde0227b.r2.dev/d19ad852b285f9bcbd604b11f6d434e0?token=1765380004126" 
+    }
+    },
 
 ];

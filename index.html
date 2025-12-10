@@ -125,6 +125,18 @@
       <div id="requestSuccess">Request sent successfully ✔</div>
     </div>
   </div>
+<div id="cursorLight"></div>
+<script>
+if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  document.addEventListener("mousemove", e => {
+    document.body.style.setProperty("--mx", e.clientX - innerWidth / 2);
+    document.body.style.setProperty("--my", e.clientY - innerHeight / 2);
+
+    cursorLight.style.left = e.clientX + "px";
+    cursorLight.style.top  = e.clientY + "px";
+  });
+}
+</script>
 
   <!-- Floating Request Button -->
   <button id="requestBtn" aria-label="Request a movie or show">

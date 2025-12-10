@@ -69,11 +69,11 @@ a {
   z-index: 50;
   backdrop-filter: blur(18px);
   background: linear-gradient(
-      to bottom,
-      rgba(5, 5, 10, 0.92),
-      rgba(5, 5, 10, 0.88),
-      rgba(5, 5, 10, 0.8)
-    );
+    to bottom,
+    rgba(5, 5, 10, 0.92),
+    rgba(5, 5, 10, 0.88),
+    rgba(5, 5, 10, 0.8)
+  );
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -130,8 +130,11 @@ a {
   font-size: 0.9rem;
   outline: none;
   min-width: 140px;
-  transition: border var(--transition-fast), background var(--transition-fast),
-    box-shadow var(--transition-fast), transform 0.08s ease;
+  transition:
+    border var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform 0.08s ease;
 }
 
 .filters input::placeholder {
@@ -164,7 +167,9 @@ a {
   background: rgba(28, 28, 35, 0.95);
   color: var(--text-main);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
     background var(--transition-fast);
 }
 
@@ -227,15 +232,19 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: var(--shadow-soft);
   transform-origin: center;
-  transition: transform var(--transition-med), box-shadow var(--transition-med),
-    filter var(--transition-med), border-color var(--transition-med);
+  transition:
+    transform var(--transition-med),
+    box-shadow var(--transition-med),
+    filter var(--transition-med),
+    border-color var(--transition-med);
 }
 
 .movie-card:hover,
 .movie-card:active {
   transform: translateY(-4px) scale(1.02);
   border-color: rgba(255, 59, 59, 0.4);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.9),
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.9),
     0 0 18px rgba(255, 59, 59, 0.35);
   filter: brightness(1.04);
 }
@@ -265,7 +274,8 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(0, 0, 0, 0.1), transparent),
+  background:
+    radial-gradient(circle at top, rgba(0, 0, 0, 0.1), transparent),
     linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 55%);
   mix-blend-mode: soft-light;
 }
@@ -305,8 +315,11 @@ a {
   padding: 0.38rem 0.65rem;
   cursor: pointer;
   overflow: hidden;
-  transition: transform var(--transition-med), box-shadow var(--transition-med),
-    background var(--transition-med), filter var(--transition-med);
+  transition:
+    transform var(--transition-med),
+    box-shadow var(--transition-med),
+    background var(--transition-med),
+    filter var(--transition-med);
 }
 
 .download-btn {
@@ -400,7 +413,8 @@ a {
   display: none;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.8), transparent),
+  background:
+    radial-gradient(circle at top, rgba(15, 23, 42, 0.8), transparent),
     rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(18px);
   z-index: 1000;
@@ -415,7 +429,8 @@ a {
 .modal-box {
   width: 100%;
   max-width: 480px;
-  background: radial-gradient(circle at 0 0, rgba(255, 59, 59, 0.21), transparent 60%),
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 59, 59, 0.21), transparent 60%),
     radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.25), transparent 60%),
     rgba(12, 12, 18, 0.96);
   border-radius: var(--radius-lg);
@@ -575,7 +590,9 @@ a {
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(255, 59, 59, 0.45);
-  transition: transform var(--transition-med), box-shadow var(--transition-med),
+  transition:
+    transform var(--transition-med),
+    box-shadow var(--transition-med),
     filter var(--transition-med);
 }
 
@@ -605,7 +622,10 @@ a {
   opacity: 0;
   visibility: hidden;
   transform: translateY(4px);
-  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0.35s ease;
 }
 
 #requestSuccess.is-visible {
@@ -633,9 +653,13 @@ a {
   justify-content: center;
   background: radial-gradient(circle at 0 0, #f97316, #dc2626);
   color: var(--text-main);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.9), 0 0 18px rgba(248, 113, 113, 0.6);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.9),
+    0 0 18px rgba(248, 113, 113, 0.6);
   z-index: 900;
-  transition: transform var(--transition-med), box-shadow var(--transition-med),
+  transition:
+    transform var(--transition-med),
+    box-shadow var(--transition-med),
     filter var(--transition-med);
 }
 
@@ -674,5 +698,555 @@ a {
   #requestBtn {
     bottom: 1rem;
     right: 1rem;
+  }
+}
+
+/* ---------------------------------------------------
+   FINAL PERFECT SEASON SELECTOR (MATCHES DOWNLOAD BTNS)
+   --------------------------------------------------- */
+
+/* wrapper matches card-buttons spacing */
+.season-select-wrap {
+  width: 100%;
+}
+
+/* the selector itself behaves EXACTLY like your buttons */
+.season-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  cursor: pointer;
+
+  /* Same gradient as your .view-episodes button */
+  background: radial-gradient(circle at 0 0, #4f46e5, #0f172a);
+  color: var(--text-main);
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 0 14px rgba(79, 70, 229, 0.45);
+  transition:
+    transform var(--transition-med),
+    box-shadow var(--transition-med),
+    background var(--transition-med),
+    filter var(--transition-med);
+
+  /* arrow icon */
+  background-image: url("data:image/svg+xml,%3Csvg fill='white' width='14' height='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5-5H2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+}
+
+/* hover effect identical to other buttons */
+.season-select:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+}
+
+/* active like your download buttons */
+.season-select:active {
+  transform: scale(0.97);
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.85);
+}
+
+/* ---------------------------------------------------
+   FIX: Correct text & background when season dropdown opens
+   --------------------------------------------------- */
+
+.season-select option {
+  background: #0d0d12; /* matches your modal + card background */
+  color: var(--text-main); /* white text */
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* for some browsers that ignore option background */
+.season-select {
+  background-color: #0d0d12 !important;
+  color: var(--text-main) !important;
+}
+
+/* ---------------------------------------------------
+   PREMIUM DROPDOWN (CUSTOM THEMED)
+   --------------------------------------------------- */
+
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-btn {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  background: radial-gradient(circle at 0 0, #4f46e5, #0f172a);
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(79, 70, 229, 0.45);
+  transition: var(--transition-med);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-btn:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.9);
+}
+
+.dropdown-btn:active {
+  transform: scale(0.96);
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------------------------------------------------
+   PREMIUM DROPDOWN MENU — FULLY SCROLLABLE
+   --------------------------------------------------- */
+
+.dropdown-menu {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 15, 22, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.85);
+  display: none;
+  flex-direction: column;
+  max-height: 220px;        /* shows 6–8 seasons comfortably */
+  overflow-y: auto;         /* enables scrolling */
+  overflow-x: hidden;
+  z-index: 9999 !important;
+  animation: dropdownFade 0.22s ease-out;
+  scrollbar-width: thin;    /* Firefox */
+}
+
+/* Custom scrollbar (Chrome/Edge/Brave) */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Fade animation */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-item {
+  padding: 0.6rem 0.75rem;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(79, 70, 229, 0.28);
+}
+
+.dropdown.open .dropdown-menu {
+  display: flex;
+}
+
+/* Dropdown opens downward */
+.dropdown-menu.down {
+  top: 105%;
+  bottom: auto;
+}
+
+/* Dropdown opens upward */
+.dropdown-menu.up {
+  bottom: 105%;
+  top: auto;
+}
+
+/* ============================================================
+   CYBERPUNK GOD-LEVEL BUTTON EFFECT (PURE CSS)
+   ============================================================ */
+
+/* target all your main buttons */
+.download-btn,
+.view-episodes,
+.dropdown-btn,
+.card-buttons button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transform: translateZ(0);
+  transition: 0.25s ease;
+  backface-visibility: hidden;
+}
+
+/* --- 1) Neon Hologram Border Trail --- */
+.download-btn::before,
+.view-episodes::before,
+.dropdown-btn::before,
+.card-buttons button::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #ff0059,
+    #ff006e,
+    #6500ff,
+    #00eaff,
+    #ff0059
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.35;
+  filter: blur(6px);
+  animation: holoSpin 4s linear infinite;
+}
+
+@keyframes holoSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- 2) Holographic Shine Sweep --- */
+.download-btn::after,
+.view-episodes::after,
+.dropdown-btn::after,
+.card-buttons button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 100%
+  );
+  transform: translateX(-120%) skewX(-20deg);
+  transition: 0.4s;
+}
+
+.download-btn:hover::after,
+.view-episodes:hover::after,
+.dropdown-btn:hover::after,
+.card-buttons button:hover::after {
+  transform: translateX(120%) skewX(-20deg);
+}
+
+/* --- 3) Chromatic Aberration Glow (SUBTLE + SEXY) --- */
+.download-btn:hover,
+.view-episodes:hover,
+.dropdown-btn:hover,
+.card-buttons button:hover {
+  box-shadow:
+    0 0 12px rgba(255, 0, 90, 0.7),
+    0 0 24px rgba(0, 190, 255, 0.55),
+    0 0 42px rgba(255, 0, 220, 0.3);
+  filter: brightness(1.18) saturate(1.4);
+  transform: scale(1.05) translateY(-2px) rotateX(3deg);
+}
+
+/* --- 4) Plasma Wave Explosion on Click --- */
+.card-buttons button:active {
+  animation: plasmaBoom 0.45s ease-out;
+}
+
+@keyframes plasmaBoom {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(255, 0, 90, 0.6);
+  }
+  50% {
+    transform: scale(0.92);
+    box-shadow: 0 0 26px rgba(0, 195, 255, 0.55);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(0, 240, 255, 0);
+  }
+}
+
+/* --- 5) Floating Energy Circuit Lines (This is the “DAMN!” part) --- */
+.card-buttons button .energy-line {
+  pointer-events: none;
+  position: absolute;
+  height: 2px;
+  width: 60%;
+  background: linear-gradient(90deg, transparent, #00eaff, transparent);
+  left: 20%;
+  opacity: 0;
+  border-radius: 10px;
+  filter: blur(2px);
+  animation: energyMove 2.2s infinite ease-in-out;
+}
+
+@keyframes energyMove {
+  0%,
+  100% {
+    top: 10%;
+    opacity: 0;
+  }
+  40% {
+    top: 45%;
+    opacity: 0.8;
+  }
+  60% {
+    top: 55%;
+    opacity: 0.8;
+  }
+}
+
+/* smaller ones for randomness */
+.card-buttons button .energy-line:nth-child(2) {
+  animation-delay: 0.4s;
+  width: 40%;
+  left: 30%;
+}
+
+.card-buttons button .energy-line:nth-child(3) {
+  animation-delay: 1s;
+  width: 70%;
+  left: 15%;
+}
+/* ============================================================
+   SENTIENT + VOID-HOLOGRAM WORLD ENGINE
+   (Final, unified, mobile-safe, premium)
+   ============================================================ */
+
+
+/* ============================================================
+   1 — VOID BACKGROUND (breathing + shifting depth)
+   ============================================================ */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -5;
+  transition: 0.4s ease;
+}
+
+/* deep void fog */
+body::before {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.05), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.04), transparent 60%),
+    rgba(0,0,0,1);
+  filter: blur(40px);
+  opacity: 0.55;
+  animation: voidBreath 14s infinite ease-in-out;
+}
+
+@keyframes voidBreath {
+  0%   { opacity: 0.45; transform: translateX(-10px) translateY(-6px); }
+  50%  { opacity: 0.65; transform: translateX(10px)  translateY(8px); }
+  100% { opacity: 0.45; transform: translateX(-8px)  translateY(0px); }
+}
+
+/* soft hologram noise */
+body::after {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.015) 0px,
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  opacity: 0.06;
+}
+
+
+/* ============================================================
+   2 — SENTIENT PARALLAX (desktop only)
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    --mx: 0px;
+    --my: 0px;
+  }
+
+  body::before {
+    transform: translate(calc(var(--mx) * 0.02), calc(var(--my) * 0.02));
+  }
+
+  body::after {
+    transform: translate(calc(var(--mx) * 0.01), calc(var(--my) * 0.01));
+  }
+}
+
+
+/* ============================================================
+   3 — HOLOGRAM PHYSICS (cards + modals + major UI blocks)
+   ============================================================ */
+
+.fx-card,
+.modal-box,
+header,
+footer {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.45s cubic-bezier(.25,.8,.25,1),
+    filter 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+/* subtle hologram depth & shadow breathing */
+.fx-card,
+.modal-box {
+  box-shadow:
+    0 8px 22px rgba(0,0,0,0.55),
+    0 0 0 rgba(255,255,255,0);
+  animation: holoIdle 7s infinite ease-in-out;
+}
+
+@keyframes holoIdle {
+  0%   { filter: brightness(1) saturate(1); }
+  50%  { filter: brightness(1.04) saturate(1.08); }
+  100% { filter: brightness(1) saturate(1); }
+}
+
+/* Lift + tilt on hover (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  .fx-card:hover,
+  .modal-box:hover {
+    transform:
+      translateY(-6px)
+      rotateX(3deg)
+      rotateY(-3deg)
+      scale(1.015);
+    filter: brightness(1.08);
+    box-shadow:
+      0 18px 38px rgba(0,0,0,0.85),
+      0 0 22px rgba(255,255,255,0.05);
+  }
+}
+
+
+/* ============================================================
+   4 — VOID HOLOGRAM DISTORTION LAYER (subtle, expensive)
+   ============================================================ */
+
+.fx-card::after,
+.modal-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255,255,255,0.04), transparent 70%),
+    linear-gradient(
+      115deg,
+      rgba(255,255,255,0.04) 0%,
+      transparent 30%,
+      transparent 60%,
+      rgba(255,255,255,0.05) 100%
+    );
+  transition: opacity 0.4s ease;
+}
+
+.fx-card:hover::after,
+.modal-box:hover::after {
+  opacity: 0.18;
+}
+
+
+/* ============================================================
+   5 — CINEMATIC MODAL OPENING
+   ============================================================ */
+
+.modal-box {
+  animation: modalPop 0.4s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes modalPop {
+  0% {
+    transform: translateY(18px) scale(0.92);
+    filter: blur(4px) brightness(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    filter: blur(0) brightness(1);
+    opacity: 1;
+  }
+}
+
+
+/* ============================================================
+   6 — SENTIENT CURSOR LIGHTFIELD (no dot, no trails)
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor:auto;
+  }
+
+  #cursorLight {
+    position: fixed;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999999;
+    opacity: 0.18;
+    background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 70%);
+    filter: blur(45px);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+  }
+
+  body:hover #cursorLight {
+    opacity: 0.22;
+  }
+}
+
+
+/* ============================================================
+   7 — MOBILE VOID MODE (no cursor effects)
+   ============================================================ */
+
+@media (max-width: 600px) {
+  body::before { opacity: 0.4; filter: blur(30px); }
+  body::after  { opacity: 0.04; }
+
+  .fx-card,
+  .modal-box {
+    transform: none !important;
+    box-shadow:
+      0 10px 25px rgba(0,0,0,0.65);
   }
 }
