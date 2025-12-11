@@ -149,64 +149,60 @@
       container.appendChild(create("p", "muted", "No downloads available."));
     }
   };
+/* ----------------------------------------------------
+   Homepage: Premium Season Dropdown (Always Up + Volume)
+---------------------------------------------------- */
+const createSeasonDropdown = (item, dlRow) => {
+  const dropdown = create("div", "dropdown fx-dropdown");
+  const btn = create("button", "dropdown-btn", "");
+  const menu = create("div", "dropdown-menu");
 
-  /* ----------------------------------------------------
-     Homepage: Premium Season Dropdown (Smart Position)
-  ---------------------------------------------------- */
-  const createSeasonDropdown = (item, dlRow) => {
-    const dropdown = create("div", "dropdown fx-dropdown");
-    const btn = create("button", "dropdown-btn", "");
-    const menu = create("div", "dropdown-menu");
+  enhanceButton(btn);
 
-    enhanceButton(btn);
+  // ---------- Default label with Volume ----------
+  const first = item.seasons[0];
+  const firstLabel =
+    `Season ${first.season}` + (first.volume ? ` Vol. ${first.volume}` : "");
+  btn.textContent = `${firstLabel} ▾`;
 
-    // default label
-    btn.textContent = `Season ${item.seasons[0].season} ▾`;
+  // ---------- Build menu with Volume ----------
+  item.seasons.forEach((s, idx) => {
+    const label =
+      `Season ${s.season}` + (s.volume ? ` Vol. ${s.volume}` : "");
 
-    // build menu
-    item.seasons.forEach((s, idx) => {
-      const opt = create("div", "dropdown-item", `Season ${s.season}`);
-      opt.addEventListener("click", (e) => {
-        e.stopPropagation();
-        btn.textContent = `Season ${s.season} ▾`;
-        dropdown.classList.remove("open");
-        updateSeasonDownloads(item, idx, dlRow);
-      });
-      menu.appendChild(opt);
-    });
+    const opt = create("div", "dropdown-item", label);
 
-    // smart positioning
-    btn.addEventListener("click", (e) => {
+    opt.addEventListener("click", (e) => {
       e.stopPropagation();
-
-      // close others
-      document
-        .querySelectorAll(".dropdown.open")
-        .forEach((d) => d.classList.remove("open"));
-
-      dropdown.classList.toggle("open");
-
-      if (dropdown.classList.contains("open")) {
-        const rect = dropdown.getBoundingClientRect();
-        const menuHeight = menu.scrollHeight;
-
-        const spaceBelow = window.innerHeight - rect.bottom;
-        const spaceAbove = rect.top;
-
-        menu.classList.remove("up", "down");
-
-        if (spaceBelow < menuHeight && spaceAbove > menuHeight) {
-          menu.classList.add("up");
-        } else {
-          menu.classList.add("down");
-        }
-      }
+      btn.textContent = `${label} ▾`;
+      dropdown.classList.remove("open");
+      updateSeasonDownloads(item, idx, dlRow);
     });
 
-    dropdown.appendChild(btn);
-    dropdown.appendChild(menu);
-    return dropdown;
-  };
+    menu.appendChild(opt);
+  });
+
+  // ---------- Always open upward ----------
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    // close any others
+    document
+      .querySelectorAll(".dropdown.open")
+      .forEach((d) => d.classList.remove("open"));
+
+    dropdown.classList.toggle("open");
+
+    if (dropdown.classList.contains("open")) {
+      menu.classList.remove("down");
+      menu.classList.add("up");  // FORCE dropdown UP always
+    }
+  });
+
+  dropdown.appendChild(btn);
+  dropdown.appendChild(menu);
+  return dropdown;
+};
 
   // Close open dropdowns when clicking anywhere else
   document.addEventListener("click", () => {
@@ -578,3 +574,4 @@
   ---------------------------------------------------- */
   renderCards();
 })();
+
