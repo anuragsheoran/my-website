@@ -424,5 +424,33 @@ window.moviesData = [
         link: "https://pub-6b25c191839c4b01a878de4fdde0227b.r2.dev/d19ad852b285f9bcbd604b11f6d434e0?token=1765380004126" 
     }
     },
+    {
+    id: 20,
+    title: "Shutter Island",
+    category: "Hollywood",
+    releaseDate: "2010",
+    poster: "posters/shutter_island.jpg",
+    series: false,
+
+    quality480p: { 
+        size: "400MB", 
+        link: "https://lob.the-fat-guy.mom/Shutter.Island.2010.480p.Hindi-English.Vegamovies.NL.mkv?token=78c5472ea5e305859fa91c9465b5ac1a_111" 
+    },
+
+    quality720p: { 
+        size: "1.2GB", 
+        link: "https://lob.the-fat-guy.mom/Shutter.Island.2010.720p.Hindi-English.Vegamovies.NL.mkv?token=78c5472ea5e305859fa91c9465b5ac1a_113" 
+    },
+
+    quality1080p: { 
+        size: "3.3GB", 
+        link: "https://pub-6b25c191839c4b01a878de4fdde0227b.r2.dev/a50b321ffbeaf0c6e1c1eef4fdb0a0ef?token=1765443974" 
+    },
+
+    quality4k: { 
+        size: "8GB", 
+        link: "https://video-downloads.googleusercontent.com/ADGPM2mi4CoMuBnbhw0d_w7R_qwB_08EDe9XqWmp4NgvDabgmyK4iG7fs1n516DUacWrSLa6uSkyj-Bg-SYtDEQGJXVI_Ar7pW4VXufmgH0OYWEfAVLPnS2d4rUYHErtS01KOFRTxma0a7slw5b21r-24eQelPjPfC5oRyTGB2006I1VUXhkmBKNrnHA5yUOY93jw3prCpfRSfI0M-hKV6u7rAQPFf0nnG_2Ep4IL8C7QhwPcUR0SttLmfS5xyxIWCp6lMW49qLr" 
+    }
+    },
 
 ];
